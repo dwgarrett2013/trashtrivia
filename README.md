@@ -13,6 +13,9 @@ bleh bleh bleh
     * role-String
     * security_question_id-int (Foreign Key to Security_Question id)
     * security_question_answer-String
+    * num_correct_answer
+    * num_question_completed
+    * num_quizzes_taken
     
 * Security_Question
     * id-String
@@ -26,8 +29,18 @@ bleh bleh bleh
     * question_additional_information
     
     
-    
-    
+* Session
+    * id
+    * num_questions_to_ask
+    * user_id
+    * num_correct_answers
+    * num_questions_completed
 
-Session
+* Session
+    * id
+    * num_questions_to_ask
+    * user_id
+    * num_correct_answers
+    * num_questions_completed
+    
 
