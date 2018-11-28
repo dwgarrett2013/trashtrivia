@@ -1,1 +1,3 @@
 # trashtrivia
+
+adding some details
