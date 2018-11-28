@@ -6,7 +6,7 @@ bleh bleh bleh
 
 ## Class Structure
 
-*User
+* User
 
 Session
 
