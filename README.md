@@ -1,8 +1,8 @@
 # trashtrivia
 
-## Class Structure
+## Class/Database Structure
 
-Below is a list of classes in the project and their fields
+Below is a list of classes/database objects in the project and their fields.
 
 ### User 
 | Field   |      Type      |  Note |
