@@ -6,8 +6,8 @@ Below is a list of classes in the project and their fields
 
 ### User 
 | Field   |      Type      |  Note |
-|----------|:-------------:|------:|
-|   id  |   String  |  (Primary Key)  |
+|:----------:|:-------------:|:------:|
+|  id  |   String  |  (Primary Key)  |
 |  username  |   String  |  (Primary Key)  |
 |  password  |   String  |    |
 |  role  |   String  |  (Foreign Key to id in Role)  |
@@ -19,19 +19,19 @@ Below is a list of classes in the project and their fields
 
 ### Role 
 | Field   |      Type      |  Note |
-|----------|:-------------:|------:|
+|:----------:|:-------------:|:------::|
 |  id  |   String  |  (Primary Key)  |
 |  role_name  |   String  |  (Primary Key)  |
     
 ### Security_Question
 | Field   |      Type      |  Note |
-|----------|:-------------:|------:|
+|:----------:|:-------------:|:------:|
 |  id  |   String  |  (Primary Key)  |
 |  security_question_text  |   String  |    |
 
 ### Question
 | Field   |      Type      |  Note |
-|----------|:-------------:|------:|
+|:----------:|:-------------:|:------:|
 |  id  |   String  |  (Primary Key)  |
 |  question_text  |   String  |    |
 |  question_answer_correct  |   String  |    |
@@ -44,7 +44,7 @@ Below is a list of classes in the project and their fields
 
 ### Tag
 | Field   |      Type      |  Note |
-|----------|:-------------:|------:|
+|:----------:|:-------------:|:------:|
 |  id  |   String  |  (Primary Key)  |
 |  tag_text  |   String  |    |
 |  num_tagged_questions_asked  |   int  |    |
@@ -52,7 +52,7 @@ Below is a list of classes in the project and their fields
     
 ### Session
 | Field   |      Type      |  Note |
-|----------|:-------------:|------:|
+|:----------:|:-------------:|:------:|
 |  id  |   String  |  (Primary Key)  |
 |  num_questions_to_ask  |   int  |    |
 |  user_id  |   String  |  Foreign Key to User  |
@@ -61,7 +61,7 @@ Below is a list of classes in the project and their fields
 
 ### Notification
 | Field   |      Type      |  Note |
-|----------|:-------------:|------:|
+|:----------:|:-------------:|:------:|
 |  id  |   String  |  (Primary Key)  |
 |  sender_id  |   String  |  Foreign Key to User  |
 |  recipient_id  |   String  |  Foreign Key to User  |
