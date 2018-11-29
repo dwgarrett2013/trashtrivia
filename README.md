@@ -67,5 +67,4 @@ Below is a list of classes/database objects in the project and their fields.
 |  recipient_id  |   String  |  Foreign Key to User  |
 |  notification_text  |   String  |    |
 |  notification_ts  |   Timestamp  |    |
-|  num_questions_completed  |   int  |    |
 
