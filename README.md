@@ -16,6 +16,12 @@ Below is a list of classes in the project and their fields
 |  num_correct_answer  |   int  |  (Foreign Key to id in Security_Question)  |
 |  num_question_completed  |   int  |  (Foreign Key to id in Security_Question)  |
 |  num_quizzes_taken  |   int  |  (Foreign Key to id in Security_Question)  |
+
+### Role 
+| Field   |      Type      |  Note |
+|----------|:-------------:|------:|
+|  id  |   String  |  (Primary Key)  |
+|  role_name  |   String  |  (Primary Key)  |
     
 ### Security_Question
 | Field   |      Type      |  Note |
