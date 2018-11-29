@@ -7,32 +7,32 @@ Below is a list of classes/database objects in the project and their fields.
 ### User 
 | Field   |      Type      |  Note |
 |:----------:|:-------------:|:------:|
-|  id  |   String  |  (Primary Key  |
-|  username  |   String  |  (Primary Key  |
+|  id  |   String  |  Primary Key  |
+|  username  |   String  |  Primary Key  |
 |  password  |   String  |    |
 |  role  |   String  |  Foreign Key to id in Role  |
 |  security_question_id  |   String  |  Foreign Key to id in Security_Question  |
 |  security_question_answer  |   String  |    |
 |  num_correct_answer  |   int  |  Foreign Key to id in Security_Question  |
 |  num_question_completed  |   int  |  Foreign Key to id in Security_Question  |
-|  num_quizzes_taken  |   int  |  (Foreign Key to id in Security_Question  |
+|  num_quizzes_taken  |   int  |  Foreign Key to id in Security_Question  |
 
 ### Role 
 | Field   |      Type      |  Note |
 |:----------:|:-------------:|:------:|
-|  id  |   String  |  (Primary Key  |
-|  role_name  |   String  |  (Primary Key  |
+|  id  |   String  |  Primary Key  |
+|  role_name  |   String  |  Primary Key  |
     
 ### Security_Question
 | Field   |      Type      |  Note |
 |:----------:|:-------------:|:------:|
-|  id  |   String  |  (Primary Key  |
+|  id  |   String  |  Primary Key  |
 |  security_question_text  |   String  |    |
 
 ### Question
 | Field   |      Type      |  Note |
 |:----------:|:-------------:|:------:|
-|  id  |   String  |  (Primary Key  |
+|  id  |   String  |  Primary Key  |
 |  question_text  |   String  |    |
 |  question_answer_correct  |   String  |    |
 |  question_answer_options  |   arrayList(String)  |    |
