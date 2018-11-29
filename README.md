@@ -7,7 +7,7 @@ Below is a list of classes in the project and their fields
 ### User 
 | Field   |      Type      |  Note |
 |----------|:-------------:|------:|
-|  id  |   String  |  (Primary Key)  |
+|   id   |   String  |  (Primary Key)  |
 |  username  |   String  |  (Primary Key)  |
 |  password  |   String  |    |
 |  role  |   String  |  (Foreign Key to id in Role)  |
