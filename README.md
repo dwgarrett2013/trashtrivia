@@ -19,7 +19,7 @@ Below is a list of classes in the project and their fields
 
 ### Role 
 | Field   |      Type      |  Note |
-|:----------:|:-------------:|:------::|
+|:----------:|:-------------:|:------:|
 |  id  |   String  |  (Primary Key)  |
 |  role_name  |   String  |  (Primary Key)  |
     
