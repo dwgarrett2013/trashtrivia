@@ -2,14 +2,15 @@
 
 ## Class Structure
 
-| Tables   |      Are      |  Cool |
+Below is a list of classes in the project and their fields
+
+### User 
+| Field   |      Type      |  Note |
 |----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
+| id |  String | (Primary Key) |
 | col 2 is |    centered   |   $12 |
 | col 3 is | right-aligned |    $1 |
 
-* User
-    * id: String (Primary Key)
     * username: String (Primary Key)
     * password: String
     * role: String (Foreign Key to id in Role)
