@@ -7,18 +7,15 @@ Below is a list of classes in the project and their fields
 ### User 
 | Field   |      Type      |  Note |
 |----------|:-------------:|------:|
-| id |  String | (Primary Key) |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
-
-    * username: String (Primary Key)
-    * password: String
-    * role: String (Foreign Key to id in Role)
-    * security_question_id: String (Foreign Key to id in Security_Question)
-    * security_question_answer: String
-    * num_correct_answer: int
-    * num_question_completed: int
-    * num_quizzes_taken: int
+|  id  |   String  |  (Primary Key)  |
+|  username  |   String  |  (Primary Key)  |
+|  password  |   String  |    |
+|  role  |   String  |  (Foreign Key to id in Role)  |
+|  security_question_id  |   String  |  (Foreign Key to id in Security_Question)  |
+|  security_question_answer  |   String  |    |
+|  num_correct_answer  |   int  |  (Foreign Key to id in Security_Question)  |
+|  num_question_completed  |   int  |  (Foreign Key to id in Security_Question)  |
+|  num_quizzes_taken  |   int  |  (Foreign Key to id in Security_Question)  |
     
 * Security_Question
     * id: String (Primary Key)
