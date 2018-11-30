@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomepageActivity">
+
+    <TableLayout
+        android:layout_width="368dp"
+        android:layout_height="503dp"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="top|center">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="39dp"
+                android:gravity="center_horizontal"
+                android:text="@string/trash_trivia_header"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="sans"
+                tools:text="Store Management Homepage" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/buttonPlayTrashTrivia"
+                android:layout_width="147dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/header_play_trash_trivia" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/buttonViewProfile"
+                android:layout_width="136dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/header_view_profile" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/buttonLogout"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/logout_button_text" />
+
+        </TableRow>
+    </TableLayout>
+
+</RelativeLayout>

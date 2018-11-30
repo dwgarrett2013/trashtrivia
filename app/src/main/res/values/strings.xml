@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">trashtrivia</string>
+    <string name="login_title">Welcome to TrashTrivia</string>
+    <string name="login_button_text">Login</string>
+    <string name="email_hint">Enter Email</string>
+    <string name="password_hint">Enter Password</string>
+    <string name="trash_trivia_header">Trash Trivia</string>
+    <string name="header_play_trash_trivia">Play Trash Trivia</string>
+    <string name="header_view_profile">View Profile</string>
+    <string name="logout_button_text">Logout</string>
+    <string name="register_user_button">Register User</string>
 </resources>
