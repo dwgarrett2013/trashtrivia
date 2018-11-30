@@ -15,6 +15,9 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
     //Initialize Button Objects
     private Button buttonCreateAccount, buttonReturnToSignin;
 
+    //Initialize  FirebaseDatabaseObject
+    private FirebaseDatabase database;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +30,9 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
         //Add OnClickListeners to Button objects
         buttonCreateAccount.setOnClickListener(this);
         buttonReturnToSignin.setOnClickListener(this);
+
+        //create Firebase Database
+        database = FirebaseDatabase.getInstance();
     }
 
     @Override
@@ -37,15 +43,12 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
             startActivity(intentReturnToSignin);
         }
         else if(v == buttonCreateAccount) {
+
+            // Write a message to the database
+            DatabaseReference myRef = database.getReference("message");
+
+            myRef.setValue("zup");
             Toast.makeText(this, "Say Something", Toast.LENGTH_SHORT).show();
-
-            //create database object
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-            //whatever is typed in edit text set the myRef
-            DatabaseReference myRef = database.getReference("trashtrivia");
-
-            myRef.setValue("move");
         }
 
     }
