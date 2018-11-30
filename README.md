@@ -1,11 +1,11 @@
 # trashtrivia
 
-## Class/Database Structure
+## Class and Data Structures
 
-Below is a list of classes/database objects in the project and their fields.
+Below is a list of classes/data structures in the project and the fields that make up each class.  Each of those fields is accompanied by a corresponding data type and additional notes about how it will be stored (e.g. as a primary key for foreign key to a field in another class).
 
 ### User 
-| Field   |      Type      |  Data Storage Note |
+| Field   |      Data Type      |  Additional Notes |
 |:----------:|:-------------:|:------:|
 |  id  |   String  |  Primary Key  |
 |  username  |   String  |  Primary Key  |
@@ -18,19 +18,19 @@ Below is a list of classes/database objects in the project and their fields.
 |  num_quizzes_taken  |   int  |  Foreign Key to id in Security_Question  |
 
 ### Role 
-| Field   |      Type      |  Data Storage Note |
+| Field   |      Type      |  Additional Notes |
 |:----------:|:-------------:|:------:|
 |  id  |   String  |  Primary Key  |
 |  role_name  |   String  |  Primary Key  |
     
 ### Security_Question
-| Field   |      Type      |  Note |
+| Field   |      Type      |  Additional Notes |
 |:----------:|:-------------:|:------:|
 |  id  |   String  |  Primary Key  |
 |  security_question_text  |   String  |    |
 
 ### Question
-| Field   |      Type      |  Data Storage Note |
+| Field   |      Type      |  Additional Notes |
 |:----------:|:-------------:|:------:|
 |  id  |   String  |  Primary Key  |
 |  question_text  |   String  |    |
@@ -43,7 +43,7 @@ Below is a list of classes/database objects in the project and their fields.
 |  question_text  |   String  |  String elements are Foreign keys to Tag  |
 
 ### Tag
-| Field   |      Type      |  Data Storage Note |
+| Field   |      Type      |  Additional Notes |
 |:----------:|:-------------:|:------:|
 |  id  |   String  |  Primary Key  |
 |  tag_text  |   String  |    |
@@ -51,7 +51,7 @@ Below is a list of classes/database objects in the project and their fields.
 |  num_tagged_questions_answered_correctly  |   int  |    |
     
 ### Session
-| Field   |      Type      |  Data Storage Note |
+| Field   |      Type      |  Additional Notes |
 |:----------:|:-------------:|:------:|
 |  id  |   String  |  Primary Key  |
 |  num_questions_to_ask  |   int  |    |
@@ -60,7 +60,7 @@ Below is a list of classes/database objects in the project and their fields.
 |  num_questions_completed  |   int  |    |
 
 ### Notification
-| Field   |      Type      |  Data Storage Note |
+| Field   |      Type      |  Additional Notes |
 |:----------:|:-------------:|:------:|
 |  id  |   String  |  Primary Key  |
 |  sender_id  |   String  |  Foreign Key to User  |
