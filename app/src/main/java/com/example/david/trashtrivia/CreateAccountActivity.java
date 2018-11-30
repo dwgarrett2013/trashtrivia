@@ -44,10 +44,12 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
         }
         else if(v == buttonCreateAccount) {
 
-            // Write a message to the database
-            DatabaseReference myRef = database.getReference("message");
+            User userDbObject=new User("Bill","thepass","1","1","Bleh Bleh");
 
-            myRef.setValue("zup");
+            // Write a message to the database
+            DatabaseReference myRef = database.getReference("User");
+
+            myRef.setValue(userDbObject);
             Toast.makeText(this, "Say Something", Toast.LENGTH_SHORT).show();
         }
 
