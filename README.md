@@ -5,7 +5,7 @@
 Below is a list of classes/database objects in the project and their fields.
 
 ### User 
-| Field   |      Type      |  Note |
+| Field   |      Type      |  Data Storage Note |
 |:----------:|:-------------:|:------:|
 |  id  |   String  |  Primary Key  |
 |  username  |   String  |  Primary Key  |
@@ -18,7 +18,7 @@ Below is a list of classes/database objects in the project and their fields.
 |  num_quizzes_taken  |   int  |  Foreign Key to id in Security_Question  |
 
 ### Role 
-| Field   |      Type      |  Note |
+| Field   |      Type      |  Data Storage Note |
 |:----------:|:-------------:|:------:|
 |  id  |   String  |  Primary Key  |
 |  role_name  |   String  |  Primary Key  |
@@ -30,7 +30,7 @@ Below is a list of classes/database objects in the project and their fields.
 |  security_question_text  |   String  |    |
 
 ### Question
-| Field   |      Type      |  Note |
+| Field   |      Type      |  Data Storage Note |
 |:----------:|:-------------:|:------:|
 |  id  |   String  |  Primary Key  |
 |  question_text  |   String  |    |
@@ -43,7 +43,7 @@ Below is a list of classes/database objects in the project and their fields.
 |  question_text  |   String  |  String elements are Foreign keys to Tag  |
 
 ### Tag
-| Field   |      Type      |  Note |
+| Field   |      Type      |  Data Storage Note |
 |:----------:|:-------------:|:------:|
 |  id  |   String  |  Primary Key  |
 |  tag_text  |   String  |    |
@@ -51,7 +51,7 @@ Below is a list of classes/database objects in the project and their fields.
 |  num_tagged_questions_answered_correctly  |   int  |    |
     
 ### Session
-| Field   |      Type      |  Note |
+| Field   |      Type      |  Data Storage Note |
 |:----------:|:-------------:|:------:|
 |  id  |   String  |  Primary Key  |
 |  num_questions_to_ask  |   int  |    |
@@ -60,7 +60,7 @@ Below is a list of classes/database objects in the project and their fields.
 |  num_questions_completed  |   int  |    |
 
 ### Notification
-| Field   |      Type      |  Note |
+| Field   |      Type      |  Data Storage Note |
 |:----------:|:-------------:|:------:|
 |  id  |   String  |  Primary Key  |
 |  sender_id  |   String  |  Foreign Key to User  |
