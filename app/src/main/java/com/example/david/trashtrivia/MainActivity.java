@@ -14,6 +14,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends Activity implements View.OnClickListener{
 
@@ -25,6 +27,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
     //Initialize FirebaseAuth objects
     private FirebaseAuth mAuth;
+
+    //Initialize  FirebaseDatabaseObject
+    private FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +54,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
         //create FirebaseAuth object
         mAuth = FirebaseAuth.getInstance();
+
+        //create Firebase Database
+        database = FirebaseDatabase.getInstance();
     }
 
     //Handles click events
@@ -66,6 +74,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
             //Check to be sure the user has provided inputs for both username and password before proceeding
             if(editTextEmail.getText().toString().isEmpty() || editTextPassword.getText().toString().isEmpty()){
+
+                // Write a message to the database
+                DatabaseReference myRef = database.getReference("message");
+
+                myRef.setValue("boo how");
                 Toast.makeText(MainActivity.this, "Please enter both a username and password to register or login.", Toast.LENGTH_SHORT).show();
             }
 

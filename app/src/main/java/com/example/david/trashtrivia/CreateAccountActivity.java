@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class CreateAccountActivity extends Activity implements View.OnClickListener{
 
     //Initialize Button Objects
@@ -35,6 +38,14 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
         }
         else if(v == buttonCreateAccount) {
             Toast.makeText(this, "Say Something", Toast.LENGTH_SHORT).show();
+
+            //create database object
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+            //whatever is typed in edit text set the myRef
+            DatabaseReference myRef = database.getReference("trashtrivia");
+
+            myRef.setValue("move");
         }
 
     }
