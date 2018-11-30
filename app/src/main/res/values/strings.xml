@@ -8,5 +8,14 @@
     <string name="header_play_trash_trivia">Play Trash Trivia</string>
     <string name="header_view_profile">View Profile</string>
     <string name="logout_button_text">Logout</string>
-    <string name="register_user_button">Register User</string>
+    <string name="create_user_account_button_text">Create Account</string>
+    <string name="forgot_password_button_text">Forgot Password</string>
+    <string name="proceed_as_guest_button_text">Proceed as Guest</string>
+    <string name="login_subtitle_text">Fun Sustainability Education</string>
+    <string name="create_account_text">Enter a username and password to create an account</string>
+    <string name="return_to_login_text">Return to Login</string>
+    <string name="account_selection_instructions_text">Select An Account Type</string>
+    <string name="account_type_selection_standard_user">Standard User</string>
+    <string name="account_type_selection_premium_user">Premium User</string>
+    <string name="account_type_selection_admin_user">Admin User</string>
 </resources>

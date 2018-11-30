@@ -40,33 +40,80 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="154dp"
-        android:text="@string/login_button_text" />
+        android:layout_marginEnd="-112dp"
+        android:layout_marginBottom="179dp"
+        android:layout_toStartOf="@+id/button_create_account"
+        android:text="@string/login_button_text"
+        android:layout_toLeftOf="@+id/button_create_account"
+        android:layout_marginRight="-112dp" />
 
     <Button
-        android:id="@+id/buttonRegister"
+        android:id="@+id/buttonForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/button_return_to_login"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="125dp"
+        android:text="@string/forgot_password_button_text"
+        android:layout_alignLeft="@+id/button_return_to_login"
+        android:layout_marginLeft="1dp" />
+
+    <Button
+        android:id="@+id/button_return_to_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="109dp"
+        android:layout_marginRight="109dp"
+        android:layout_marginBottom="6dp"
+        android:text="@string/proceed_as_guest_button_text" />
+
+    <Button
+        android:id="@+id/button_create_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="61dp"
-        android:text="@string/register_user_button" />
+        android:text="@string/create_user_account_button_text" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/title_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="39dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="22dp"
         android:gravity="center_horizontal"
         android:text="@string/login_title"
         android:textSize="24sp"
         android:textStyle="bold"
         android:typeface="sans"
-        tools:text="@string/login_title" />
+        tools:text="@string/login_title"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp" />
+
+    <TextView
+        android:id="@+id/subtitle_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="54dp"
+        android:gravity="center_horizontal"
+        android:text="@string/login_subtitle_text"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:typeface="sans"
+        tools:text="@string/login_subtitle_text"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp" />
 
 </RelativeLayout>

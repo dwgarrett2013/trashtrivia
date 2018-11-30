@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends Activity implements View.OnClickListener{
 
     //Initialize Button Objects
-    private Button buttonRegister, buttonLogin;
+    private Button buttonLogin, buttonForgotPassword, buttonCreateAccount, buttonProceedAsGuest;
 
     //Initialize EditText Objects
     private EditText editTextEmail, editTextPassword;
@@ -32,8 +32,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
         setContentView(R.layout.activity_main);
 
         //Link Button Objects to elements in the view
-        buttonRegister = findViewById(R.id.buttonRegister);
         buttonLogin = findViewById(R.id.buttonLogin);
+        buttonForgotPassword=findViewById(R.id.buttonForgotPassword);
+        buttonCreateAccount = findViewById(R.id.button_create_account);
+        buttonProceedAsGuest=findViewById(R.id.button_return_to_login);
 
         //Link EditText Objects to elements in the view
         editTextEmail = findViewById(R.id.editTextEMail);
@@ -41,7 +43,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
         //Add OnClickListeners to Button objects
         buttonLogin.setOnClickListener(this);
-        buttonRegister.setOnClickListener(this);
+        buttonForgotPassword.setOnClickListener(this);
+        buttonCreateAccount.setOnClickListener(this);
+        buttonProceedAsGuest.setOnClickListener(this);
 
         //create FirebaseAuth object
         mAuth = FirebaseAuth.getInstance();
@@ -51,34 +55,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
 
-        //if Register User button is clicked
-        if(v == buttonRegister) {
-
-            //If the user has not provided inputs for both username and password, alert them
-            if(editTextEmail.getText().toString().isEmpty() || editTextPassword.getText().toString().isEmpty()){
-                Toast.makeText(MainActivity.this, "Please enter both a username and password to register or login.", Toast.LENGTH_SHORT).show();
-            }
-
-            //if username and password have been provided, attempt to register a user
-            else {
-                mAuth.createUserWithEmailAndPassword(editTextEmail.getText().toString(), editTextPassword.getText().toString())
-                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-
-                                //If user is successfully registered, post a message on the indicating the user has been registered
-                                if (task.isSuccessful()) {
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    Toast.makeText(MainActivity.this, "User Registration successful. "+ user.getEmail()+" can now log in.", Toast.LENGTH_SHORT).show();
-                                }
-
-                                //If user is registration fails, post a message on the indicating user registration failed
-                                else {
-                                    Toast.makeText(MainActivity.this, "User Registration failed.", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-            }
+        //if Create Account button is clicked
+        if(v == buttonCreateAccount) {
+            Intent intentCreateAccount = new Intent(getApplicationContext(),CreateAccountActivity.class);
+            startActivity(intentCreateAccount);
         }
 
         //if Login button is clicked
