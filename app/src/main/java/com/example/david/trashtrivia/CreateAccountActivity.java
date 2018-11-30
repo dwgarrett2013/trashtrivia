@@ -55,22 +55,37 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
         }
         else if(v == buttonCreateAccount) {
 
-            User userDbObject=new User("Sasha","thepass","1","1","Bleh Bleh");
+            final String key = database.child("User").push().getKey();
+            final User userDbObject=new User(key,"Sasha","thepass","1","Bleh Bleh");
 
-            String key = database.child("User").push().getKey();
-            database.child("User").child(key).setValue(userDbObject).
-                    addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(getApplicationContext(), "Successes for all", Toast.LENGTH_SHORT).show();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getApplicationContext(), "User registration failed", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+            database.child("Role").orderByChild("id").equalTo("-LSatkV_pm3gze2zBGFZ").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                        Toast.makeText(getApplicationContext(), "crud", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), postSnapshot.child("roleName").getValue().toString(), Toast.LENGTH_SHORT).show();
+                        userDbObject.setRoleId(postSnapshot.child("id").getValue().toString());
+                    }
+                    database.child("User").child(key).setValue(userDbObject).
+                            addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Successes for all", Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(getApplicationContext(), "User registration failed", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
 
             //Toast.makeText(this, "Say Something", Toast.LENGTH_SHORT).show();
 

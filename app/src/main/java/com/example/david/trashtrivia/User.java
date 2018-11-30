@@ -11,10 +11,10 @@ public class User {
     private int numQuestionCompleted;
     private int numQuizzesTaken;
 
-    public User(String username, String password, String roleId, String securityQuestionId, String securityQuestionAnswer){
+    public User(String id, String username, String password, String securityQuestionId, String securityQuestionAnswer){
+        this.id=id;
         this.username=username;
         this.password=password;
-        this.roleId = roleId;
         this.securityQuestionId = securityQuestionId;
         this.securityQuestionAnswer = securityQuestionAnswer;
         this.numCorrectAnswer = 0;
