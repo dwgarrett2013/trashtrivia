@@ -25,7 +25,6 @@
         <activity android:name=".NotificationsActivity" />
         <activity android:name=".InviteFriendsActivity" />
         <activity android:name=".ViewProfileActivity" />
-        <activity android:name=".QuestionMgmtHomeActivity" />
         <activity android:name=".QuestionHomeActivity"></activity>
     </application>
 

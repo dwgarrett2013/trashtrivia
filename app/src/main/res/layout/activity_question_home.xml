@@ -1,62 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ScrollView01"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuestionHomeActivity">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".QuestionHomeActivity">
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/question_mgmt_home_text" />
+        <TableLayout
+            android:layout_width="368dp"
+            android:layout_height="503dp"
+            tools:layout_editor_absoluteY="8dp"
+            tools:layout_editor_absoluteX="8dp">
 
-        <Button
-            android:id="@+id/buttonAddQuestion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="48dp"
-            android:text="@string/button_add_question_text" />
+                <TableRow
+                    android:id="@+id/table_row_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="top|center">
 
-        <Button
-            android:id="@+id/buttonModifyQuestion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="116dp"
-            android:text="@string/button_modify_question_text" />
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="39dp"
+                            android:gravity="center_horizontal"
+                            android:text="@string/question_mgmt_home_text"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            android:typeface="sans"
+                            tools:text="@string/question_mgmt_home_text" />
 
-        <Button
-            android:id="@+id/buttonDeleteQuestion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="176dp"
-            android:text="@string/button_delete_question_text" />
+                </TableRow>
 
-        <Button
-            android:id="@+id/buttonReturnHome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="205dp"
-            android:text="@string/return_home_text" />
+                <TableRow
+                    android:id="@+id/table_row_play_trashtrivia"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
-        <Button
-            android:id="@+id/buttonLogout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="352dp"
-            android:text="@string/return_to_login_text" />
-    </RelativeLayout>
+                        <Button
+                            android:id="@+id/buttonPlayTrashTrivia"
+                            android:layout_width="147dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/header_play_trash_trivia" />
 
-</ScrollView>
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/table_row_invite_friends"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/buttonInviteFriends"
+                            android:layout_width="116dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/invite_friends_button" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/table_row_notifications"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/buttonNotifications"
+                            android:layout_width="116dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/notifications_button" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/table_row_question_mgmt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/buttonQuestionMgmt"
+                            android:layout_width="116dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/questions_button" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/table_row_logout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                        <Button
+                            android:id="@+id/buttonLogout"
+                            android:layout_width="116dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/logout_button_text" />
+
+                </TableRow>
+        </TableLayout>
+
+</RelativeLayout>

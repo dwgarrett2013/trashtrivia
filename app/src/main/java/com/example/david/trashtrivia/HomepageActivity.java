@@ -73,8 +73,8 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
         //if Add Inventory button is clicked
         if(v==buttonPlayTrashTrivia){
             Intent intentInviteFriends=new Intent(getApplicationContext(),InviteFriendsActivity.class);
-            intentInviteFriends.putExtra("username", loggedInUsername);
-            intentInviteFriends.putExtra("role_name", loggedInUserRoleName);
+            //intentInviteFriends.putExtra("username", loggedInUsername);
+            //intentInviteFriends.putExtra("role_name", loggedInUserRoleName);
             startActivity(intentInviteFriends);
         }
 
@@ -88,8 +88,8 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
 
         else if(v==buttonInviteFriends){
             Intent intentInviteFriends=new Intent(getApplicationContext(),InviteFriendsActivity.class);
-            intentInviteFriends.putExtra("username", loggedInUsername);
-            intentInviteFriends.putExtra("role_name", loggedInUserRoleName);
+            //intentInviteFriends.putExtra("username", loggedInUsername);
+            //intentInviteFriends.putExtra("role_name", loggedInUserRoleName);
             startActivity(intentInviteFriends);
 
         }

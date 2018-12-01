@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.List;
-
 public class InviteFriendsActivity extends Activity implements View.OnClickListener{
 
     Button buttonInviteFriend;
