@@ -12,6 +12,7 @@
         tools:layout_editor_absoluteX="8dp">
 
         <TableRow
+            android:id="@+id/table_row_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -32,6 +33,7 @@
         </TableRow>
 
         <TableRow
+            android:id="@+id/table_row_play_trashtrivia"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -46,20 +48,24 @@
         </TableRow>
 
         <TableRow
+            android:id="@+id/table_row_profile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:visibility="gone">
 
             <Button
                 android:id="@+id/buttonViewProfile"
                 android:layout_width="136dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+
                 android:text="@string/header_view_profile" />
 
         </TableRow>
 
         <TableRow
+            android:id="@+id/table_row_logout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">

@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TableRow;
 import android.widget.Toast;
 
 public class HomepageActivity extends Activity implements View.OnClickListener{
 
     //Initialize Button Objects
     private Button buttonPlayTrashTrivia, buttonViewProfile, buttonLogout;
+
+    private TableRow tableRowTitle, tableRowProfile, tableRowLogout;
 
     private String loggedInUserId;
     private String loggedInUserRoleName;
@@ -24,15 +27,23 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
         buttonPlayTrashTrivia=findViewById(R.id.buttonPlayTrashTrivia);
         buttonViewProfile=findViewById(R.id.buttonViewProfile);
         buttonLogout=findViewById(R.id.buttonLogout);
+        tableRowTitle=findViewById(R.id.table_row_title);
+        tableRowProfile=findViewById(R.id.table_row_profile);
+        tableRowLogout=findViewById(R.id.table_row_logout);
 
         //Add OnClickListeners to homepage Button objects
         buttonPlayTrashTrivia.setOnClickListener(this);
         buttonViewProfile.setOnClickListener(this);
         buttonLogout.setOnClickListener(this);
+
         loggedInUserId=getIntent().getStringExtra("username");
         loggedInUserRoleName=getIntent().getStringExtra("role_name");
         System.out.println(loggedInUserId);
         System.out.println(loggedInUserRoleName);
+
+        if(loggedInUserRoleName.equals("standard")){
+            tableRowProfile.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
