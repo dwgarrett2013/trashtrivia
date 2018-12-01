@@ -43,7 +43,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         buttonProceedAsGuest=findViewById(R.id.button_return_to_login);
 
         //Link EditText Objects to elements in the view
-        editTextEmail = findViewById(R.id.editTextEMail);
+        editTextEmail = findViewById(R.id.editTextAccountCreateEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
 
         //Add OnClickListeners to Button objects

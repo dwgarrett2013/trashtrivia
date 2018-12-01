@@ -54,7 +54,7 @@
                 android:text="@string/create_account_text" />
 
             <EditText
-                android:id="@+id/editTextEMail"
+                android:id="@+id/editTextAccountCreateEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -65,13 +65,13 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/editTextPassword"
+                android:id="@+id/editTextAccountCreatePassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/password_hint"
                 android:inputType="textPersonName"
-                app:layout_constraintBottom_toTopOf="@+id/editTextEMail"
+                app:layout_constraintBottom_toTopOf="@+id/editTextAccountCreateEmail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -127,6 +127,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:checked="true"
                     android:text="@string/radio_button_security_question_text_1" />
 
                 <RadioButton
@@ -136,6 +137,19 @@
                     android:layout_weight="1"
                     android:text="@string/radio_button_security_question_text_2" />
             </RadioGroup>
+
+            <EditText
+                android:id="@+id/editTextSecurityQuestionAnswer"
+                android:layout_width="261dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/security_question_answer_hint"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/editTextAccountCreateEmail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.6" />
 
             <Button
                 android:id="@+id/button_create_account"
