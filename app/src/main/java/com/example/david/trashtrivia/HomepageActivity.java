@@ -1,6 +1,7 @@
 package com.example.david.trashtrivia;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,9 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
 
     //Initialize Button Objects
     private Button buttonPlayTrashTrivia, buttonViewProfile, buttonLogout;
+
+    private String loggedInUserId;
+    private String loggedInUserRoleName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +29,10 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
         buttonPlayTrashTrivia.setOnClickListener(this);
         buttonViewProfile.setOnClickListener(this);
         buttonLogout.setOnClickListener(this);
+        loggedInUserId=getIntent().getStringExtra("username");
+        loggedInUserRoleName=getIntent().getStringExtra("role_name");
+        System.out.println(loggedInUserId);
+        System.out.println(loggedInUserRoleName);
     }
 
     @Override
@@ -42,7 +50,9 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
 
         //if Logout button is clicked
         else if(v==buttonLogout){
-            Toast.makeText(HomepageActivity.this, "button clicked Successful", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Logout Button Clicked", Toast.LENGTH_SHORT).show();
+            Intent intentLogin=new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(intentLogin);
         }
 
     }

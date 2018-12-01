@@ -14,8 +14,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends Activity implements View.OnClickListener{
 
@@ -29,7 +32,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private FirebaseAuth mAuth;
 
     //Initialize  FirebaseDatabaseObject
-    private FirebaseDatabase database;
+    private DatabaseReference database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +59,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         mAuth = FirebaseAuth.getInstance();
 
         //create Firebase Database
-        database = FirebaseDatabase.getInstance();
+        database = FirebaseDatabase.getInstance().getReference();
     }
 
     //Handles click events
@@ -74,11 +77,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
             //Check to be sure the user has provided inputs for both username and password before proceeding
             if(editTextEmail.getText().toString().isEmpty() || editTextPassword.getText().toString().isEmpty()){
-
-                // Write a message to the database
-                DatabaseReference myRef = database.getReference("message");
-
-                myRef.setValue("boo how");
                 Toast.makeText(MainActivity.this, "Please enter both a username and password to register or login.", Toast.LENGTH_SHORT).show();
             }
 
@@ -91,10 +89,45 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
                                 //If user login is successful , post a message on the indicating the user has been registered and navigate them to the project homepage
                                 if (task.isSuccessful()) {
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                    Intent intentHomepage = new Intent(getApplicationContext(),HomepageActivity.class);
-                                    startActivity(intentHomepage);
+                                    final FirebaseUser user = mAuth.getCurrentUser();
+
+                                    // Read from the database
+                                    database.child("User").orderByChild("username").equalTo(user.getEmail()).addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            String roleId="";
+                                            for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                                                roleId=postSnapshot.child("roleId").getValue().toString();
+                                            }
+                                            database.child("Role").orderByChild("id").equalTo(roleId).addListenerForSingleValueEvent(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                    String roleName = "";
+                                                    for (DataSnapshot postRoleSnapshot : dataSnapshot.getChildren()) {
+                                                        roleName = postRoleSnapshot.child("roleName").getValue().toString();
+                                                    }
+                                                    Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                                    Intent intentHomepage = new Intent(getApplicationContext(), HomepageActivity.class);
+                                                    intentHomepage.putExtra("username", user.getEmail());
+                                                    intentHomepage.putExtra("role_name", roleName);
+                                                    //start Homepage intent
+                                                    startActivity(intentHomepage);
+
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                                    Toast.makeText(getApplicationContext(), "Failed to read something", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError error) {
+                                            // Failed to read value
+                                            Toast.makeText(getApplicationContext(), "Failed to read something", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                 }
 
                                 //If user login fails , post a message on the indicating the user login failed

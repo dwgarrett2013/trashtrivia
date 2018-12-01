@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 public class CreateAccountActivity extends Activity implements View.OnClickListener{
 
     //Initialize Button Objects
-    private Button buttonCreateAccount, buttonReturnToSignin;
+    private Button buttonCreateAccount, buttonReturnToLogin;
 
     //Link EditText Objects to elements in the view
     private EditText editTextEmail;
@@ -43,7 +43,7 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
 
         //Link Button Objects to elements in the view
         buttonCreateAccount = findViewById(R.id.button_create_account);
-        buttonReturnToSignin = findViewById(R.id.button_return_to_login);
+        buttonReturnToLogin = findViewById(R.id.button_return_to_login);
 
         editTextEmail=findViewById(R.id.editTextAccountCreateEmail);
         editTextPassword=findViewById(R.id.editTextAccountCreatePassword);
@@ -54,7 +54,7 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
 
         //Add OnClickListeners to Button objects
         buttonCreateAccount.setOnClickListener(this);
-        buttonReturnToSignin.setOnClickListener(this);
+        buttonReturnToLogin.setOnClickListener(this);
 
         //create Firebase Database
         database = FirebaseDatabase.getInstance().getReference();
@@ -64,9 +64,9 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         //if Create Account button is clicked
-        if(v == buttonReturnToSignin) {
-            Intent intentReturnToSignin = new Intent(getApplicationContext(),MainActivity.class);
-            startActivity(intentReturnToSignin);
+        if(v == buttonReturnToLogin) {
+            Intent intentReturnToLogin = new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(intentReturnToLogin);
         }
         else if(v == buttonCreateAccount) {
 
