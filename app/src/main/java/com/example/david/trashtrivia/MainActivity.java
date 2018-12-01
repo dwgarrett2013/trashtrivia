@@ -72,6 +72,13 @@ public class MainActivity extends Activity implements View.OnClickListener{
             startActivity(intentCreateAccount);
         }
 
+        else if(v ==buttonProceedAsGuest) {
+            Intent intentHomepage=new Intent(getApplicationContext(),HomepageActivity.class);
+            intentHomepage.putExtra("role_name", "guest");
+            //start Homepage intent
+            startActivity(intentHomepage);
+        }
+
         //if Login button is clicked
         else if(v == buttonLogin) {
 
