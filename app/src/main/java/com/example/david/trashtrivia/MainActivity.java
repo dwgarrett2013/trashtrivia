@@ -108,9 +108,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
                                         @Override
                                         public void onDataChange(DataSnapshot dataSnapshot) {
                                             String roleId="";
+                                            System.out.println(dataSnapshot.getChildrenCount());
                                             for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                                                 roleId=postSnapshot.child("roleId").getValue().toString();
                                             }
+                                            System.out.println("roleid:"+roleId);
                                             database.child("Role").orderByChild("id").equalTo(roleId).addListenerForSingleValueEvent(new ValueEventListener() {
                                                 @Override
                                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -121,6 +123,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                                                     Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                                     Intent intentHomepage = new Intent(getApplicationContext(), HomepageActivity.class);
                                                     intentHomepage.putExtra("username", user.getEmail());
+                                                    System.out.println("role_name: "+roleName);
                                                     intentHomepage.putExtra("role_name", roleName);
                                                     //start Homepage intent
                                                     startActivity(intentHomepage);

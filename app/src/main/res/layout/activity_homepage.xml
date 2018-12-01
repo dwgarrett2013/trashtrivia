@@ -48,6 +48,36 @@
         </TableRow>
 
         <TableRow
+            android:id="@+id/table_row_invite_friends"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/buttonInviteFriends"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/invite_friends_button" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/table_row_notifications"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/buttonNotifications"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/notifications_button" />
+
+        </TableRow>
+
+        <TableRow
             android:id="@+id/table_row_profile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -61,6 +91,36 @@
                 android:layout_weight="1"
 
                 android:text="@string/header_view_profile" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/table_row_metrics"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/buttonMetrics"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/metrics_button" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/table_row_question_mgmt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/buttonQuestionMgmt"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/questions_button" />
 
         </TableRow>
 

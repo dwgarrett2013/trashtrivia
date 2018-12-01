@@ -28,4 +28,8 @@
     <string name="enter_answer_text">Enter Answer</string>
     <string name="submit_answer_text">Submit Answer</string>
     <string name="security_question_result_instructions_text">See your password below:</string>
+    <string name="metrics_button">Metrics and Analytics</string>
+    <string name="questions_button">Question Management</string>
+    <string name="invite_friends_button">Invite Friends</string>
+    <string name="notifications_button">News and Notifications</string>
 </resources>

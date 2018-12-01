@@ -11,9 +11,11 @@ import android.widget.Toast;
 public class HomepageActivity extends Activity implements View.OnClickListener{
 
     //Initialize Button Objects
-    private Button buttonPlayTrashTrivia, buttonViewProfile, buttonLogout;
+    private Button buttonPlayTrashTrivia, buttonNotifications, buttonViewProfile, buttonMetrics,
+            buttonQuestionMgmt, buttonLogout;
 
-    private TableRow tableRowTitle, tableRowProfile, tableRowLogout;
+    private TableRow tableRowPlayTrashTrivia, tableRowNotifications, tableRowProfile, tableRowMetrics,
+            tableRowQuestionMgmt, tableRowLogout;
 
     private String loggedInUserId;
     private String loggedInUserRoleName;
@@ -25,15 +27,25 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
 
         //Link homepage Button Objects to elements in the view
         buttonPlayTrashTrivia=findViewById(R.id.buttonPlayTrashTrivia);
+        buttonNotifications =findViewById(R.id.buttonNotifications);
         buttonViewProfile=findViewById(R.id.buttonViewProfile);
+        buttonMetrics=findViewById(R.id.buttonMetrics);
+        buttonQuestionMgmt =findViewById(R.id.buttonQuestionMgmt);
         buttonLogout=findViewById(R.id.buttonLogout);
-        tableRowTitle=findViewById(R.id.table_row_title);
+
+        tableRowPlayTrashTrivia =findViewById(R.id.table_row_play_trashtrivia);
+        tableRowNotifications =findViewById(R.id.table_row_notifications);
         tableRowProfile=findViewById(R.id.table_row_profile);
+        tableRowMetrics=findViewById(R.id.table_row_metrics);
+        tableRowQuestionMgmt=findViewById(R.id.table_row_question_mgmt);
         tableRowLogout=findViewById(R.id.table_row_logout);
 
         //Add OnClickListeners to homepage Button objects
         buttonPlayTrashTrivia.setOnClickListener(this);
+        buttonNotifications.setOnClickListener(this);
         buttonViewProfile.setOnClickListener(this);
+        buttonMetrics.setOnClickListener(this);
+        buttonQuestionMgmt.setOnClickListener(this);
         buttonLogout.setOnClickListener(this);
 
         loggedInUserId=getIntent().getStringExtra("username");
@@ -41,8 +53,15 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
         System.out.println(loggedInUserId);
         System.out.println(loggedInUserRoleName);
 
-        if(loggedInUserRoleName.equals("standard")){
+        if(loggedInUserRoleName.equals("standard")||loggedInUserRoleName.equals("admin")||loggedInUserRoleName.equals("premium")){
             tableRowProfile.setVisibility(View.VISIBLE);
+            tableRowNotifications.setVisibility(View.VISIBLE);
+        }
+        if(loggedInUserRoleName.equals("premium")||loggedInUserRoleName.equals("admin")){
+            tableRowMetrics.setVisibility(View.VISIBLE);
+        }
+        if(loggedInUserRoleName.equals("admin")){
+            tableRowQuestionMgmt.setVisibility(View.VISIBLE);
         }
     }
 
