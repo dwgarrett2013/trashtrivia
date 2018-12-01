@@ -9,8 +9,7 @@ import android.widget.Toast;
 
 public class QuestionHomeActivity extends Activity implements View.OnClickListener {
 
-    private Button buttonAddQuestion, buttonModifyQuestion, buttonDeleteQuestion, buttonReturnHome;
-    private Button buttonReturnLogin;
+    private Button buttonAddQuestion, buttonModifyQuestion, buttonDeleteQuestion, buttonReturnHome, buttonReturnLogin;
 
     private String loggedInUsername;
     private String loggedInUserRoleName;
@@ -20,10 +19,10 @@ public class QuestionHomeActivity extends Activity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_home);
 
-        buttonAddQuestion=findViewById(R.id.button_add_question);
+        buttonAddQuestion=findViewById(R.id.button_invite_friend);
         buttonModifyQuestion=findViewById(R.id.button_modify_question);
         buttonDeleteQuestion=findViewById(R.id.button_delete_question);
-        buttonReturnHome=findViewById(R.id.button_question_home);
+        buttonReturnHome=findViewById(R.id.button_return_home);
         buttonReturnLogin=findViewById(R.id.button_return_to_login);
 
         buttonAddQuestion.setOnClickListener(this);
@@ -42,10 +41,10 @@ public class QuestionHomeActivity extends Activity implements View.OnClickListen
             Toast.makeText(getApplicationContext(), "Button add clicked", Toast.LENGTH_SHORT).show();
         }
         else if(v==buttonModifyQuestion){
-            Toast.makeText(getApplicationContext(), "Button add clicked", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Button Modify clicked", Toast.LENGTH_SHORT).show();
         }
         else if(v==buttonDeleteQuestion){
-            Toast.makeText(getApplicationContext(), "Button add clicked", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Button Delete clicked", Toast.LENGTH_SHORT).show();
         }
         else if(v==buttonReturnHome){
             Intent intentReturnHome=new Intent(getApplicationContext(),HomepageActivity.class);

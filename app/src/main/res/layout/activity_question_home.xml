@@ -19,7 +19,7 @@
                     android:gravity="top|center">
 
                         <TextView
-                            android:id="@+id/textView3"
+                            android:id="@+id/text_view_invite_friends_instructions"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="39dp"
@@ -33,13 +33,13 @@
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/table_row_play_add_question"
+                    android:id="@+id/table_row_invite_friend"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
                         <Button
-                            android:id="@+id/button_add_question"
+                            android:id="@+id/button_invite_friend"
                             android:layout_width="147dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -76,16 +76,16 @@
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/table_row_question_home"
+                    android:id="@+id/table_row_return_home"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                         <Button
-                            android:id="@+id/button_question_home"
+                            android:id="@+id/button_return_home"
                             android:layout_width="116dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/question_mgmt_home_text" />
+                            android:text="@string/return_home_text" />
 
                 </TableRow>
 

@@ -36,5 +36,8 @@
     <string name="button_add_question_text">Add Question</string>
     <string name="button_modify_question_text">Modify Question</string>
     <string name="button_delete_question_text">Delete Question</string>
-    <string name="return_home_text">Return Home</string>
+    <string name="return_home_text">Return to Homepage</string>
+    <string name="invite_friends_title">Invite Friends</string>
+    <string name="invite_friends_instructions">Type the email of the friend you would like to invite.</string>
+    <string name="text_edit_invite_friend">Enter friend email.</string>
 </resources>

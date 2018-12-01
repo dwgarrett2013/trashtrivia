@@ -26,20 +26,20 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
         setContentView(R.layout.activity_homepage);
 
         //Link homepage Button Objects to elements in the view
-        buttonPlayTrashTrivia=findViewById(R.id.button_add_question);
+        buttonPlayTrashTrivia=findViewById(R.id.button_invite_friend);
         buttonInviteFriends=findViewById(R.id.button_modify_question);
         buttonNotifications =findViewById(R.id.button_delete_question);
         buttonViewProfile=findViewById(R.id.buttonViewProfile);
         buttonMetrics=findViewById(R.id.buttonMetrics);
-        buttonQuestionMgmt =findViewById(R.id.button_question_home);
+        buttonQuestionMgmt =findViewById(R.id.button_return_home);
         buttonLogout=findViewById(R.id.button_return_to_login);
 
-        tableRowPlayTrashTrivia =findViewById(R.id.table_row_play_add_question);
+        tableRowPlayTrashTrivia =findViewById(R.id.table_row_invite_friend);
         tableRowInviteFriends=findViewById(R.id.table_row_modify_question);
         tableRowNotifications =findViewById(R.id.table_row_delete_question);
         tableRowProfile=findViewById(R.id.table_row_profile);
         tableRowMetrics=findViewById(R.id.table_row_metrics);
-        tableRowQuestionMgmt=findViewById(R.id.table_row_question_home);
+        tableRowQuestionMgmt=findViewById(R.id.table_row_return_home);
         tableRowLogout=findViewById(R.id.table_row_return_to_login);
 
         //Add OnClickListeners to homepage Button objects
