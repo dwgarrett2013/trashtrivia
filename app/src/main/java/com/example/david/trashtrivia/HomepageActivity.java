@@ -32,7 +32,7 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
         buttonViewProfile=findViewById(R.id.buttonViewProfile);
         buttonMetrics=findViewById(R.id.buttonMetrics);
         buttonQuestionMgmt =findViewById(R.id.button_question_home);
-        buttonLogout=findViewById(R.id.buttonLogout);
+        buttonLogout=findViewById(R.id.button_return_to_login);
 
         tableRowPlayTrashTrivia =findViewById(R.id.table_row_play_add_question);
         tableRowInviteFriends=findViewById(R.id.table_row_modify_question);
@@ -40,7 +40,7 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
         tableRowProfile=findViewById(R.id.table_row_profile);
         tableRowMetrics=findViewById(R.id.table_row_metrics);
         tableRowQuestionMgmt=findViewById(R.id.table_row_question_home);
-        tableRowLogout=findViewById(R.id.table_row_logout);
+        tableRowLogout=findViewById(R.id.table_row_return_to_login);
 
         //Add OnClickListeners to homepage Button objects
         buttonPlayTrashTrivia.setOnClickListener(this);

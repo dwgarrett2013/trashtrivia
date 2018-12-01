@@ -8,7 +8,8 @@ import android.widget.Toast;
 
 public class QuestionHomeActivity extends Activity implements View.OnClickListener {
 
-    private Button buttonAddQuestion, buttonModifyQuestion, buttonDeleteQuestion, buttonReturnHome, buttonReturnToLogin;
+    private Button buttonAddQuestion, buttonModifyQuestion, buttonDeleteQuestion, buttonReturnHome;
+    private Button buttonReturnLogin;
 
     private String loggedInUsername;
     private String loggedInUserRoleName;
@@ -19,16 +20,16 @@ public class QuestionHomeActivity extends Activity implements View.OnClickListen
         setContentView(R.layout.activity_question_home);
 
         buttonAddQuestion=findViewById(R.id.button_add_question);
-        //buttonModifyQuestion.findViewById(R.id.button_modify_question);
-        //buttonDeleteQuestion.findViewById(R.id.button_delete_question);
-        //buttonReturnHome=findViewById(R.id.button_return_home);
-        //buttonReturnToLogin.findViewById(R.id.button_return_to_login);
+        buttonModifyQuestion=findViewById(R.id.button_modify_question);
+        buttonDeleteQuestion=findViewById(R.id.button_delete_question);
+        buttonReturnHome=findViewById(R.id.button_question_home);
+        buttonReturnLogin=findViewById(R.id.button_return_to_login);
 
         buttonAddQuestion.setOnClickListener(this);
-        //buttonModifyQuestion.setOnClickListener(this);
-        //buttonDeleteQuestion.setOnClickListener(this);
-        //buttonReturnHome.setOnClickListener(this);
-        //buttonReturnToLogin.setOnClickListener(this);
+        buttonModifyQuestion.setOnClickListener(this);
+        buttonDeleteQuestion.setOnClickListener(this);
+        buttonReturnHome.setOnClickListener(this);
+        buttonReturnLogin.setOnClickListener(this);
 
         loggedInUsername =getIntent().getStringExtra("username");
         loggedInUserRoleName=getIntent().getStringExtra("role_name");
@@ -39,5 +40,18 @@ public class QuestionHomeActivity extends Activity implements View.OnClickListen
         if(v==buttonAddQuestion){
             Toast.makeText(getApplicationContext(), "Button add clicked", Toast.LENGTH_SHORT).show();
         }
+        else if(v==buttonModifyQuestion){
+            Toast.makeText(getApplicationContext(), "Button add clicked", Toast.LENGTH_SHORT).show();
+        }
+        else if(v==buttonDeleteQuestion){
+            Toast.makeText(getApplicationContext(), "Button add clicked", Toast.LENGTH_SHORT).show();
+        }
+        else if(v==buttonReturnHome){
+            Toast.makeText(getApplicationContext(), "Button add clicked", Toast.LENGTH_SHORT).show();
+        }
+        else if(v==buttonReturnLogin){
+            Toast.makeText(getApplicationContext(), "Button add clicked", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

@@ -90,13 +90,13 @@
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/table_row_logout"
+                    android:id="@+id/table_row_return_to_login"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
                         <Button
-                            android:id="@+id/buttonLogout"
+                            android:id="@+id/button_return_to_login"
                             android:layout_width="116dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
