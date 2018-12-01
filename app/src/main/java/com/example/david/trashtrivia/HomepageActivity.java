@@ -53,12 +53,11 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
 
         loggedInUsername =getIntent().getStringExtra("username");
         loggedInUserRoleName=getIntent().getStringExtra("role_name");
-        System.out.println(loggedInUsername);
-        System.out.println(loggedInUserRoleName);
 
         if(loggedInUserRoleName.equals("standard")||loggedInUserRoleName.equals("admin")||loggedInUserRoleName.equals("premium")){
             tableRowProfile.setVisibility(View.VISIBLE);
             tableRowNotifications.setVisibility(View.VISIBLE);
+            tableRowInviteFriends.setVisibility(View.VISIBLE);
         }
         if(loggedInUserRoleName.equals("premium")||loggedInUserRoleName.equals("admin")){
             tableRowMetrics.setVisibility(View.VISIBLE);
@@ -73,9 +72,10 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
 
         //if Add Inventory button is clicked
         if(v==buttonPlayTrashTrivia){
-            Toast.makeText(HomepageActivity.this, "button clicked Successful", Toast.LENGTH_SHORT).show();
-            //intentInviteFriends.putExtra("username", loggedInUsername);
-            //intentInviteFriends.putExtra("role_name", loggedInUserRoleName);
+            Intent intentInviteFriends=new Intent(getApplicationContext(),InviteFriendsActivity.class);
+            intentInviteFriends.putExtra("username", loggedInUsername);
+            intentInviteFriends.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentInviteFriends);
         }
 
         //if Check Inventory button is clicked
@@ -112,10 +112,10 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
 
         //if Check Inventory button is clicked
         else if(v==buttonQuestionMgmt){
-            Intent intentQuestionMgmtHome=new Intent(getApplicationContext(),QuestionMgmtHomeActivity.class);
-            intentQuestionMgmtHome.putExtra("username", loggedInUsername);
-            intentQuestionMgmtHome.putExtra("role_name", loggedInUserRoleName);
-            startActivity(intentQuestionMgmtHome);
+            Intent intentQuestionHome=new Intent(getApplicationContext(),QuestionHomeActivity.class);
+            intentQuestionHome.putExtra("username", loggedInUsername);
+            intentQuestionHome.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentQuestionHome);
         }
 
         //if Logout button is clicked

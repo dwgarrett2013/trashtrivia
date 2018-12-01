@@ -32,4 +32,9 @@
     <string name="questions_button">Question Management</string>
     <string name="invite_friends_button">Invite Friends</string>
     <string name="notifications_button">News and Notifications</string>
+    <string name="question_mgmt_home_text">Question Management Home</string>
+    <string name="button_add_question_text">Add Question</string>
+    <string name="button_modify_question_text">Modify Question</string>
+    <string name="button_delete_question_text">Delete Question</string>
+    <string name="return_home_text">Return Home</string>
 </resources>
