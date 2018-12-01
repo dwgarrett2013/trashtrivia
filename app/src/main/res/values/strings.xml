@@ -18,4 +18,7 @@
     <string name="account_type_selection_standard_user">Standard User</string>
     <string name="account_type_selection_premium_user">Premium User</string>
     <string name="account_type_selection_admin_user">Admin User</string>
+    <string name="security_question_instructions_text">Please select a security question</string>
+    <string name="radio_button_security_question_text_1">What is your middle name?</string>
+    <string name="radio_button_security_question_text_2">What is your hometown</string>
 </resources>

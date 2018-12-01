@@ -8,6 +8,8 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -24,6 +26,10 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
     //Initialize Button Objects
     private Button buttonCreateAccount, buttonReturnToSignin;
 
+    private RadioGroup radioGroupAccountType;
+
+    private RadioButton radioButtonAccountType;
+
     //Initialize  FirebaseDatabaseObject
     private DatabaseReference database;
 
@@ -36,13 +42,14 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
         buttonCreateAccount = findViewById(R.id.button_create_account);
         buttonReturnToSignin = findViewById(R.id.button_return_to_login);
 
+        radioGroupAccountType = findViewById(R.id.radio_group_select_account_type);
+
         //Add OnClickListeners to Button objects
         buttonCreateAccount.setOnClickListener(this);
         buttonReturnToSignin.setOnClickListener(this);
 
         //create Firebase Database
         database = FirebaseDatabase.getInstance().getReference();
-
 
     }
 
@@ -55,15 +62,33 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
         }
         else if(v == buttonCreateAccount) {
 
+            int selectedRadioButtonId=radioGroupAccountType.getCheckedRadioButtonId();
+
+            radioButtonAccountType=findViewById(selectedRadioButtonId);
+            String radioButtonAccountTypeText=radioButtonAccountType.getText().toString();
+            String radioButtonAccountTypeTextClean="";
+
+            if(radioButtonAccountTypeText.equals("Admin User")){
+                radioButtonAccountTypeTextClean="admin";
+            }
+            else if(radioButtonAccountTypeText.equals("Premium User")){
+                radioButtonAccountTypeTextClean="premium";
+            }
+            else{
+                radioButtonAccountTypeTextClean="standard";
+            }
+
+            //Toast.makeText(getApplicationContext(), radioButtonAccountType.getText(), Toast.LENGTH_SHORT).show();
+
             final String key = database.child("User").push().getKey();
             final User userDbObject=new User(key,"Sasha","thepass","1","Bleh Bleh");
 
-            database.child("Role").orderByChild("id").equalTo("-LSatkV_pm3gze2zBGFZ").addListenerForSingleValueEvent(new ValueEventListener() {
+            database.child("Role").orderByChild("roleName").equalTo(radioButtonAccountTypeTextClean).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                        Toast.makeText(getApplicationContext(), "crud", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getApplicationContext(), postSnapshot.child("roleName").getValue().toString(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), "crud", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), postSnapshot.child("roleName").getValue().toString(), Toast.LENGTH_SHORT).show();
                         userDbObject.setRoleId(postSnapshot.child("id").getValue().toString());
                     }
                     database.child("User").child(key).setValue(userDbObject).
