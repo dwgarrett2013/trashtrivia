@@ -26,20 +26,20 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
         setContentView(R.layout.activity_homepage);
 
         //Link homepage Button Objects to elements in the view
-        buttonPlayTrashTrivia=findViewById(R.id.buttonPlayTrashTrivia);
-        buttonInviteFriends=findViewById(R.id.buttonInviteFriends);
-        buttonNotifications =findViewById(R.id.buttonNotifications);
+        buttonPlayTrashTrivia=findViewById(R.id.button_add_question);
+        buttonInviteFriends=findViewById(R.id.button_modify_question);
+        buttonNotifications =findViewById(R.id.button_delete_question);
         buttonViewProfile=findViewById(R.id.buttonViewProfile);
         buttonMetrics=findViewById(R.id.buttonMetrics);
-        buttonQuestionMgmt =findViewById(R.id.buttonQuestionMgmt);
+        buttonQuestionMgmt =findViewById(R.id.button_question_home);
         buttonLogout=findViewById(R.id.buttonLogout);
 
-        tableRowPlayTrashTrivia =findViewById(R.id.table_row_play_trashtrivia);
-        tableRowInviteFriends=findViewById(R.id.table_row_invite_friends);
-        tableRowNotifications =findViewById(R.id.table_row_notifications);
+        tableRowPlayTrashTrivia =findViewById(R.id.table_row_play_add_question);
+        tableRowInviteFriends=findViewById(R.id.table_row_modify_question);
+        tableRowNotifications =findViewById(R.id.table_row_delete_question);
         tableRowProfile=findViewById(R.id.table_row_profile);
         tableRowMetrics=findViewById(R.id.table_row_metrics);
-        tableRowQuestionMgmt=findViewById(R.id.table_row_question_mgmt);
+        tableRowQuestionMgmt=findViewById(R.id.table_row_question_home);
         tableRowLogout=findViewById(R.id.table_row_logout);
 
         //Add OnClickListeners to homepage Button objects

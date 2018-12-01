@@ -33,62 +33,59 @@
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/table_row_play_trashtrivia"
+                    android:id="@+id/table_row_play_add_question"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
                         <Button
-                            android:id="@+id/buttonPlayTrashTrivia"
+                            android:id="@+id/button_add_question"
                             android:layout_width="147dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/header_play_trash_trivia" />
+                            android:text="@string/button_add_question_text" />
 
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/table_row_invite_friends"
+                    android:id="@+id/table_row_modify_question"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:visibility="gone">
+                    android:layout_height="match_parent">
 
                         <Button
-                            android:id="@+id/buttonInviteFriends"
+                            android:id="@+id/button_modify_question"
                             android:layout_width="116dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/invite_friends_button" />
+                            android:text="@string/button_modify_question_text" />
 
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/table_row_notifications"
+                    android:id="@+id/table_row_delete_question"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:visibility="gone">
+                    android:layout_height="match_parent">
 
                         <Button
-                            android:id="@+id/buttonNotifications"
+                            android:id="@+id/button_delete_question"
                             android:layout_width="116dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/notifications_button" />
+                            android:text="@string/button_delete_question_text" />
 
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/table_row_question_mgmt"
+                    android:id="@+id/table_row_question_home"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:visibility="gone">
+                    android:layout_height="match_parent">
 
                         <Button
-                            android:id="@+id/buttonQuestionMgmt"
+                            android:id="@+id/button_question_home"
                             android:layout_width="116dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/questions_button" />
+                            android:text="@string/question_mgmt_home_text" />
 
                 </TableRow>
 

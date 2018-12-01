@@ -18,10 +18,7 @@ public class QuestionHomeActivity extends Activity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_home);
 
-        buttonAddQuestion=findViewById(R.id.buttonPlayTrashTrivia);
-
-
-        //buttonAddQuestion.findViewById(R.id.buttonboon);
+        buttonAddQuestion=findViewById(R.id.button_add_question);
         //buttonModifyQuestion.findViewById(R.id.button_modify_question);
         //buttonDeleteQuestion.findViewById(R.id.button_delete_question);
         //buttonReturnHome=findViewById(R.id.button_return_home);
