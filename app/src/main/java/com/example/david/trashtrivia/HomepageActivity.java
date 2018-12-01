@@ -11,13 +11,13 @@ import android.widget.Toast;
 public class HomepageActivity extends Activity implements View.OnClickListener{
 
     //Initialize Button Objects
-    private Button buttonPlayTrashTrivia, buttonNotifications, buttonViewProfile, buttonMetrics,
+    private Button buttonPlayTrashTrivia, buttonInviteFriends, buttonNotifications, buttonViewProfile, buttonMetrics,
             buttonQuestionMgmt, buttonLogout;
 
-    private TableRow tableRowPlayTrashTrivia, tableRowNotifications, tableRowProfile, tableRowMetrics,
+    private TableRow tableRowPlayTrashTrivia, tableRowInviteFriends, tableRowNotifications, tableRowProfile, tableRowMetrics,
             tableRowQuestionMgmt, tableRowLogout;
 
-    private String loggedInUserId;
+    private String loggedInUsername;
     private String loggedInUserRoleName;
 
     @Override
@@ -27,6 +27,7 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
 
         //Link homepage Button Objects to elements in the view
         buttonPlayTrashTrivia=findViewById(R.id.buttonPlayTrashTrivia);
+        buttonInviteFriends=findViewById(R.id.buttonInviteFriends);
         buttonNotifications =findViewById(R.id.buttonNotifications);
         buttonViewProfile=findViewById(R.id.buttonViewProfile);
         buttonMetrics=findViewById(R.id.buttonMetrics);
@@ -34,6 +35,7 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
         buttonLogout=findViewById(R.id.buttonLogout);
 
         tableRowPlayTrashTrivia =findViewById(R.id.table_row_play_trashtrivia);
+        tableRowInviteFriends=findViewById(R.id.table_row_invite_friends);
         tableRowNotifications =findViewById(R.id.table_row_notifications);
         tableRowProfile=findViewById(R.id.table_row_profile);
         tableRowMetrics=findViewById(R.id.table_row_metrics);
@@ -42,15 +44,16 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
 
         //Add OnClickListeners to homepage Button objects
         buttonPlayTrashTrivia.setOnClickListener(this);
+        buttonInviteFriends.setOnClickListener(this);
         buttonNotifications.setOnClickListener(this);
         buttonViewProfile.setOnClickListener(this);
         buttonMetrics.setOnClickListener(this);
         buttonQuestionMgmt.setOnClickListener(this);
         buttonLogout.setOnClickListener(this);
 
-        loggedInUserId=getIntent().getStringExtra("username");
+        loggedInUsername =getIntent().getStringExtra("username");
         loggedInUserRoleName=getIntent().getStringExtra("role_name");
-        System.out.println(loggedInUserId);
+        System.out.println(loggedInUsername);
         System.out.println(loggedInUserRoleName);
 
         if(loggedInUserRoleName.equals("standard")||loggedInUserRoleName.equals("admin")||loggedInUserRoleName.equals("premium")){
@@ -71,11 +74,48 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
         //if Add Inventory button is clicked
         if(v==buttonPlayTrashTrivia){
             Toast.makeText(HomepageActivity.this, "button clicked Successful", Toast.LENGTH_SHORT).show();
+            //intentInviteFriends.putExtra("username", loggedInUsername);
+            //intentInviteFriends.putExtra("role_name", loggedInUserRoleName);
+        }
+
+        //if Check Inventory button is clicked
+        else if(v==buttonNotifications){
+            Intent intentNotifications=new Intent(getApplicationContext(),NotificationsActivity.class);
+            intentNotifications.putExtra("username", loggedInUsername);
+            intentNotifications.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentNotifications);
+        }
+
+        else if(v==buttonInviteFriends){
+            Intent intentInviteFriends=new Intent(getApplicationContext(),InviteFriendsActivity.class);
+            intentInviteFriends.putExtra("username", loggedInUsername);
+            intentInviteFriends.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentInviteFriends);
+
         }
 
         //if Check Inventory button is clicked
         else if(v==buttonViewProfile){
-            Toast.makeText(HomepageActivity.this, "button clicked Successful", Toast.LENGTH_SHORT).show();
+            Intent intentViewProfile=new Intent(getApplicationContext(),ViewProfileActivity.class);
+            intentViewProfile.putExtra("username", loggedInUsername);
+            intentViewProfile.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentViewProfile);
+        }
+
+        //if Check Inventory button is clicked
+        else if(v==buttonMetrics){
+            Intent intentMetrics=new Intent(getApplicationContext(),MetricsActivity.class);
+            intentMetrics.putExtra("username", loggedInUsername);
+            intentMetrics.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentMetrics);
+        }
+
+        //if Check Inventory button is clicked
+        else if(v==buttonQuestionMgmt){
+            Intent intentQuestionMgmtHome=new Intent(getApplicationContext(),QuestionMgmtHomeActivity.class);
+            intentQuestionMgmtHome.putExtra("username", loggedInUsername);
+            intentQuestionMgmtHome.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentQuestionMgmtHome);
         }
 
         //if Logout button is clicked

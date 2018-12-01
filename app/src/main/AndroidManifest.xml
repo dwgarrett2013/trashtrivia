@@ -20,7 +20,12 @@
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".ForgotPasswordAskPasswordActivity" />
         <activity android:name=".AnswerSecurityQuestionActivity" />
-        <activity android:name=".ForgotPasswordResultActivity"></activity>
+        <activity android:name=".ForgotPasswordResultActivity" />
+        <activity android:name=".MetricsActivity" />
+        <activity android:name=".NotificationsActivity" />
+        <activity android:name=".InviteFriendsActivity" />
+        <activity android:name=".ViewProfileActivity" />
+        <activity android:name=".QuestionMgmtHomeActivity"></activity>
     </application>
 
 </manifest>
