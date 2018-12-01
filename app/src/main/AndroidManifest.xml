@@ -19,7 +19,8 @@
         <activity android:name=".HomepageActivity" />
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".ForgotPasswordAskPasswordActivity" />
-        <activity android:name=".AnswerSecurityQuestionActivity"></activity>
+        <activity android:name=".AnswerSecurityQuestionActivity" />
+        <activity android:name=".ForgotPasswordResultActivity"></activity>
     </application>
 
 </manifest>

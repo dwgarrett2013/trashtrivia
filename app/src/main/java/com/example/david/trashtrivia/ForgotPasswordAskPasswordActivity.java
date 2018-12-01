@@ -30,7 +30,6 @@ public class ForgotPasswordAskPasswordActivity extends Activity implements View.
     @Override
     public void onClick(View v) {
         if(v == buttonReturnToLogin){
-            System.out.println("loginpressseed");
             Intent intentReturnToLogin=new Intent(getApplicationContext(),MainActivity.class);
             startActivity(intentReturnToLogin);
         }

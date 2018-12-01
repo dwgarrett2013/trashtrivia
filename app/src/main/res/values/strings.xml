@@ -27,4 +27,5 @@
     <string name="request_security_answer_text">Please enter the answer to the below security question</string>
     <string name="enter_answer_text">Enter Answer</string>
     <string name="submit_answer_text">Submit Answer</string>
+    <string name="security_question_result_instructions_text">See your password below:</string>
 </resources>
