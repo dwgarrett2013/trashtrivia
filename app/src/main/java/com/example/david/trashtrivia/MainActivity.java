@@ -42,11 +42,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
         //Link Button Objects to elements in the view
         buttonLogin = findViewById(R.id.buttonLogin);
         buttonForgotPassword=findViewById(R.id.buttonForgotPassword);
-        buttonCreateAccount = findViewById(R.id.button_create_account);
+        buttonCreateAccount = findViewById(R.id.button_submit_security_question_answer);
         buttonProceedAsGuest=findViewById(R.id.button_return_to_login);
 
         //Link EditText Objects to elements in the view
-        editTextEmail = findViewById(R.id.editTextAccountCreateEmail);
+        editTextEmail = findViewById(R.id.edit_text_forgot_username_answer);
         editTextPassword = findViewById(R.id.editTextPassword);
 
         //Add OnClickListeners to Button objects
@@ -70,6 +70,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
         if(v == buttonCreateAccount) {
             Intent intentCreateAccount = new Intent(getApplicationContext(),CreateAccountActivity.class);
             startActivity(intentCreateAccount);
+        }
+
+        else if(v == buttonForgotPassword){
+            Intent intentForgotPassword = new Intent(getApplicationContext(),ForgotPasswordAskPasswordActivity.class);
+            startActivity(intentForgotPassword);
         }
 
         else if(v ==buttonProceedAsGuest) {

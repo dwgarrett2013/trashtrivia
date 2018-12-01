@@ -11,8 +11,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,16 +40,18 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
     //Initialize  FirebaseDatabaseObject
     private DatabaseReference database;
 
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
         //Link Button Objects to elements in the view
-        buttonCreateAccount = findViewById(R.id.button_create_account);
+        buttonCreateAccount = findViewById(R.id.button_submit_security_question_answer);
         buttonReturnToLogin = findViewById(R.id.button_return_to_login);
 
-        editTextEmail=findViewById(R.id.editTextAccountCreateEmail);
+        editTextEmail=findViewById(R.id.edit_text_forgot_username_answer);
         editTextPassword=findViewById(R.id.editTextAccountCreatePassword);
         editTextSecurityQuestionAnswer=findViewById(R.id.editTextSecurityQuestionAnswer);
 
@@ -58,6 +64,8 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
 
         //create Firebase Database
         database = FirebaseDatabase.getInstance().getReference();
+        //create mautho object
+        mAuth=FirebaseAuth.getInstance();
 
     }
 
@@ -122,6 +130,13 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
                                             @Override
                                             public void onSuccess(Void aVoid) {
                                                 Toast.makeText(getApplicationContext(), "Successes for all", Toast.LENGTH_SHORT).show();
+                                                mAuth.createUserWithEmailAndPassword(editTextEmail.getText().toString(), editTextPassword.getText().toString())
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        Toast.makeText(getApplicationContext(), "User registration failed with mauth", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
                                             }
                                         })
                                         .addOnFailureListener(new OnFailureListener() {

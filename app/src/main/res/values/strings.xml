@@ -22,4 +22,9 @@
     <string name="radio_button_security_question_text_1">What is your middle name?</string>
     <string name="radio_button_security_question_text_2">What is your hometown</string>
     <string name="security_question_answer_hint">Security Question Answer</string>
+    <string name="request_username">Please enter your username</string>
+    <string name="next_text">Next</string>
+    <string name="request_security_answer_text">Please enter the answer to the below security question</string>
+    <string name="enter_answer_text">Enter Answer</string>
+    <string name="submit_answer_text">Submit Answer</string>
 </resources>
