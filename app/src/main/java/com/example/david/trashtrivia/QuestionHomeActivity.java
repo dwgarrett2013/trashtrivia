@@ -1,6 +1,7 @@
 package com.example.david.trashtrivia;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -47,10 +48,14 @@ public class QuestionHomeActivity extends Activity implements View.OnClickListen
             Toast.makeText(getApplicationContext(), "Button add clicked", Toast.LENGTH_SHORT).show();
         }
         else if(v==buttonReturnHome){
-            Toast.makeText(getApplicationContext(), "Button add clicked", Toast.LENGTH_SHORT).show();
+            Intent intentReturnHome=new Intent(getApplicationContext(),HomepageActivity.class);
+            intentReturnHome.putExtra("username", loggedInUsername);
+            intentReturnHome.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentReturnHome);
         }
         else if(v==buttonReturnLogin){
-            Toast.makeText(getApplicationContext(), "Button add clicked", Toast.LENGTH_SHORT).show();
+            Intent intentReturnToLogin=new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(intentReturnToLogin);
         }
 
     }
