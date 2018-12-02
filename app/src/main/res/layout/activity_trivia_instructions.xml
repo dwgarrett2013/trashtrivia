@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TriviaInstructionsActivity">
+
+    <Button
+        android:id="@+id/button_start_trivia"
+        android:layout_width="171dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="99dp"
+        android:layout_marginLeft="99dp"
+        android:layout_marginBottom="257dp"
+        android:text="Begin Quiz" />
+
+    <Button
+        android:id="@+id/button_return_home"
+        android:layout_width="wrap_content"
+        android:layout_height="61dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="74dp"
+        android:layout_marginLeft="74dp"
+        android:layout_marginBottom="153dp"
+        android:text="@string/return_home_text" />
+
+    <Button
+        android:id="@+id/button_logout"
+        android:layout_width="340dp"
+        android:layout_height="73dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginBottom="65dp"
+        android:text="@string/logout_button_text" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="240dp"
+        android:background="?android:attr/listDivider" />
+
+    <EditText
+        android:id="@+id/instructions"
+        android:layout_width="309dp"
+        android:layout_height="123dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="68dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:lineSpacingExtra="2sp"
+        android:text="You are about to begin a Trash Trivia quiz. You will be asked a few questions and will earn a point for each correct answer.  You can exit the quiz at any time using the Exit button, but unanswered questions will be counted wrong in your profile.   Best of luck!"
+        android:textSize="13sp" />
+
+    <EditText
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Instructions"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

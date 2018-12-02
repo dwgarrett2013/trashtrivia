@@ -28,7 +28,8 @@
         <activity android:name=".QuestionHomeActivity" />
         <activity android:name=".ProfileShareActivity" />
         <activity android:name=".TriviaQuestionPromptActivity" />
-        <activity android:name=".TriviaResultsActivity"></activity>
+        <activity android:name=".TriviaResultsActivity" />
+        <activity android:name=".TriviaInstructionsActivity"></activity>
     </application>
 
 </manifest>
