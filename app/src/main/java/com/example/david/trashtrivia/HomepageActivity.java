@@ -72,7 +72,7 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
 
         //if Add Inventory button is clicked
         if(v==buttonPlayTrashTrivia){
-            Intent intentPlayTrashTrivia=new Intent(getApplicationContext(),QuestionPromptActivity.class);
+            Intent intentPlayTrashTrivia=new Intent(getApplicationContext(),TriviaQuestionPromptActivity.class);
             intentPlayTrashTrivia.putExtra("username", loggedInUsername);
             intentPlayTrashTrivia.putExtra("role_name", loggedInUserRoleName);
             startActivity(intentPlayTrashTrivia);
