@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "101434232653",
+    "firebase_url": "https://trashtrivia.firebaseio.com",
+    "project_id": "trashtrivia",
+    "storage_bucket": "trashtrivia.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101434232653:android:32cb29cc14f10f51",
+        "android_client_info": {
+          "package_name": "com.example.david.trashtrivia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "101434232653-864p3rc1nb375lpf9edkibkr6lb04o67.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.david.trashtrivia",
+            "certificate_hash": "b8d10f2152f56a7d3587f0aef6f805fc22b849c8"
+          }
+        },
+        {
+          "client_id": "101434232653-jo2b65b7ubiore2ie7e3skogu3iq6pna.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTOGdeuzE7udYDHwaB4WRWaOhJ4pmiPJs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "101434232653-jo2b65b7ubiore2ie7e3skogu3iq6pna.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
