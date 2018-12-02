@@ -31,7 +31,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="286dp"
-        android:text="View Leaderboard" />
+        android:text="@string/profile_title" />
 
     <TextView
         android:id="@+id/textFinalscoretext"

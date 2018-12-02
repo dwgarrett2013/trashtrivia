@@ -35,7 +35,10 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
     @Override
     public void onClick(View v) {
         if(v==button1){
-            Toast.makeText(getApplicationContext(), "Correct Answer", Toast.LENGTH_SHORT).show();
+            Intent intentTriviaResults=new Intent(getApplicationContext(),TriviaResultsActivity.class);
+            intentTriviaResults.putExtra("username", loggedInUsername);
+            intentTriviaResults.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentTriviaResults);
         }
         else if (v==button2) {
             Intent intentTriviaResults=new Intent(getApplicationContext(),TriviaResultsActivity.class);
@@ -44,10 +47,16 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
             startActivity(intentTriviaResults);
         }
         else if (v==button3) {
-            Toast.makeText(getApplicationContext(), "Incorrect Answer", Toast.LENGTH_SHORT).show();
+            Intent intentTriviaResults=new Intent(getApplicationContext(),TriviaResultsActivity.class);
+            intentTriviaResults.putExtra("username", loggedInUsername);
+            intentTriviaResults.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentTriviaResults);
         }
         else if (v==button4) {
-            Toast.makeText(getApplicationContext(), "Incorrect Answer", Toast.LENGTH_SHORT).show();
+            Intent intentTriviaResults=new Intent(getApplicationContext(),TriviaResultsActivity.class);
+            intentTriviaResults.putExtra("username", loggedInUsername);
+            intentTriviaResults.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentTriviaResults);
         }
 
     }

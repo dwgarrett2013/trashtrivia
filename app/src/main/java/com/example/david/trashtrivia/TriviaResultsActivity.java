@@ -1,6 +1,7 @@
 package com.example.david.trashtrivia;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,8 +10,11 @@ import android.widget.Toast;
 
 public class TriviaResultsActivity extends Activity implements View.OnClickListener {
 
-    private Button buttonReplay, buttonLeaderboard, buttonTrashcentral, buttonLogout;
+    private Button buttonReplay, buttonLeaderboard, buttonReturnHome, buttonReturnToLogin;
     private TextView textFinalscoretext, textFinalscore, textCongrats;
+
+    private String loggedInUsername;
+    private String loggedInUserRoleName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +23,8 @@ public class TriviaResultsActivity extends Activity implements View.OnClickListe
 
         buttonReplay = findViewById(R.id.buttonReplay);
         buttonLeaderboard = findViewById(R.id.buttonLeaderboard);
-        buttonTrashcentral = findViewById(R.id.buttonTrashcentral);
-        buttonLogout = findViewById(R.id.buttonLogout);
+        buttonReturnHome = findViewById(R.id.buttonTrashcentral);
+        buttonReturnToLogin = findViewById(R.id.buttonLogout);
 
         textFinalscoretext = findViewById(R.id.textFinalscoretext);
         textFinalscore = findViewById(R.id.textFinalscore);
@@ -28,8 +32,13 @@ public class TriviaResultsActivity extends Activity implements View.OnClickListe
 
         buttonReplay.setOnClickListener(this);
         buttonLeaderboard.setOnClickListener(this);
-        buttonTrashcentral.setOnClickListener(this);
-        buttonLogout.setOnClickListener(this);
+        buttonReturnHome.setOnClickListener(this);
+        buttonReturnToLogin.setOnClickListener(this);
+
+        loggedInUsername=getIntent().getStringExtra("username");
+        loggedInUserRoleName=getIntent().getStringExtra("role_name");
+
+
 
         //Set Finalscore = session_score
     }
@@ -38,19 +47,28 @@ public class TriviaResultsActivity extends Activity implements View.OnClickListe
     public void onClick(View v) {
 
         if (v==buttonReplay){
-            Toast.makeText(getApplicationContext(), "Button Replay clicked", Toast.LENGTH_SHORT).show();
+            Intent intentTriviaQuestionPrompt=new Intent(getApplicationContext(),TriviaQuestionPromptActivity.class);
+            intentTriviaQuestionPrompt.putExtra("username", loggedInUsername);
+            intentTriviaQuestionPrompt.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentTriviaQuestionPrompt);
 
         }else if(v==buttonLeaderboard){
-            Toast.makeText(getApplicationContext(), "Button Leaderboard clicked", Toast.LENGTH_SHORT).show();
+            Intent intentProfileViewActivity=new Intent(getApplicationContext(),ProfileViewActivity.class);
+            intentProfileViewActivity.putExtra("username", loggedInUsername);
+            intentProfileViewActivity.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentProfileViewActivity);
 
 
-        }else if(v==buttonTrashcentral){
-            Toast.makeText(getApplicationContext(), "Button Trash Central clicked", Toast.LENGTH_SHORT).show();
+        }else if(v== buttonReturnHome){
+            Intent intentReturnHome=new Intent(getApplicationContext(),HomepageActivity.class);
+            intentReturnHome.putExtra("username", loggedInUsername);
+            intentReturnHome.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentReturnHome);
 
 
-        }else if(v==buttonLogout){
-            Toast.makeText(getApplicationContext(), "Button Log out clicked", Toast.LENGTH_SHORT).show();
-
+        }else if(v== buttonReturnToLogin){
+            Intent intentReturnToLogin=new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(intentReturnToLogin);
         }
     }
 }
