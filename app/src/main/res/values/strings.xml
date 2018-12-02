@@ -46,4 +46,7 @@
     <string name="share_profile_title">Share Profile</string>
     <string name="share_profile_instructions">Type the username of the friend who you would like to share your profile</string>
     <string name="share_profile_with_friend">Share Profile</string>
+    <string name="metrics_title">Metrics and Analytics</string>
+    <string name="metrics_questions_subtitle">Questions Stats</string>
+    <string name="metrics_tag_subtitle">Metrics Stats</string>
 </resources>
