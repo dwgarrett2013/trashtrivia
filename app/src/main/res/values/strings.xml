@@ -42,4 +42,5 @@
     <string name="text_edit_invite_friend">Enter friend email.</string>
     <string name="notifications_home">Notifications Home</string>
     <string name="notifications_instructions">Click the notification text to see the notification</string>
+    <string name="profile_title">Profile Page</string>
 </resources>
