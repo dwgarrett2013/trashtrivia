@@ -24,10 +24,10 @@
         <activity android:name=".MetricsActivity" />
         <activity android:name=".NotificationsActivity" />
         <activity android:name=".InviteFriendsActivity" />
-        <activity android:name=".ViewProfileActivity" />
+        <activity android:name=".ProfileViewActivity" />
         <activity android:name=".QuestionHomeActivity" />
         <activity android:name=".ShareProfileActivity" />
-        <activity android:name=".TrashQuestionPromptActivity"></activity>
+        <activity android:name=".QuestionPromptActivity"></activity>
     </application>
 
 </manifest>

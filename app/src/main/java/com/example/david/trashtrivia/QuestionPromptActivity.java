@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class TrashQuestionPromptActivity extends Activity implements View.OnClickListener{
+public class QuestionPromptActivity extends Activity implements View.OnClickListener{
 
     private Button button1,button2,button3,button4;
 

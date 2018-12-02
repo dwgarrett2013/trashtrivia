@@ -72,7 +72,7 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
 
         //if Add Inventory button is clicked
         if(v==buttonPlayTrashTrivia){
-            Intent intentPlayTrashTrivia=new Intent(getApplicationContext(),TrashQuestionPromptActivity.class);
+            Intent intentPlayTrashTrivia=new Intent(getApplicationContext(),QuestionPromptActivity.class);
             intentPlayTrashTrivia.putExtra("username", loggedInUsername);
             intentPlayTrashTrivia.putExtra("role_name", loggedInUserRoleName);
             startActivity(intentPlayTrashTrivia);
@@ -88,15 +88,15 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
 
         else if(v==buttonInviteFriends){
             Intent intentInviteFriends=new Intent(getApplicationContext(),InviteFriendsActivity.class);
-            //intentInviteFriends.putExtra("username", loggedInUsername);
-            //intentInviteFriends.putExtra("role_name", loggedInUserRoleName);
+            intentInviteFriends.putExtra("username", loggedInUsername);
+            intentInviteFriends.putExtra("role_name", loggedInUserRoleName);
             startActivity(intentInviteFriends);
 
         }
 
         //if Check Inventory button is clicked
         else if(v==buttonViewProfile){
-            Intent intentViewProfile=new Intent(getApplicationContext(),ViewProfileActivity.class);
+            Intent intentViewProfile=new Intent(getApplicationContext(),ProfileViewActivity.class);
             intentViewProfile.putExtra("username", loggedInUsername);
             intentViewProfile.putExtra("role_name", loggedInUserRoleName);
             startActivity(intentViewProfile);

@@ -18,7 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class ViewProfileActivity extends Activity implements View.OnClickListener{
+public class ProfileViewActivity extends Activity implements View.OnClickListener{
 
     private Button buttonReturnHome, buttonReturnToLogin, buttonShareProfile;
 
