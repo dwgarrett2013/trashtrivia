@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 public class InviteFriendsActivity extends Activity implements View.OnClickListener{
 
-    Button buttonInviteFriend, buttonReturnHome, buttonReturnToLogin;
+    private Button buttonInviteFriend, buttonReturnHome, buttonReturnToLogin;
 
     private String loggedInUsername;
     private String loggedInUserRoleName;
