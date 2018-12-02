@@ -1,38 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ShareProfileActivity">
 
-    <TableLayout
-        android:id="@+id/profile_content_table"
-        android:layout_width="368dp"
-        android:layout_height="503dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
-
-        <TableRow
-            android:id="@+id/table_row_title"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="top|center">
-
-            <TextView
-                android:id="@+id/text_view_share_profile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="39dp"
-                android:gravity="center_horizontal"
-                android:text="@string/profile_share_title"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:typeface="sans"
-                tools:text="@string/profile_share_title" />
-
-        </TableRow>
-
-    </TableLayout>
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

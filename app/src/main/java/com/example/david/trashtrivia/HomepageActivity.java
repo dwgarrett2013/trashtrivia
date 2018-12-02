@@ -34,7 +34,7 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
         buttonQuestionMgmt =findViewById(R.id.button_return_home);
         buttonLogout=findViewById(R.id.button_return_to_login);
 
-        tableRowPlayTrashTrivia =findViewById(R.id.table_row_invite_friend);
+        tableRowPlayTrashTrivia =findViewById(R.id.table_row_notifications);
         tableRowInviteFriends=findViewById(R.id.table_row_modify_question);
         tableRowNotifications =findViewById(R.id.table_row_delete_question);
         tableRowProfile=findViewById(R.id.table_row_profile);
