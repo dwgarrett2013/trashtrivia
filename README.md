@@ -40,7 +40,6 @@ Below is a list of classes/data structures in the project and the fields that ma
 |  num_times_asked  |   int  |    |
 |  num_times_answered_correctly  |   int  |    |
 |  tags  |   arrayList(String)  |    |
-|  question_text  |   String  |  String elements are Foreign keys to Tag  |
 
 ### Tag
 | Field Name   |      Data Type      |  Additional Notes |
