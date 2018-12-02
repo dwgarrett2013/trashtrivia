@@ -29,4 +29,9 @@ public class TriviaQuizPage extends Activity implements View.OnClickListener {
         checkBoxD = findViewById(R.id.checkBoxD);
 
     }
+
+    @Override
+    public void onClick(View v) {
+
+    }
 }

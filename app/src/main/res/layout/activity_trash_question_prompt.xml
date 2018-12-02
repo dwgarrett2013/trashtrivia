@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TriviaQuizPage">
+    tools:context=".TrashQuestionPromptActivity">
 
     <TextView
         android:id="@+id/textViewHeading"
@@ -63,7 +63,9 @@
         android:layout_marginTop="3dp"
         android:layout_marginEnd="112dp"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="number"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="112dp" />
 
     <EditText
         android:id="@+id/editTextQuestions"
@@ -86,7 +88,8 @@
         android:layout_alignStart="@+id/editTextQuestions"
         android:layout_alignParentTop="true"
         android:layout_marginTop="145dp"
-        android:text="Questions:" />
+        android:text="Questions:"
+        android:layout_alignLeft="@+id/editTextQuestions" />
 
     <TextView
         android:id="@+id/textView5"
@@ -95,7 +98,8 @@
         android:layout_alignStart="@+id/editTextQuestions"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="236dp"
-        android:text="Choose one from following answers:" />
+        android:text="Choose one from following answers:"
+        android:layout_alignLeft="@+id/editTextQuestions" />
 
     <CheckBox
         android:id="@+id/checkBoxA"
@@ -116,7 +120,8 @@
         android:layout_alignStart="@+id/checkBoxA"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="153dp"
-        android:text="No" />
+        android:text="No"
+        android:layout_alignLeft="@+id/checkBoxA" />
 
     <CheckBox
         android:id="@+id/checkBoxC"
@@ -124,7 +129,8 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/checkBoxA"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="109dp" />
+        android:layout_marginBottom="109dp"
+        android:layout_alignLeft="@+id/checkBoxA" />
 
     <CheckBox
         android:id="@+id/checkBoxD"
@@ -132,6 +138,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/checkBoxA"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="63dp" />
+        android:layout_marginBottom="63dp"
+        android:layout_alignLeft="@+id/checkBoxA" />
 
 </RelativeLayout>

@@ -26,7 +26,7 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
         setContentView(R.layout.activity_homepage);
 
         //Link homepage Button Objects to elements in the view
-        buttonPlayTrashTrivia=findViewById(R.id.button_invite_friend);
+        buttonPlayTrashTrivia=findViewById(R.id.button_play_trash_trivia);
         buttonInviteFriends=findViewById(R.id.button_modify_question);
         buttonNotifications =findViewById(R.id.button_delete_question);
         buttonViewProfile=findViewById(R.id.buttonViewProfile);
@@ -72,10 +72,10 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
 
         //if Add Inventory button is clicked
         if(v==buttonPlayTrashTrivia){
-            Intent intentInviteFriends=new Intent(getApplicationContext(),InviteFriendsActivity.class);
-            //intentInviteFriends.putExtra("username", loggedInUsername);
-            //intentInviteFriends.putExtra("role_name", loggedInUserRoleName);
-            startActivity(intentInviteFriends);
+            Intent intentPlayTrashTrivia=new Intent(getApplicationContext(),TrashQuestionPromptActivity.class);
+            intentPlayTrashTrivia.putExtra("username", loggedInUsername);
+            intentPlayTrashTrivia.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentPlayTrashTrivia);
         }
 
         //if Check Inventory button is clicked

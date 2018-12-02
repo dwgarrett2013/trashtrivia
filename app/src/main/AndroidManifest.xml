@@ -26,7 +26,8 @@
         <activity android:name=".InviteFriendsActivity" />
         <activity android:name=".ViewProfileActivity" />
         <activity android:name=".QuestionHomeActivity" />
-        <activity android:name=".ShareProfileActivity"></activity>
+        <activity android:name=".ShareProfileActivity" />
+        <activity android:name=".TrashQuestionPromptActivity"></activity>
     </application>
 
 </manifest>
