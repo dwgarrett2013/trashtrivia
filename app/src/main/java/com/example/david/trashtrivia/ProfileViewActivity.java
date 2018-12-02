@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -143,7 +142,7 @@ public class ProfileViewActivity extends Activity implements View.OnClickListene
                          buttonShareProfile.setOnClickListener(new View.OnClickListener() {
                              @Override
                              public void onClick(View v) {
-                                 Intent intentShareProfile=new Intent(getApplicationContext(),ShareProfileActivity.class);
+                                 Intent intentShareProfile=new Intent(getApplicationContext(),ProfileShareActivity.class);
                                  intentShareProfile.putExtra("username", loggedInUsername);
                                  intentShareProfile.putExtra("role_name", loggedInUserRoleName);
                                  startActivity(intentShareProfile);

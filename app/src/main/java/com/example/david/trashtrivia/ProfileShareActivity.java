@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class ShareProfileActivity extends Activity implements View.OnClickListener{
+public class ProfileShareActivity extends Activity implements View.OnClickListener{
 
     private Button buttonShareProfile, buttonReturnHome, buttonReturnToLogin;
 
