@@ -58,41 +58,61 @@ public class NotificationsActivity extends Activity implements View.OnClickListe
         //a.addView(txt);
         //notificationsTable.addView(a);
 
-        database.child("Notification").orderByChild("ts").addValueEventListener(new ValueEventListener() {
+        database.child("User").orderByChild("username").equalTo(loggedInUsername).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (final DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    //System.out.println("bleh");
-                    //System.out.println(postSnapshot.getValue().toString());
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String userId="";
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    userId=postSnapshot.child("id").getValue().toString();
+                    System.out.println("userid");
+                    System.out.println(userId);
+                }
+                database.child("Notification").orderByChild("recipientId").equalTo(userId).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (final DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                            //System.out.println("bleh");
+                            //System.out.println(postSnapshot.getValue().toString());
 
-                    final TextView timeSent=new TextView(getApplicationContext());
-                    timeSent.setText(postSnapshot.child("id").getValue().toString());
+                            final TextView timeSent=new TextView(getApplicationContext());
+                            timeSent.setText(postSnapshot.child("id").getValue().toString());
 
-                    String senderId=postSnapshot.child("senderId").getValue().toString();
-                    final String recipientId=postSnapshot.child("recipientId").getValue().toString();
+                            final TextView notificationText=new TextView(getApplicationContext());
+                            notificationText.setText(postSnapshot.child("notificationText").getValue().toString());
 
-                    database.child("User").orderByChild("id").equalTo(senderId).addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            final TextView senderUsername=new TextView(getApplicationContext());
-                            for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                                senderUsername.setText(postSnapshot.child("username").getValue().toString());
-                            }
-                            database.child("User").orderByChild("id").equalTo(recipientId).addListenerForSingleValueEvent(new ValueEventListener() {
+                            String senderId=postSnapshot.child("senderId").getValue().toString();
+                            final String recipientId=postSnapshot.child("recipientId").getValue().toString();
+
+                            database.child("User").orderByChild("id").equalTo(senderId).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    TextView recipientUsername=new TextView(getApplicationContext());
+                                    final TextView senderUsername=new TextView(getApplicationContext());
                                     for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-
-                                        recipientUsername.setText(postSnapshot.child("username").getValue().toString());
+                                        senderUsername.setText(postSnapshot.child("username").getValue().toString());
                                     }
-                                    TableRow row=new TableRow(getApplicationContext());
-                                    row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-                                    row.addView(timeSent);
-                                    row.addView(senderUsername);
-                                    row.addView(recipientUsername);
-                                    notificationsTable.addView(row);
+                                    database.child("User").orderByChild("id").equalTo(recipientId).addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            TextView recipientUsername=new TextView(getApplicationContext());
+                                            for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 
+                                                recipientUsername.setText(postSnapshot.child("username").getValue().toString());
+                                            }
+                                            TableRow row=new TableRow(getApplicationContext());
+                                            row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+                                            row.addView(timeSent);
+                                            row.addView(senderUsername);
+                                            //row.addView(recipientUsername);
+                                            row.addView(notificationText);
+                                            notificationsTable.addView(row);
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                                            //
+                                        }
+                                    });
                                 }
 
                                 @Override
@@ -100,24 +120,27 @@ public class NotificationsActivity extends Activity implements View.OnClickListe
                                     //
                                 }
                             });
-                        }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-                            //
                         }
-                    });
+                        //System.out.println(notificationsTableLayout.toString());
+                    }
 
-                }
-                //System.out.println(notificationsTableLayout.toString());
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        // Failed to read value
+                        Toast.makeText(getApplicationContext(), "Failed to read", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Toast.makeText(getApplicationContext(), "Failed to read", Toast.LENGTH_SHORT).show();
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
+
+
     }
 
     @Override
