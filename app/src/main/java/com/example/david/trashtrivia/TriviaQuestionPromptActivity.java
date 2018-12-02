@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class QuestionPromptActivity extends Activity implements View.OnClickListener{
+public class TriviaQuestionPromptActivity extends Activity implements View.OnClickListener{
 
     private Button button1,button2,button3,button4;
 
@@ -16,7 +16,7 @@ public class QuestionPromptActivity extends Activity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_trash_question_prompt);
+        setContentView(R.layout.activity_trivia_question_prompt);
         button1=findViewById(R.id.button1);
         button2=findViewById(R.id.button2);
         button3=findViewById(R.id.button3);

@@ -22,7 +22,7 @@ public class ProfileShareActivity extends Activity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_share_profile);
+        setContentView(R.layout.activity_profile_share);
 
         buttonShareProfile=findViewById(R.id.button_share_profile_with_friend);
         buttonReturnHome=findViewById(R.id.button_return_home);
