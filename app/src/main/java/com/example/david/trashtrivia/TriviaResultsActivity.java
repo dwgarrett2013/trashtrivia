@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class TriviaResults extends Activity implements View.OnClickListener {
+public class TriviaResultsActivity extends Activity implements View.OnClickListener {
 
     private Button buttonReplay, buttonLeaderboard, buttonTrashcentral, buttonLogout;
     private TextView textFinalscoretext, textFinalscore, textCongrats;

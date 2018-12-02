@@ -1,6 +1,7 @@
 package com.example.david.trashtrivia;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,7 +38,10 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
             Toast.makeText(getApplicationContext(), "Correct Answer", Toast.LENGTH_SHORT).show();
         }
         else if (v==button2) {
-            Toast.makeText(getApplicationContext(), "Incorrect Answer", Toast.LENGTH_SHORT).show();
+            Intent intentTriviaResults=new Intent(getApplicationContext(),TriviaResultsActivity.class);
+            intentTriviaResults.putExtra("username", loggedInUsername);
+            intentTriviaResults.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentTriviaResults);
         }
         else if (v==button3) {
             Toast.makeText(getApplicationContext(), "Incorrect Answer", Toast.LENGTH_SHORT).show();
