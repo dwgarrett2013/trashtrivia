@@ -51,7 +51,7 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
         buttonQuestionMgmt.setOnClickListener(this);
         buttonLogout.setOnClickListener(this);
 
-        loggedInUsername =getIntent().getStringExtra("username");
+        loggedInUsername=getIntent().getStringExtra("username");
         loggedInUserRoleName=getIntent().getStringExtra("role_name");
 
         if(loggedInUserRoleName.equals("standard")||loggedInUserRoleName.equals("admin")||loggedInUserRoleName.equals("premium")){
@@ -72,7 +72,7 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
 
         //if Add Inventory button is clicked
         if(v==buttonPlayTrashTrivia){
-            Intent intentPlayTrashTrivia=new Intent(getApplicationContext(),TriviaInstructionsActivity.class);
+            Intent intentPlayTrashTrivia=new Intent(getApplicationContext(),TriviaInitiateActivity.class);
             intentPlayTrashTrivia.putExtra("username", loggedInUsername);
             intentPlayTrashTrivia.putExtra("role_name", loggedInUserRoleName);
             startActivity(intentPlayTrashTrivia);

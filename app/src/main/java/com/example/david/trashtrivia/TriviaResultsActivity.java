@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class TriviaResultsActivity extends Activity implements View.OnClickListener {
 
@@ -21,10 +20,10 @@ public class TriviaResultsActivity extends Activity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia_results);
 
-        buttonReplay = findViewById(R.id.buttonReplay);
-        buttonLeaderboard = findViewById(R.id.buttonLeaderboard);
-        buttonReturnHome = findViewById(R.id.buttonTrashcentral);
-        buttonReturnToLogin = findViewById(R.id.buttonLogout);
+        buttonReplay = findViewById(R.id.button_trivia_results_replay);
+        buttonLeaderboard = findViewById(R.id.button_trivia_results_profile_leaderboard);
+        buttonReturnHome = findViewById(R.id.button_trivia_results_return_home);
+        buttonReturnToLogin = findViewById(R.id.button__trivia_results_return_to_login);
 
         textFinalscoretext = findViewById(R.id.textFinalscoretext);
         textFinalscore = findViewById(R.id.textFinalscore);
@@ -47,10 +46,10 @@ public class TriviaResultsActivity extends Activity implements View.OnClickListe
     public void onClick(View v) {
 
         if (v==buttonReplay){
-            Intent intentTriviaQuestionPrompt=new Intent(getApplicationContext(),TriviaQuestionPromptActivity.class);
-            intentTriviaQuestionPrompt.putExtra("username", loggedInUsername);
-            intentTriviaQuestionPrompt.putExtra("role_name", loggedInUserRoleName);
-            startActivity(intentTriviaQuestionPrompt);
+            Intent intentTriviaInitiate=new Intent(getApplicationContext(),TriviaInitiateActivity.class);
+            intentTriviaInitiate.putExtra("username", loggedInUsername);
+            intentTriviaInitiate.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentTriviaInitiate);
 
         }else if(v==buttonLeaderboard){
             Intent intentProfileViewActivity=new Intent(getApplicationContext(),ProfileViewActivity.class);

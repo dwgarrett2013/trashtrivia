@@ -7,16 +7,16 @@
     tools:context=".TriviaResultsActivity">
 
     <Button
-        android:id="@+id/buttonTrashcentral"
+        android:id="@+id/button_trivia_results_return_home"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="360dp"
-        android:text="Exit to Trash central" />
+        android:text="@string/return_home_text" />
 
     <Button
-        android:id="@+id/buttonLogout"
+        android:id="@+id/button__trivia_results_return_to_login"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -25,7 +25,7 @@
         android:text="Sign Out" />
 
     <Button
-        android:id="@+id/buttonLeaderboard"
+        android:id="@+id/button_trivia_results_profile_leaderboard"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -61,7 +61,7 @@
         android:text="000" />
 
     <Button
-        android:id="@+id/buttonReplay"
+        android:id="@+id/button_trivia_results_replay"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
