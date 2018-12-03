@@ -27,14 +27,14 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
         button3.setOnClickListener(this);
         button4.setOnClickListener(this);
 
-        loggedInUsername =getIntent().getStringExtra("username");
+        loggedInUsername=getIntent().getStringExtra("username");
         loggedInUserRoleName=getIntent().getStringExtra("role_name");
     }
 
     @Override
     public void onClick(View v) {
         if(v==button1){
-            Intent intentTriviaResults=new Intent(getApplicationContext(),TriviaResultsActivity.class);
+            Intent intentTriviaResults=new Intent(getApplicationContext(),TriviaCorrectAnswerActivity.class);
             intentTriviaResults.putExtra("username", loggedInUsername);
             intentTriviaResults.putExtra("role_name", loggedInUserRoleName);
             startActivity(intentTriviaResults);

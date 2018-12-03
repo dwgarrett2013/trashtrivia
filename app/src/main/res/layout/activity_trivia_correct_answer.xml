@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileViewActivity">
+    tools:context=".TriviaCorrectAnswerActivity">
 
     <TableLayout
         android:id="@+id/profile_content_table"
@@ -79,53 +79,14 @@
         </TableRow>
 
         <TableRow
-            android:id="@+id/table_row_question_subtitle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" >
 
             <TextView
-                android:id="@+id/question_subtitle"
-                android:text="Question" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <EditText
-                android:id="@+id/editTextQuestions"
-                android:ems="10"
-                android:inputType="text"
-                android:text="Is glass recyclable?" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRowQuestionInstructions"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textViewQuestionInstructions"
-                android:text="Choose one from following answers:" />
-        </TableRow>
-        <TableRow>
-
-            <Button
-                android:id="@+id/button1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Correct Answer"
-                tools:text="Correct Answer" />
-        </TableRow>
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Wrong Answer" />
+                android:id="@+id/textView"
+                android:layout_width="267dp"
+                android:layout_height="34dp"
+                android:text="You answered correctly! Did you know: birds are amazing" />
         </TableRow>
 
         <TableRow
@@ -133,21 +94,30 @@
             android:layout_height="match_parent" >
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/button_correct_answer_complete_quiz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Wrong Answer" />
+                android:text="@string/button_complete_quiz" />
         </TableRow>
-
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/button_correct_answer_homepage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Wrong Answer" />
+                android:text="@string/return_home_text" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:id="@+id/button_correct_answer_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/logout_button_text" />
         </TableRow>
 
 
