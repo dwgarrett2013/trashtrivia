@@ -37,6 +37,10 @@ public class TriviaResultsActivity extends Activity implements View.OnClickListe
         loggedInUsername=getIntent().getStringExtra("username");
         loggedInUserRoleName=getIntent().getStringExtra("role_name");
 
+        if(loggedInUserRoleName.equals("admin")||loggedInUserRoleName.equals("premium")||loggedInUserRoleName.equals("standard")){
+            buttonLeaderboard.setVisibility(View.VISIBLE);
+        }
+
 
 
         //Set Finalscore = session_score
