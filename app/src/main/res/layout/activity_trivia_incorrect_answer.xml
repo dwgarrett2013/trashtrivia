@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TriviaIncorrectAnswerActivity">
+
+    <TableLayout
+        android:id="@+id/profile_content_table"
+        android:layout_width="368dp"
+        android:layout_height="503dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/textViewHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="24dp"
+                android:text="Trash Trivia Quiz"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRowCurrentScore"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewCurrentScore"
+                android:layout_width="50dp"
+                android:text="Current Score:" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRowCurrentScoreValue"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/editTextCurrentScore"
+                android:ems="10"
+                android:inputType="none"
+                android:text="0"
+                tools:text="0" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRowQuestionRemaining"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewQuestionRemaining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Question Remaining:" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRowQuestionRemainingVal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/editTextQuestionRemaining"
+                android:ems="10"
+                android:inputType="number"
+                android:text="0"
+                tools:text="0" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="267dp"
+                android:layout_height="34dp"
+                android:text="You answered incorrectly. Did you know: birds are amazing" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:id="@+id/button_incorrect_answer_complete_quiz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_complete_quiz" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:id="@+id/button_incorrect_answer_homepage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/return_home_text" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:id="@+id/button_incorrect_answer_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/logout_button_text" />
+        </TableRow>
+
+
+    </TableLayout>
+
+</RelativeLayout>

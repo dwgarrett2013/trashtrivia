@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class TriviaCorrectAnswerActivity extends Activity implements View.OnClickListener{
+public class TriviaIncorrectAnswerActivity extends Activity implements View.OnClickListener{
 
     private Button buttonCompleteQuiz;
     private Button buttonReturnToHome;
@@ -18,21 +18,20 @@ public class TriviaCorrectAnswerActivity extends Activity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_trivia_correct_answer);
+        setContentView(R.layout.activity_trivia_incorrect_answer);
 
-        buttonCompleteQuiz=findViewById(R.id.button_correct_answer_complete_quiz);
+        buttonCompleteQuiz=findViewById(R.id.button_incorrect_answer_complete_quiz);
         buttonCompleteQuiz.setOnClickListener(this);
 
-        buttonReturnToHome=findViewById(R.id.button_correct_answer_homepage);
+        buttonReturnToHome=findViewById(R.id.button_incorrect_answer_homepage);
         buttonReturnToHome.setOnClickListener(this);
 
-        buttonReturnToLogin=findViewById(R.id.button_correct_answer_logout);
+        buttonReturnToLogin=findViewById(R.id.button_incorrect_answer_logout);
         buttonReturnToLogin.setOnClickListener(this);
+
 
         loggedInUsername=getIntent().getStringExtra("username");
         loggedInUserRoleName=getIntent().getStringExtra("role_name");
-
-
     }
 
     @Override
@@ -53,5 +52,6 @@ public class TriviaCorrectAnswerActivity extends Activity implements View.OnClic
             Intent intentLogin=new Intent(getApplicationContext(),MainActivity.class);
             startActivity(intentLogin);
         }
+
     }
 }

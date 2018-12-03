@@ -30,7 +30,8 @@
         <activity android:name=".TriviaQuestionPromptActivity" />
         <activity android:name=".TriviaResultsActivity" />
         <activity android:name=".TriviaInitiateActivity" />
-        <activity android:name=".TriviaCorrectAnswerActivity"></activity>
+        <activity android:name=".TriviaCorrectAnswerActivity" />
+        <activity android:name=".TriviaIncorrectAnswerActivity"></activity>
     </application>
 
 </manifest>

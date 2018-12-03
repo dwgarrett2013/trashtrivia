@@ -41,7 +41,7 @@
     <string name="invite_friends_instructions">Type the email of the friend you would like to invite.</string>
     <string name="text_edit_invite_friend">Enter friend email.</string>
     <string name="notifications_home">Notifications Home</string>
-    <string name="notifications_instructions">Click the notification text to see the notification</string>
+    <string name="notifications_instructions">Notifications Listed Below</string>
     <string name="profile_title">Profile/Leaderboard Page</string>
     <string name="share_profile_title">Share Profile</string>
     <string name="share_profile_instructions">Type the username of the friend who you would like to share your profile</string>

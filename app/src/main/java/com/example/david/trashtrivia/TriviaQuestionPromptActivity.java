@@ -34,28 +34,28 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
     @Override
     public void onClick(View v) {
         if(v==button1){
-            Intent intentTriviaResults=new Intent(getApplicationContext(),TriviaCorrectAnswerActivity.class);
-            intentTriviaResults.putExtra("username", loggedInUsername);
-            intentTriviaResults.putExtra("role_name", loggedInUserRoleName);
-            startActivity(intentTriviaResults);
+            Intent intentTriviaCorrectAnswer=new Intent(getApplicationContext(),TriviaCorrectAnswerActivity.class);
+            intentTriviaCorrectAnswer.putExtra("username", loggedInUsername);
+            intentTriviaCorrectAnswer.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentTriviaCorrectAnswer);
         }
         else if (v==button2) {
-            Intent intentTriviaResults=new Intent(getApplicationContext(),TriviaResultsActivity.class);
-            intentTriviaResults.putExtra("username", loggedInUsername);
-            intentTriviaResults.putExtra("role_name", loggedInUserRoleName);
-            startActivity(intentTriviaResults);
+            Intent intentTriviaIncorrectAnswer=new Intent(getApplicationContext(),TriviaIncorrectAnswerActivity.class);
+            intentTriviaIncorrectAnswer.putExtra("username", loggedInUsername);
+            intentTriviaIncorrectAnswer.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentTriviaIncorrectAnswer);
         }
         else if (v==button3) {
-            Intent intentTriviaResults=new Intent(getApplicationContext(),TriviaResultsActivity.class);
-            intentTriviaResults.putExtra("username", loggedInUsername);
-            intentTriviaResults.putExtra("role_name", loggedInUserRoleName);
-            startActivity(intentTriviaResults);
+            Intent intentTriviaIncorrectAnswer=new Intent(getApplicationContext(),TriviaIncorrectAnswerActivity.class);
+            intentTriviaIncorrectAnswer.putExtra("username", loggedInUsername);
+            intentTriviaIncorrectAnswer.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentTriviaIncorrectAnswer);
         }
         else if (v==button4) {
-            Intent intentTriviaResults=new Intent(getApplicationContext(),TriviaResultsActivity.class);
-            intentTriviaResults.putExtra("username", loggedInUsername);
-            intentTriviaResults.putExtra("role_name", loggedInUserRoleName);
-            startActivity(intentTriviaResults);
+            Intent intentTriviaIncorrectAnswer=new Intent(getApplicationContext(),TriviaIncorrectAnswerActivity.class);
+            intentTriviaIncorrectAnswer.putExtra("username", loggedInUsername);
+            intentTriviaIncorrectAnswer.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentTriviaIncorrectAnswer);
         }
 
     }
