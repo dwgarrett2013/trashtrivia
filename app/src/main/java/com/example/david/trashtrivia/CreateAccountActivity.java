@@ -125,24 +125,29 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
                                     userDbObject.setSecurityQuestionId(postSnapshot.child("id").getValue().toString());
                                     //Toast.makeText(getApplicationContext(), postSnapshot.child("username").getValue().toString()+postSnapshot.child("password").getValue().toString(), Toast.LENGTH_SHORT).show();
                                 }
-                                database.child("User").child(key).setValue(userDbObject).
-                                        addOnSuccessListener(new OnSuccessListener<Void>() {
+                                mAuth.createUserWithEmailAndPassword(editTextEmail.getText().toString(), editTextPassword.getText().toString())
+                                        .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                             @Override
-                                            public void onSuccess(Void aVoid) {
-                                                Toast.makeText(getApplicationContext(), "Successes for all", Toast.LENGTH_SHORT).show();
-                                                mAuth.createUserWithEmailAndPassword(editTextEmail.getText().toString(), editTextPassword.getText().toString())
-                                                .addOnFailureListener(new OnFailureListener() {
-                                                    @Override
-                                                    public void onFailure(@NonNull Exception e) {
-                                                        Toast.makeText(getApplicationContext(), "User registration failed with mauth", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                });
+                                            public void onSuccess(AuthResult authResult) {
+                                                database.child("User").child(key).setValue(userDbObject).
+                                                        addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void aVoid) {
+                                                                Toast.makeText(getApplicationContext(), "Successes for all", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        })
+                                                        .addOnFailureListener(new OnFailureListener() {
+                                                            @Override
+                                                            public void onFailure(@NonNull Exception e) {
+                                                                Toast.makeText(getApplicationContext(), "User registration failed", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        });
                                             }
                                         })
                                         .addOnFailureListener(new OnFailureListener() {
                                             @Override
                                             public void onFailure(@NonNull Exception e) {
-                                                Toast.makeText(getApplicationContext(), "User registration failed", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(getApplicationContext(), "User registration failed with mauth", Toast.LENGTH_SHORT).show();
                                             }
                                         });
                             }
