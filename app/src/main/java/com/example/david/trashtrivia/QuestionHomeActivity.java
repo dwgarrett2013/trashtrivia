@@ -38,13 +38,18 @@ public class QuestionHomeActivity extends Activity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         if(v==buttonAddQuestion){
-            Toast.makeText(getApplicationContext(), "Adding Questions (Coming Soon)", Toast.LENGTH_SHORT).show();
+            Intent intentAddQuestion = new Intent(this, AddQuestion.class);
+            intentAddQuestion.putExtra("username", loggedInUsername);
+            intentAddQuestion.putExtra("role_name", loggedInUserRoleName);
+            startActivity(intentAddQuestion);
         }
         else if(v==buttonModifyQuestion){
-            Toast.makeText(getApplicationContext(), "Modifying Questions (Coming Soon)", Toast.LENGTH_SHORT).show();
+            Intent intentModifyQuestion = new Intent(this, ModifyQuestion.class);
+            startActivity(intentModifyQuestion);
         }
         else if(v==buttonDeleteQuestion){
-            Toast.makeText(getApplicationContext(), "Deleting Questions (Coming Soon)", Toast.LENGTH_SHORT).show();
+            Intent intentDeleteQuestion = new Intent(this, DeleteQuestion.class);
+            startActivity(intentDeleteQuestion);
         }
         else if(v==buttonReturnHome){
             Intent intentReturnHome=new Intent(getApplicationContext(),HomepageActivity.class);
