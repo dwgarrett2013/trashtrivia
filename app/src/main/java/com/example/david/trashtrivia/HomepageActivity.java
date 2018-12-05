@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.TableRow;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class HomepageActivity extends Activity implements View.OnClickListener{
 
     //Initialize Button Objects
@@ -19,6 +22,9 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
 
     private String loggedInUsername;
     private String loggedInUserRoleName;
+
+    //Initialize  FirebaseDatabaseObject
+    private DatabaseReference database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +59,8 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
 
         loggedInUsername=getIntent().getStringExtra("username");
         loggedInUserRoleName=getIntent().getStringExtra("role_name");
+
+        database = FirebaseDatabase.getInstance().getReference();
 
         if(loggedInUserRoleName.equals("standard")||loggedInUserRoleName.equals("admin")||loggedInUserRoleName.equals("premium")){
             tableRowProfile.setVisibility(View.VISIBLE);
