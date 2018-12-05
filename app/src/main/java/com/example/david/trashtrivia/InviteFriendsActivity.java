@@ -33,7 +33,7 @@ public class InviteFriendsActivity extends Activity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v==buttonInviteFriend){
-            Toast.makeText(getApplicationContext(), "Friend Invited Button Clicked", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Ability to invite friends is coming soon.  Come back in a bit!", Toast.LENGTH_SHORT).show();
         }
         else if(v==buttonReturnHome){
             Intent intentReturnHome=new Intent(getApplicationContext(),HomepageActivity.class);
