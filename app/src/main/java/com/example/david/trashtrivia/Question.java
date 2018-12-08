@@ -11,10 +11,6 @@ public class Question {
     private int num_times_asked;
     private int num_times_answered_correctly;
 
-    public Question(String createQuestion, String createCorrectAnswer, String createAnswer1, String createAnswer2, String createAnswer3, String createAdditionalInformation){
-
-    }
-
     public Question(String id, String question_instructions, String question_correct_answer,
                     String question_wrong_answer1, String question_wrong_answer2,
                     String question_wrong_answer3, String question_additional_information) {

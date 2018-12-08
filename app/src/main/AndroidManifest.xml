@@ -32,7 +32,7 @@
         <activity android:name=".TriviaInitiateActivity" />
         <activity android:name=".TriviaCorrectAnswerActivity" />
         <activity android:name=".TriviaIncorrectAnswerActivity" />
-        <activity android:name=".AddQuestion" />
+        <activity android:name=".AddQuestionActivity" />
         <activity android:name=".ModifyQuestion" />
         <activity android:name=".DeleteQuestion"></activity>
     </application>

@@ -6,15 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-public class AddQuestion extends Activity implements View.OnClickListener {
+public class AddQuestionActivity extends Activity implements View.OnClickListener {
 
     private Button buttonCreate, buttonReturnHome;
-    private EditText editTextCreateQuestion, editTextCreateCorrectAnswer,editTextCreateAnswer1,editTextCreateAnswer2, editTextCreateAnswer3, editTextCreateAdditionalInformation;
+    private EditText editTextCreateQuestion, editTextCreateCorrectAnswer,editTextCreateAnswer1,editTextCreateAnswer2,
+            editTextCreateAnswer3, editTextCreateAdditionalInformation;
 
     private String loggedInUsername;
     private String loggedInUserRoleName;
@@ -46,16 +48,24 @@ public class AddQuestion extends Activity implements View.OnClickListener {
         final DatabaseReference myRef = database.getReference("Question");
 
         if (v == buttonCreate) {
-            String createQuestion = editTextCreateQuestion.getText().toString();
+            String createQuestionText = editTextCreateQuestion.getText().toString();
             String createCorrectAnswer = editTextCreateCorrectAnswer.getText().toString();
-            String createAnswer1 = editTextCreateAnswer1.getText().toString();
-            String createAnswer2 = editTextCreateAnswer2.getText().toString();
-            String createAnswer3 = editTextCreateAnswer2.getText().toString();
+            String createWrongAnswer1 = editTextCreateAnswer1.getText().toString();
+            String createWrongAnswer2 = editTextCreateAnswer2.getText().toString();
+            String createWrongAnswer3 = editTextCreateAnswer3.getText().toString();
             String createAdditionalInformation = editTextCreateAdditionalInformation.getText().toString();
-
-            Question newQuestion = new Question(createQuestion, createCorrectAnswer, createAnswer1, createAnswer2, createAnswer3, createAdditionalInformation);
-
-            myRef.push().setValue(newQuestion);
+            
+            if(createQuestionText.isEmpty() || createCorrectAnswer.isEmpty() || createWrongAnswer1.isEmpty()
+                    || createWrongAnswer2.isEmpty() || createWrongAnswer3.isEmpty() || createAdditionalInformation.isEmpty() ){
+                Toast.makeText(getApplicationContext(), "Please ensure all fields are populated", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                String key=myRef.push().getKey();
+                Question newQuestion=new Question(key, createQuestionText,createCorrectAnswer,createWrongAnswer1,
+                        createWrongAnswer2,createWrongAnswer3,createAdditionalInformation);
+                myRef.push().setValue(newQuestion);
+                Toast.makeText(getApplicationContext(), "Question Added", Toast.LENGTH_SHORT).show();
+            }
 
         } else if (v == buttonReturnHome) {
             Intent intentReturnHome = new Intent(this, HomepageActivity.class);

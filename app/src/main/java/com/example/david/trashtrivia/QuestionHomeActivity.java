@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class QuestionHomeActivity extends Activity implements View.OnClickListener {
 
@@ -38,7 +37,7 @@ public class QuestionHomeActivity extends Activity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         if(v==buttonAddQuestion){
-            Intent intentAddQuestion = new Intent(this, AddQuestion.class);
+            Intent intentAddQuestion = new Intent(this, AddQuestionActivity.class);
             intentAddQuestion.putExtra("username", loggedInUsername);
             intentAddQuestion.putExtra("role_name", loggedInUserRoleName);
             startActivity(intentAddQuestion);
