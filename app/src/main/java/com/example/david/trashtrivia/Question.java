@@ -11,7 +11,7 @@ public class Question {
     private int num_times_asked;
     private int num_times_answered_correctly;
 
-    public Question(){
+    public Question(String createQuestion, String createCorrectAnswer, String createAnswer1, String createAnswer2, String createAnswer3, String createAdditionalInformation){
 
     }
 
