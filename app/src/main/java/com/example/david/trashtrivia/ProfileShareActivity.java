@@ -71,8 +71,7 @@ public class ProfileShareActivity extends Activity implements View.OnClickListen
                                         currentUserKey = postSnapshot.getKey();
                                     }
                                     String notificationPushKey = database.child("Notification").push().getKey();
-                                    Notification newNotification = new Notification(notificationPushKey, currentUserKey, friendKey, loggedInUsername + " thinks" +
-                                            " they can score better than you on a quiz.  Prove them wrong!");
+                                    Notification newNotification = new Notification(notificationPushKey, currentUserKey, friendKey, "Quiz Challenge Received");
                                     database.child("Notification").child(notificationPushKey).setValue(newNotification);
                                 }
                             }

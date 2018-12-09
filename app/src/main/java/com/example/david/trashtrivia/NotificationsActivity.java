@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
@@ -51,34 +54,17 @@ public class NotificationsActivity extends Activity implements View.OnClickListe
 
         final TableLayout notificationsTable=findViewById(R.id.notification_table_layout);
 
-        TextView messageIdHeader=new TextView(getApplicationContext());
-        messageIdHeader.setText("Message Id");
-        TextView senderIdHeader=new TextView(getApplicationContext());
-        senderIdHeader.setText("Sender Username");
-        TextView notificationBody=new TextView(getApplicationContext());
-        notificationBody.setText("Notification Body");
-        TableRow rowHeaders=new TableRow(getApplicationContext());
-        rowHeaders.addView(messageIdHeader);
-        rowHeaders.addView(senderIdHeader);
-        rowHeaders.addView(notificationBody);
-        notificationsTable.addView(rowHeaders);
-
         database.child("User").orderByChild("username").equalTo(loggedInUsername).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String userId="";
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     userId=postSnapshot.child("id").getValue().toString();
-                    System.out.println("userid");
-                    System.out.println(userId);
                 }
                 database.child("Notification").orderByChild("recipientId").equalTo(userId).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (final DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-
-                            final TextView notificationId=new TextView(getApplicationContext());
-                            notificationId.setText(postSnapshot.child("id").getValue().toString());
 
                             final TextView notificationText=new TextView(getApplicationContext());
                             notificationText.setText(postSnapshot.child("notificationText").getValue().toString());
@@ -90,6 +76,8 @@ public class NotificationsActivity extends Activity implements View.OnClickListe
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     final TextView senderUsername=new TextView(getApplicationContext());
+                                    senderUsername.setGravity(Gravity.START);
+                                    senderUsername.setMaxWidth(10);
                                     for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                                         senderUsername.setText(postSnapshot.child("username").getValue().toString());
                                     }
@@ -103,10 +91,9 @@ public class NotificationsActivity extends Activity implements View.OnClickListe
                                             }
                                             TableRow row=new TableRow(getApplicationContext());
                                             row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-                                            row.addView(notificationId);
-                                            row.addView(senderUsername);
-                                            //row.addView(recipientUsername);
                                             row.addView(notificationText);
+                                            row.addView(senderUsername);
+
                                             notificationsTable.addView(row);
 
                                         }
@@ -125,7 +112,6 @@ public class NotificationsActivity extends Activity implements View.OnClickListe
                             });
 
                         }
-                        //System.out.println(notificationsTableLayout.toString());
                     }
 
                     @Override

@@ -14,10 +14,10 @@ import com.google.firebase.database.FirebaseDatabase;
 public class HomepageActivity extends Activity implements View.OnClickListener{
 
     //Initialize Button Objects
-    private Button buttonPlayTrashTrivia, buttonInviteFriends, buttonNotifications, buttonViewProfile, buttonMetrics,
+    private Button buttonPlayTrashTrivia, buttonNotifications, buttonViewProfile, buttonMetrics,
             buttonQuestionMgmt, buttonLogout;
 
-    private TableRow tableRowPlayTrashTrivia, tableRowInviteFriends, tableRowNotifications, tableRowProfile, tableRowMetrics,
+    private TableRow tableRowPlayTrashTrivia, tableRowNotifications, tableRowProfile, tableRowMetrics,
             tableRowQuestionMgmt, tableRowLogout;
 
     private String loggedInUsername;
@@ -33,7 +33,6 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
 
         //Link homepage Button Objects to elements in the view
         buttonPlayTrashTrivia=findViewById(R.id.button_play_trash_trivia);
-        buttonInviteFriends=findViewById(R.id.button_modify_question);
         buttonNotifications =findViewById(R.id.button_delete_question);
         buttonViewProfile=findViewById(R.id.buttonViewProfile);
         buttonMetrics=findViewById(R.id.buttonMetrics);
@@ -41,7 +40,6 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
         buttonLogout=findViewById(R.id.button_return_to_login);
 
         tableRowPlayTrashTrivia =findViewById(R.id.table_row_notifications);
-        tableRowInviteFriends=findViewById(R.id.table_row_modify_question);
         tableRowNotifications =findViewById(R.id.table_row_delete_question);
         tableRowProfile=findViewById(R.id.table_row_profile);
         tableRowMetrics=findViewById(R.id.table_row_metrics);
@@ -50,7 +48,6 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
 
         //Add OnClickListeners to homepage Button objects
         buttonPlayTrashTrivia.setOnClickListener(this);
-        buttonInviteFriends.setOnClickListener(this);
         buttonNotifications.setOnClickListener(this);
         buttonViewProfile.setOnClickListener(this);
         buttonMetrics.setOnClickListener(this);
@@ -65,7 +62,6 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
         if(loggedInUserRoleName.equals("standard")||loggedInUserRoleName.equals("admin")||loggedInUserRoleName.equals("premium")){
             tableRowProfile.setVisibility(View.VISIBLE);
             tableRowNotifications.setVisibility(View.VISIBLE);
-            tableRowInviteFriends.setVisibility(View.VISIBLE);
         }
         if(loggedInUserRoleName.equals("premium")||loggedInUserRoleName.equals("admin")){
             tableRowMetrics.setVisibility(View.VISIBLE);
@@ -92,14 +88,6 @@ public class HomepageActivity extends Activity implements View.OnClickListener{
             intentNotifications.putExtra("username", loggedInUsername);
             intentNotifications.putExtra("role_name", loggedInUserRoleName);
             startActivity(intentNotifications);
-        }
-
-        else if(v==buttonInviteFriends){
-            Intent intentInviteFriends=new Intent(getApplicationContext(),InviteFriendsActivity.class);
-            intentInviteFriends.putExtra("username", loggedInUsername);
-            intentInviteFriends.putExtra("role_name", loggedInUserRoleName);
-            startActivity(intentInviteFriends);
-
         }
 
         //if Check Inventory button is clicked

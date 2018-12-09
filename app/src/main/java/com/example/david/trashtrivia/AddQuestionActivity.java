@@ -11,7 +11,6 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-
 public class AddQuestionActivity extends Activity implements View.OnClickListener {
 
     private Button buttonCreate, buttonReturnHome;
