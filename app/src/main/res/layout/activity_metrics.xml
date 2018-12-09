@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MetricsActivity">
 
     <TableLayout
-        android:layout_width="368dp"
-        android:layout_height="503dp"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TableRow
             android:id="@+id/table_row_title"
@@ -22,7 +20,6 @@
                 android:id="@+id/text_metrics_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="39dp"
                 android:gravity="center_horizontal"
                 android:text="@string/metrics_title"
                 android:textSize="24sp"
@@ -30,17 +27,6 @@
                 android:typeface="sans"
                 tools:text="@string/metrics_title" />
 
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TextView
-                android:id="@+id/metrics_question_subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/metrics_questions_subtitle" />
         </TableRow>
 
         <TableRow
@@ -52,37 +38,9 @@
 
             <TableLayout
                 android:id="@+id/question_stats_table_layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center">
-
-            </TableLayout>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TextView
-                android:id="@+id/metrics_tag_subtitle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/metrics_tag_subtitle"
-                tools:text="@string/metrics_tag_subtitle" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/table_row_tag_stats"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <TableLayout
-                android:id="@+id/tag_stats_table_layout"
-                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center">
+                android:gravity="left">
 
             </TableLayout>
         </TableRow>
@@ -94,7 +52,7 @@
 
             <Button
                 android:id="@+id/button_return_home"
-                android:layout_width="116dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/return_home_text" />
@@ -109,12 +67,13 @@
 
             <Button
                 android:id="@+id/button_return_to_login"
-                android:layout_width="116dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/logout_button_text" />
 
         </TableRow>
+
     </TableLayout>
 
-</RelativeLayout>
+</LinearLayout>

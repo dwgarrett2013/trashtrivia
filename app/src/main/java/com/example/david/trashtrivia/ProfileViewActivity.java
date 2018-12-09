@@ -34,6 +34,10 @@ public class ProfileViewActivity extends Activity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_view);
 
+        TextView numCorrect=findViewById(R.id.textView_Correct);
+        TextView numAsked=findViewById(R.id.textView_Completed);
+        TextView numTaken=findViewById(R.id.textView_taken);
+
         loggedInUsername=getIntent().getStringExtra("username");
         loggedInUserRoleName=getIntent().getStringExtra("role_name");
 

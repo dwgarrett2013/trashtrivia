@@ -25,6 +25,10 @@ public class Question {
         this.num_times_asked=0;
     }
 
+    public Question(){
+
+    }
+
     public String getId() {
         return id;
     }

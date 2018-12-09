@@ -3,14 +3,21 @@ package com.example.david.trashtrivia;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MetricsActivity extends Activity implements View.OnClickListener {
 
@@ -39,63 +46,53 @@ public class MetricsActivity extends Activity implements View.OnClickListener {
         //create Firebase Database
         database = FirebaseDatabase.getInstance().getReference();
 
-        TableLayout questionStatsTable=findViewById(R.id.question_stats_table_layout);
-        TableLayout tagStatsTable=findViewById(R.id.tag_stats_table_layout);
+        final TableLayout questionStatsTable=findViewById(R.id.question_stats_table_layout);
 
         TextView questionBodyHeader=new TextView(getApplicationContext());
-        questionBodyHeader.setText("Question Text");
-        TextView questionNumCorrectHeader=new TextView(getApplicationContext());
-        questionNumCorrectHeader.setText("Number times Answered Correctly");
+        questionBodyHeader.setText("Question");
+        questionBodyHeader.setGravity(Gravity.LEFT);
         TextView questionNumTimesAsked=new TextView(getApplicationContext());
         questionNumTimesAsked.setText("NumTimesAsked");
+        questionNumTimesAsked.setGravity(Gravity.LEFT);
         TableRow questionRowHeaders=new TableRow(getApplicationContext());
         questionRowHeaders.addView(questionBodyHeader);
-        questionRowHeaders.addView(questionNumCorrectHeader);
         questionRowHeaders.addView(questionNumTimesAsked);
         questionStatsTable.addView(questionRowHeaders);
 
-        //autogenerate questions stats
-        for(int i=0; i<3; i++) {
-            TextView questionBodyTmp=new TextView(getApplicationContext());
-            TextView questionNumCorrectTmp=new TextView(getApplicationContext());
-            TextView questionNumTimesAskedTmp=new TextView(getApplicationContext());
-            TableRow questionRowTmp=new TableRow(getApplicationContext());
-            questionBodyTmp.setText("body");
-            questionNumCorrectTmp.setText(String.valueOf(i));
-            questionNumTimesAskedTmp.setText(String.valueOf(i));
-            questionRowTmp.addView(questionBodyTmp);
-            questionRowTmp.addView(questionNumCorrectTmp);
-            questionRowTmp.addView(questionNumTimesAskedTmp);
-            questionStatsTable.addView(questionRowTmp);
-        }
+        database.child("Question").orderByChild("id").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                Question theQuestion=dataSnapshot.getValue(Question.class);
+                TextView questionBodyTmp=new TextView(getApplicationContext());
+                TextView questionNumTimesAskedTmp=new TextView(getApplicationContext());
+                TableRow questionRowTmp=new TableRow(getApplicationContext());
+                questionNumTimesAskedTmp.setText(String.valueOf(theQuestion.getNum_times_asked()));
+                questionBodyTmp.setText(theQuestion.getQuestion_instructions());
+                questionRowTmp.addView(questionBodyTmp);
+                questionRowTmp.addView(questionNumTimesAskedTmp);
+                questionStatsTable.addView(questionRowTmp);
+            }
 
-        TextView tagBodyHeader=new TextView(getApplicationContext());
-        tagBodyHeader.setText("Tag Text");
-        TextView tagNumCorrectHeader=new TextView(getApplicationContext());
-        tagNumCorrectHeader.setText("Number times Answered Correctly");
-        TextView tagNumTimesAsked=new TextView(getApplicationContext());
-        tagNumTimesAsked.setText("NumTimesAsked");
-        TableRow tagRowHeaders=new TableRow(getApplicationContext());
-        tagRowHeaders.addView(tagBodyHeader);
-        tagRowHeaders.addView(tagNumCorrectHeader);
-        tagRowHeaders.addView(tagNumTimesAsked);
-        tagStatsTable.addView(tagRowHeaders);
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-        //autogenerate tag stats
-        for(int i=0; i<3; i++) {
-            TextView tagBodyTmp=new TextView(getApplicationContext());
-            TextView tagNumCorrectTmp=new TextView(getApplicationContext());
-            TextView tagNumTimesAskedTmp=new TextView(getApplicationContext());
-            TableRow tagRowTmp=new TableRow(getApplicationContext());
+            }
 
-            tagBodyTmp.setText("body");
-            tagNumCorrectTmp.setText(String.valueOf(i));
-            tagNumTimesAskedTmp.setText(String.valueOf(i));
-            tagRowTmp.addView(tagBodyTmp);
-            tagRowTmp.addView(tagNumCorrectTmp);
-            tagRowTmp.addView(tagNumTimesAskedTmp);
-            tagStatsTable.addView(tagRowTmp);
-        }
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
