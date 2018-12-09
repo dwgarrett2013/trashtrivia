@@ -57,8 +57,7 @@
             android:id="@+id/text_edit_input_friend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/text_edit_invite_friend"
-            tools:text="@string/text_edit_invite_friend" />
+            android:hint="@string/text_edit_invite_friend" />
 
         <TableRow
             android:id="@+id/table_row_notifications"
