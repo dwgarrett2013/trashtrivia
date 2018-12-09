@@ -11,10 +11,9 @@
 
         <TableRow
             android:id="@+id/table_row_title"
-            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="top|center">
+            android:gravity="top|center"
+            android:padding="1dp">
 
             <TextView
                 android:id="@+id/text_metrics_title"
@@ -38,8 +37,9 @@
 
             <TableLayout
                 android:id="@+id/question_stats_table_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:gravity="left">
 
             </TableLayout>

@@ -2,9 +2,12 @@ package com.example.david.trashtrivia;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -47,12 +50,18 @@ public class MetricsActivity extends Activity implements View.OnClickListener {
         database = FirebaseDatabase.getInstance().getReference();
 
         final TableLayout questionStatsTable=findViewById(R.id.question_stats_table_layout);
-
+        SpannableString questionString = new SpannableString("Question");
+        questionString.setSpan(new StyleSpan(Typeface.BOLD), 0, questionString.length(), 0);
         TextView questionBodyHeader=new TextView(getApplicationContext());
-        questionBodyHeader.setText("Question");
+        questionBodyHeader.setText(questionString);
         questionBodyHeader.setGravity(Gravity.LEFT);
+        //questionBodyHeader.setTextSize(16);
+        SpannableString numAskedString = new SpannableString("# Times Asked");
+        numAskedString.setSpan(new StyleSpan(Typeface.BOLD), 0, numAskedString.length(), 0);
         TextView questionNumTimesAsked=new TextView(getApplicationContext());
-        questionNumTimesAsked.setText("NumTimesAsked");
+        questionNumTimesAsked.setText(numAskedString);
+        questionNumTimesAsked.setPadding(100,0,3,0);
+
         questionNumTimesAsked.setGravity(Gravity.LEFT);
         TableRow questionRowHeaders=new TableRow(getApplicationContext());
         questionRowHeaders.addView(questionBodyHeader);
@@ -67,6 +76,7 @@ public class MetricsActivity extends Activity implements View.OnClickListener {
                 TextView questionNumTimesAskedTmp=new TextView(getApplicationContext());
                 TableRow questionRowTmp=new TableRow(getApplicationContext());
                 questionNumTimesAskedTmp.setText(String.valueOf(theQuestion.getNum_times_asked()));
+                questionNumTimesAskedTmp.setPadding(100,0,3,0);
                 questionBodyTmp.setText(theQuestion.getQuestion_instructions());
                 questionRowTmp.addView(questionBodyTmp);
                 questionRowTmp.addView(questionNumTimesAskedTmp);

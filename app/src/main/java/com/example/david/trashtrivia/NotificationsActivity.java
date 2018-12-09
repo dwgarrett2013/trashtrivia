@@ -68,7 +68,6 @@ public class NotificationsActivity extends Activity implements View.OnClickListe
 
                             final TextView notificationText=new TextView(getApplicationContext());
                             notificationText.setText(postSnapshot.child("notificationText").getValue().toString());
-
                             String senderId=postSnapshot.child("senderId").getValue().toString();
                             final String recipientId=postSnapshot.child("recipientId").getValue().toString();
 

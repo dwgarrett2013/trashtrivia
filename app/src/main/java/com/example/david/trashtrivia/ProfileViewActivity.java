@@ -2,10 +2,15 @@ package com.example.david.trashtrivia;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -34,9 +39,17 @@ public class ProfileViewActivity extends Activity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_view);
 
-        TextView numCorrect=findViewById(R.id.textView_Correct);
-        TextView numAsked=findViewById(R.id.textView_Completed);
-        TextView numTaken=findViewById(R.id.textView_taken);
+        final LinearLayout fullLinear=findViewById(R.id.full_linear);
+
+        float scale = getResources().getDisplayMetrics().density;
+
+        final int usernameDpAsPixels = (int) (150*scale + 0.5f);
+        final int scoreDpAsPixels = (int) (112*scale + 0.5f);
+        final int quizzesTakenDpAsPixels = (int) (60*scale + 0.5f);
+
+        final TextView numCorrect=findViewById(R.id.textView_Correct);
+        final TextView numAsked=findViewById(R.id.textView_Completed);
+        final TextView numTaken=findViewById(R.id.textView_taken);
 
         loggedInUsername=getIntent().getStringExtra("username");
         loggedInUserRoleName=getIntent().getStringExtra("role_name");
@@ -64,68 +77,31 @@ public class ProfileViewActivity extends Activity implements View.OnClickListene
                  TableRow tableRowNumCorrectAnswer=new TableRow(getApplicationContext());
                  tableRowNumCorrectAnswer.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
 
-                 TextView textViewNumCorrectAnswerSubtitle=new TextView(getApplicationContext());
-                 textViewNumCorrectAnswerSubtitle.setText("Number of correct Answers:");
-                 TextView textViewNumCorrectAnswerValue=new TextView(getApplicationContext());
-                 textViewNumCorrectAnswerValue.setText((String.valueOf(numCorrectAnswer)));
-                 tableRowNumCorrectAnswer.addView(textViewNumCorrectAnswerSubtitle);
-                 tableRowNumCorrectAnswer.addView(textViewNumCorrectAnswerValue);
-
-                 TableRow tableRowNumQuestionsCompleted=new TableRow(getApplicationContext());
-                 tableRowNumQuestionsCompleted.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-
-                 TextView textViewNumQuestionsCompleteSubtitle=new TextView(getApplicationContext());
-                 textViewNumQuestionsCompleteSubtitle.setText("Number of questions completed:");
-                 TextView textViewNumQuestionsCompleteValue=new TextView(getApplicationContext());
-                 textViewNumQuestionsCompleteValue.setText(String.valueOf(numQuestionsCompleted));
-                 tableRowNumQuestionsCompleted.addView(textViewNumQuestionsCompleteSubtitle);
-                 tableRowNumQuestionsCompleted.addView(textViewNumQuestionsCompleteValue);
-
-                 TableRow tableRowNumQuizzesTaken=new TableRow(getApplicationContext());
-                 tableRowNumQuizzesTaken.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-
-                 TextView textViewQuizzesCompleteSubtitle=new TextView(getApplicationContext());
-                 textViewQuizzesCompleteSubtitle.setText("Number of quizzes taken:");
-                 TextView textViewNumQuizzesCompleteValue=new TextView(getApplicationContext());
-                 textViewNumQuizzesCompleteValue.setText(String.valueOf(numQuizzesTaken));
-                 tableRowNumQuizzesTaken.addView(textViewQuizzesCompleteSubtitle);
-                 tableRowNumQuizzesTaken.addView(textViewNumQuizzesCompleteValue);
-
-                 profileContentTable.addView(tableRowNumCorrectAnswer);
-                 profileContentTable.addView(tableRowNumQuestionsCompleted);
-                 profileContentTable.addView(tableRowNumQuizzesTaken);
+                 numCorrect.setText((String.valueOf(numCorrectAnswer)));
+                 numAsked.setText(String.valueOf(numQuestionsCompleted));
+                 numTaken.setText(String.valueOf(numQuizzesTaken));
 
                  final TableLayout userScoreTable=new TableLayout(getApplicationContext());
                  userScoreTable.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-
-                 TableRow tableRowScoreTableHeader=new TableRow(getApplicationContext());
-                 tableRowScoreTableHeader.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-
-                 TextView userScoreTableHeaderUsername = new TextView(getApplicationContext());
-                 userScoreTableHeaderUsername.setText("Username");
-                 TextView userScoreTableHeaderNumCorrectAnswer = new TextView(getApplicationContext());
-                 userScoreTableHeaderNumCorrectAnswer.setText("Score");
-                 TextView userScoreTableHeaderNumQuizzesTaken = new TextView(getApplicationContext());
-                 userScoreTableHeaderNumQuizzesTaken.setText("Quizzes Taken");
-
-                 tableRowScoreTableHeader.addView(userScoreTableHeaderUsername);
-                 tableRowScoreTableHeader.addView(userScoreTableHeaderNumCorrectAnswer);
-                 tableRowScoreTableHeader.addView(userScoreTableHeaderNumQuizzesTaken);
-
-                 userScoreTable.addView(tableRowScoreTableHeader);
 
                  database.child("User").addValueEventListener(new ValueEventListener() {
                      @Override
                      public void onDataChange(DataSnapshot dataSnapshot) {
                          for (final DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 
+
+
                              TextView textViewUsername = new TextView(getApplicationContext());
+                             textViewUsername.setWidth(usernameDpAsPixels);
                              textViewUsername.setText(postSnapshot.child("username").getValue().toString());
 
+
                              TextView textViewNumCorrectAnswer = new TextView(getApplicationContext());
+                             textViewNumCorrectAnswer.setWidth(scoreDpAsPixels);
                              textViewNumCorrectAnswer.setText(postSnapshot.child("numCorrectAnswer").getValue().toString());
 
                              TextView textViewNumQuizzesTaken = new TextView(getApplicationContext());
+                             textViewNumQuizzesTaken.setWidth(quizzesTakenDpAsPixels);
                              textViewNumQuizzesTaken.setText(postSnapshot.child("numQuizzesTaken").getValue().toString());
 
                              TableRow tableRowUserScoreTable = new TableRow(getApplicationContext());
@@ -184,9 +160,9 @@ public class ProfileViewActivity extends Activity implements View.OnClickListene
                          });
                          tableRowReturnToLoginButton.addView(buttonReturnToLogin);
 
-                         profileContentTable.addView(tableRowShareProfileButton);
-                         profileContentTable.addView(tableRowReturnHomeButton);
-                         profileContentTable.addView(tableRowReturnToLoginButton);
+                         fullLinear.addView(tableRowShareProfileButton);
+                         fullLinear.addView(tableRowReturnHomeButton);
+                         fullLinear.addView(tableRowReturnToLoginButton);
 
                      }
                      @Override
