@@ -113,6 +113,7 @@ public class ProfileViewActivity extends Activity implements View.OnClickListene
 
                              userScoreTable.addView(tableRowUserScoreTable);
                          }
+                         profileContentTable.removeView(userScoreTable);
                          profileContentTable.addView(userScoreTable);
 
                          TableRow tableRowShareProfileButton=new TableRow(getApplicationContext());
@@ -152,10 +153,8 @@ public class ProfileViewActivity extends Activity implements View.OnClickListene
                          buttonReturnToLogin.setOnClickListener(new View.OnClickListener() {
                              @Override
                              public void onClick(View v) {
-                                 Intent intentReturnHome=new Intent(getApplicationContext(),HomepageActivity.class);
-                                 intentReturnHome.putExtra("username", loggedInUsername);
-                                 intentReturnHome.putExtra("role_name", loggedInUserRoleName);
-                                 startActivity(intentReturnHome);
+                                 Intent intentReturnToLogin=new Intent(getApplicationContext(),MainActivity.class);
+                                 startActivity(intentReturnToLogin);
                              }
                          });
                          tableRowReturnToLoginButton.addView(buttonReturnToLogin);

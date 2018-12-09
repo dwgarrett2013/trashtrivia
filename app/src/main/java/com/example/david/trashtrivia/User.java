@@ -11,6 +11,10 @@ public class User {
     private int numQuestionCompleted;
     private int numQuizzesTaken;
 
+    public User(){
+
+    }
+
     public User(String id, String username, String password){
         this.id=id;
         this.username=username;

@@ -25,9 +25,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="74dp"
-        android:layout_marginLeft="74dp"
-        android:layout_marginBottom="153dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginBottom="156dp"
         android:text="@string/return_home_text" />
 
     <Button
@@ -52,7 +52,7 @@
         android:background="?android:attr/listDivider"
         android:layout_alignParentLeft="true" />
 
-    <EditText
+    <TextView
         android:id="@+id/instructions"
         android:layout_width="309dp"
         android:layout_height="123dp"
@@ -65,7 +65,7 @@
         android:text="You are about to begin a Trash Trivia quiz. You will be asked a few questions and will earn a point for each correct answer.  You can exit the quiz at any time using the Exit button, but unanswered questions will be counted wrong in your profile.   Best of luck!"
         android:textSize="13sp" />
 
-    <EditText
+    <TextView
         android:id="@+id/header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

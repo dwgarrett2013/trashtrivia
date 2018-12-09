@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class TriviaCorrectAnswerActivity extends Activity implements View.OnClickListener{
 
@@ -14,6 +15,11 @@ public class TriviaCorrectAnswerActivity extends Activity implements View.OnClic
 
     private String loggedInUsername;
     private String loggedInUserRoleName;
+
+    private TextView textViewCurrentScore, textViewNumRemaining;
+
+    private int numQuestionRemaining;
+    private int currentScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +35,19 @@ public class TriviaCorrectAnswerActivity extends Activity implements View.OnClic
         buttonReturnToLogin=findViewById(R.id.button_correct_answer_logout);
         buttonReturnToLogin.setOnClickListener(this);
 
+        textViewCurrentScore=findViewById(R.id.editTextCurrentScore);
+        textViewNumRemaining=findViewById(R.id.editTextQuestionRemaining);
+
         loggedInUsername=getIntent().getStringExtra("username");
         loggedInUserRoleName=getIntent().getStringExtra("role_name");
+
+        currentScore=getIntent().getIntExtra("currentScore",0);
+        numQuestionRemaining=getIntent().getIntExtra("numQuestionRemaining",0);
+
+        textViewCurrentScore.setText(String.valueOf(currentScore));
+        textViewNumRemaining.setText(String.valueOf(numQuestionRemaining));
+
+
 
 
     }
@@ -41,6 +58,8 @@ public class TriviaCorrectAnswerActivity extends Activity implements View.OnClic
             Intent intentTriviaResults=new Intent(getApplicationContext(),TriviaResultsActivity.class);
             intentTriviaResults.putExtra("username", loggedInUsername);
             intentTriviaResults.putExtra("role_name", loggedInUserRoleName);
+            intentTriviaResults.putExtra("currentScore",currentScore);
+            intentTriviaResults.putExtra("numQuestionRemaining",numQuestionRemaining);
             startActivity(intentTriviaResults);
         }
         else if(v==buttonReturnToHome){

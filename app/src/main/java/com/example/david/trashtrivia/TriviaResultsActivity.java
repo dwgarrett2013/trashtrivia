@@ -3,9 +3,16 @@ package com.example.david.trashtrivia;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class TriviaResultsActivity extends Activity implements View.OnClickListener {
 
@@ -15,10 +22,17 @@ public class TriviaResultsActivity extends Activity implements View.OnClickListe
     private String loggedInUsername;
     private String loggedInUserRoleName;
 
+    private int currentScore;
+
+    //Initialize  FirebaseDatabaseObject
+    private DatabaseReference database;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia_results);
+
+        database = FirebaseDatabase.getInstance().getReference();
 
         buttonReplay = findViewById(R.id.button_trivia_results_replay);
         buttonLeaderboard = findViewById(R.id.button_trivia_results_profile_leaderboard);
@@ -37,13 +51,39 @@ public class TriviaResultsActivity extends Activity implements View.OnClickListe
         loggedInUsername=getIntent().getStringExtra("username");
         loggedInUserRoleName=getIntent().getStringExtra("role_name");
 
+        currentScore=getIntent().getIntExtra("currentScore",0);
+
+        textFinalscore.setText(String.valueOf(currentScore));
+
         if(loggedInUserRoleName.equals("admin")||loggedInUserRoleName.equals("premium")||loggedInUserRoleName.equals("standard")){
             buttonLeaderboard.setVisibility(View.VISIBLE);
         }
 
+        database.child("User").orderByChild("username").equalTo(loggedInUsername).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String userKey;
+                User theUser=new User();
+                for(DataSnapshot child: dataSnapshot.getChildren()){
+                        userKey=child.getKey();
+                        theUser=child.getValue(User.class);
+                }
+                System.out.println(theUser.getId());
+                theUser.setNumCorrectAnswer(theUser.getNumCorrectAnswer()+currentScore);
+                theUser.setNumQuizzesTaken(theUser.getNumQuizzesTaken()+1);
+                theUser.setNumQuestionCompleted(theUser.getNumQuestionCompleted()+1);
+                database.child("User").child(theUser.getId()).setValue(theUser);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
-        //Set Finalscore = session_score
+
+
     }
 
     @Override

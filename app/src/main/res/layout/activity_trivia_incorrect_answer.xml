@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <EditText
+            <TextView
                 android:id="@+id/editTextCurrentScore"
                 android:ems="10"
                 android:inputType="none"
@@ -70,7 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <EditText
+            <TextView
                 android:id="@+id/editTextQuestionRemaining"
                 android:ems="10"
                 android:inputType="number"
@@ -86,12 +86,13 @@
                 android:id="@+id/textView"
                 android:layout_width="267dp"
                 android:layout_height="34dp"
-                android:text="You answered incorrectly. Did you know: birds are amazing" />
+                android:text="You answered incorrectly" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:gravity="center">
 
             <Button
                 android:id="@+id/button_incorrect_answer_complete_quiz"
@@ -99,9 +100,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/button_complete_quiz" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:gravity="center">
 
             <Button
                 android:id="@+id/button_incorrect_answer_homepage"
@@ -109,9 +112,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/return_home_text" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:gravity="center">
 
             <Button
                 android:id="@+id/button_incorrect_answer_logout"

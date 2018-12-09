@@ -40,6 +40,9 @@ public class TriviaInitiateActivity extends Activity implements View.OnClickList
             Intent intentQuestionPrompt=new Intent(getApplicationContext(),TriviaQuestionPromptActivity.class);
             intentQuestionPrompt.putExtra("username", loggedInUsername);
             intentQuestionPrompt.putExtra("role_name", loggedInUserRoleName);
+            intentQuestionPrompt.putExtra("numQuestionRemaining", 1);
+            intentQuestionPrompt.putExtra("currentScore", 0);
+
             startActivity(intentQuestionPrompt);
         }
         else if(v==buttonReturnHome){
