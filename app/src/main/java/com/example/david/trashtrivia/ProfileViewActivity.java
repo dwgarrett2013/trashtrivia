@@ -7,12 +7,8 @@ package com.example.david.trashtrivia;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.text.SpannableString;
-import android.text.style.StyleSpan;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
