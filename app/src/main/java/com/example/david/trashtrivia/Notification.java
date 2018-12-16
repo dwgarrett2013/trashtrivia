@@ -1,3 +1,8 @@
+/*
+Team Members: Rang Jin, Babatunji Olotu, David Garrett, Matt Chatiwat Lerdvongveerachai, and Abhi Dua
+Group 9-Coffee Coffee Coffee
+ */
+
 package com.example.david.trashtrivia;
 
 import java.sql.Timestamp;
