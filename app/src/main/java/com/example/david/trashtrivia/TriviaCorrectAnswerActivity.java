@@ -80,7 +80,13 @@ public class TriviaCorrectAnswerActivity extends Activity implements View.OnClic
                 intentTriviaNextQuestion.putExtra("currentScore",currentScore);
                 intentTriviaNextQuestion.putExtra("numQuestionRemaining",numQuestionRemaining);
                 ArrayList<String> questionBankIdList=getIntent().getStringArrayListExtra("questionBankIdList");
-                System.out.println("Question Bank Id List" +questionBankIdList.size());
+                if(questionBankIdList==null){
+                    System.out.println("issue with idlist");
+                    System.out.println("blank id list");
+                }
+                else{
+                    System.out.println("Question Bank Id List" +questionBankIdList.size());
+                }
                 intentTriviaNextQuestion.putStringArrayListExtra("questionBankIdList",questionBankIdList);
                 startActivity(intentTriviaNextQuestion);
             }

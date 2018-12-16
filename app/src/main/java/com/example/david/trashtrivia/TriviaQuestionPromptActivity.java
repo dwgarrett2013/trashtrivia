@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -70,9 +71,11 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
         currentTextNumQuestionReamaining=findViewById(R.id.numRemainingVal);
         currentTextNumQuestionReamaining.setText(String.valueOf(numQuestionRemaining));
 
-        questionBankIdList=new ArrayList<>();
         if(getIntent().getStringArrayListExtra("questionBankIdList")!=null){
             questionBankIdList=getIntent().getStringArrayListExtra("questionBankIdList");
+        }
+        else{
+            questionBankIdList=new ArrayList<>();
         }
 
         System.out.println("Questionbank id list: "+questionBankIdList);
@@ -105,6 +108,9 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
                         }
                     }
                     else{
+
+                        ArrayList<String> idsToDelete=new ArrayList<>();
+
                         for(int i=0; i<questionList.size(); i++){
                             String searchId=questionList.get(i).getId();
                             int found=0;
@@ -112,12 +118,18 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
                                 System.out.println(questionBankIdList.get(c));
                                 if(questionBankIdList.get(c).equals(searchId)){
                                     found=1;
-                                    break;
                                 }
                             }
                             if(found==0){
-                                questionList.remove(i);
-                                i--;
+                                idsToDelete.add(questionList.get(i).getId());
+                            }
+                        }
+
+                        for(int i=0; i<idsToDelete.size(); i++){
+                            for(int c=0; c<questionList.size(); c++){
+                                if(questionList.get(c).getId().equals(idsToDelete.get(i))){
+                                    questionList.remove(c);
+                                }
                             }
                         }
 
@@ -179,6 +191,9 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
                 intentTriviaCorrectAnswer.putExtra("role_name", loggedInUserRoleName);
                 intentTriviaCorrectAnswer.putExtra("currentScore", currentScore);
                 intentTriviaCorrectAnswer.putExtra("numQuestionRemaining", numQuestionRemaining);
+                if(questionBankIdList!=null){
+                    intentTriviaCorrectAnswer.putStringArrayListExtra("questionBankIdList",questionBankIdList);
+                }
 
                 database.child("Question").orderByChild("id").equalTo(selectedQuestionKey).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -214,7 +229,10 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
                 for(int i=0; i<questionBankIdList.size(); i++){
                     System.out.println(questionBankIdList.get(i));
                 }
-                intentTriviaIncorrectAnswer.putStringArrayListExtra("questionBankIdList",questionBankIdList);
+                if(questionBankIdList!=null){
+                    intentTriviaIncorrectAnswer.putStringArrayListExtra("questionBankIdList",questionBankIdList);
+                }
+
                 database.child("Question").orderByChild("id").equalTo(selectedQuestionKey).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -246,7 +264,7 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
                 intentTriviaCorrectAnswer.putExtra("role_name", loggedInUserRoleName);
                 intentTriviaCorrectAnswer.putExtra("currentSco0re", currentScore);
                 intentTriviaCorrectAnswer.putExtra("numQuestionRemaining", numQuestionRemaining);
-                intentTriviaIncorrectAnswer.putStringArrayListExtra("questionBankIdList",questionBankIdList);
+                intentTriviaCorrectAnswer.putStringArrayListExtra("questionBankIdList",questionBankIdList);
 
                 database.child("Question").orderByChild("id").equalTo(selectedQuestionKey).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -374,7 +392,7 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
                 intentTriviaCorrectAnswer.putExtra("role_name", loggedInUserRoleName);
                 intentTriviaCorrectAnswer.putExtra("currentScore", currentScore);
                 intentTriviaCorrectAnswer.putExtra("numQuestionRemaining", numQuestionRemaining);
-                intentTriviaIncorrectAnswer.putStringArrayListExtra("questionBankIdList",questionBankIdList);
+                intentTriviaCorrectAnswer.putStringArrayListExtra("questionBankIdList",questionBankIdList);
                 database.child("Question").orderByChild("id").equalTo(selectedQuestionKey).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class TriviaIncorrectAnswerActivity extends Activity implements View.OnClickListener{
 
     private Button buttonCompleteQuizOrNextQuestion;
@@ -73,7 +75,13 @@ public class TriviaIncorrectAnswerActivity extends Activity implements View.OnCl
                 intentTriviaNextQuestion.putExtra("role_name", loggedInUserRoleName);
                 intentTriviaNextQuestion.putExtra("currentScore",currentScore);
                 intentTriviaNextQuestion.putExtra("numQuestionRemaining",numQuestionRemaining);
-                intentTriviaNextQuestion.putStringArrayListExtra("questionBankIdList",getIntent().getStringArrayListExtra("questionBankIdList"));
+                ArrayList<String> questionBankIdList=getIntent().getStringArrayListExtra("questionBankIdList");
+                if(questionBankIdList.size()==0){
+                    System.out.println("blank id list");
+                }
+                else{
+                    intentTriviaNextQuestion.putStringArrayListExtra("questionBankIdList",getIntent().getStringArrayListExtra("questionBankIdList"));
+                }
                 startActivity(intentTriviaNextQuestion);
             }
         }
