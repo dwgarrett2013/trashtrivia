@@ -6,166 +6,171 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/relativeLayout"
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
         tools:context=".MainActivity"
-        android:layout_height="10dp">
+        android:orientation="vertical">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/login_title"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:typeface="sans"
+            tools:text="@string/login_title" />
+
+        <TextView
+            android:id="@+id/subtitle_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/login_subtitle_text"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:typeface="sans"
+            tools:text="@string/login_subtitle_text" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <TextView
+            android:id="@+id/create_account_instruction_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:text="@string/create_account_text" />
+
+        <EditText
+            android:id="@+id/edit_text_forgot_username_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/email_hint"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextAccountCreatePassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/password_hint"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/edit_text_forgot_username_answer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.6" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <TextView
+            android:id="@+id/account_selection_instructions_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/account_selection_instructions_text" />
+
+        <RadioGroup
+            android:id="@+id/radio_group_select_account_type"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:orientation="vertical">
+            android:layout_below="@+id/account_selection_instructions_text_view"
+            tools:id="@id/radio_group_select_account_type">
 
-            <TextView
-                android:id="@+id/title_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="0dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="85dp"
-                android:gravity="center_horizontal"
-                android:text="@string/login_title"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:typeface="sans"
-                tools:text="@string/login_title" />
-
-            <TextView
-                android:id="@+id/subtitle_text"
+            <RadioButton
+                android:id="@+id/radio_button_standard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/login_subtitle_text"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:typeface="sans"
-                tools:text="@string/login_subtitle_text" />
+                android:checked="true"
+                android:text="@string/account_type_selection_standard_user" />
 
-            <TextView
-                android:id="@+id/create_account_instruction_text"
+            <RadioButton
+                android:id="@+id/radio_button_admin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textMultiLine"
-                android:text="@string/create_account_text" />
+                android:text="@string/account_type_selection_admin_user" />
 
-            <EditText
-                android:id="@+id/edit_text_forgot_username_answer"
+            <RadioButton
+                android:id="@+id/radio_button_premium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/email_hint"
-                android:inputType="textPersonName"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:text="@string/account_type_selection_premium_user" />
 
-            <EditText
-                android:id="@+id/editTextAccountCreatePassword"
+        </RadioGroup>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <TextView
+            android:id="@+id/security_question_instructions_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/security_question_instructions_text" />
+
+        <RadioGroup
+            android:id="@+id/radio_group_select_security_question"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioButton
+                android:id="@+id/radio_button_security_question_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/password_hint"
-                android:inputType="textPersonName"
-                app:layout_constraintBottom_toTopOf="@+id/edit_text_forgot_username_answer"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.6" />
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="@string/radio_button_security_question_text_1" />
 
-            <TextView
-                android:id="@+id/account_selection_instructions_text_view"
+            <RadioButton
+                android:id="@+id/radio_button_security_question_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/account_selection_instructions_text" />
+                android:layout_weight="1"
+                android:text="@string/radio_button_security_question_text_2" />
+        </RadioGroup>
 
-            <RadioGroup
-                android:id="@+id/radio_group_select_account_type"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/account_selection_instructions_text_view"
-                tools:id="@id/radio_group_select_account_type">
+        <EditText
+            android:id="@+id/editTextSecurityQuestionAnswer"
+            android:layout_width="261dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/security_question_answer_hint"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/edit_text_forgot_username_answer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.6" />
 
-                <RadioButton
-                    android:id="@+id/radio_button_standard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="@string/account_type_selection_standard_user" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="32dp" />
 
-                <RadioButton
-                    android:id="@+id/radio_button_admin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/account_type_selection_admin_user" />
+        <Button
+            android:id="@+id/button_submit_security_question_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create_user_account_button_text" />
 
-                <RadioButton
-                    android:id="@+id/radio_button_premium"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/account_type_selection_premium_user" />
+        <Button
+            android:id="@+id/button_return_to_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/return_to_login_text" />
 
-            </RadioGroup>
-
-            <TextView
-                android:id="@+id/security_question_instructions_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/security_question_instructions_text" />
-
-            <RadioGroup
-                android:id="@+id/radio_group_select_security_question"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <RadioButton
-                    android:id="@+id/radio_button_security_question_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:checked="true"
-                    android:text="@string/radio_button_security_question_text_1" />
-
-                <RadioButton
-                    android:id="@+id/radio_button_security_question_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/radio_button_security_question_text_2" />
-            </RadioGroup>
-
-            <EditText
-                android:id="@+id/editTextSecurityQuestionAnswer"
-                android:layout_width="261dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/security_question_answer_hint"
-                android:inputType="textPersonName"
-                app:layout_constraintBottom_toTopOf="@+id/edit_text_forgot_username_answer"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.6" />
-
-            <Button
-                android:id="@+id/button_submit_security_question_answer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/create_user_account_button_text" />
-
-            <Button
-                android:id="@+id/button_return_to_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/return_to_login_text" />
-
-        </LinearLayout>
-
-
-    </RelativeLayout>
+    </LinearLayout>
 
 </ScrollView>
