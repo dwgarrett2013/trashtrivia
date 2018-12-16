@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class TriviaIncorrectAnswerActivity extends Activity implements View.OnClickListener{
 
-    private Button buttonCompleteQuiz;
+    private Button buttonCompleteQuizOrNextQuestion;
     private Button buttonReturnToHome;
     private Button buttonReturnToLogin;
 
@@ -26,8 +26,8 @@ public class TriviaIncorrectAnswerActivity extends Activity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia_incorrect_answer);
 
-        buttonCompleteQuiz=findViewById(R.id.button_incorrect_answer_complete_quiz);
-        buttonCompleteQuiz.setOnClickListener(this);
+        buttonCompleteQuizOrNextQuestion =findViewById(R.id.button_incorrect_answer_complete_quiz);
+        buttonCompleteQuizOrNextQuestion.setOnClickListener(this);
 
         buttonReturnToHome=findViewById(R.id.button_incorrect_answer_homepage);
         buttonReturnToHome.setOnClickListener(this);
@@ -47,17 +47,35 @@ public class TriviaIncorrectAnswerActivity extends Activity implements View.OnCl
         textViewCurrentScore.setText(String.valueOf(currentScore));
         textViewNumRemaining.setText(String.valueOf(numQuestionRemaining));
 
+        if(numQuestionRemaining==0){
+            buttonCompleteQuizOrNextQuestion.setText("Complete Quiz");
+        }
+        else{
+            buttonCompleteQuizOrNextQuestion.setText("Next Question");
+        }
+
     }
 
     @Override
     public void onClick(View v) {
-        if(v==buttonCompleteQuiz){
-            Intent intentTriviaResults=new Intent(getApplicationContext(),TriviaResultsActivity.class);
-            intentTriviaResults.putExtra("username", loggedInUsername);
-            intentTriviaResults.putExtra("role_name", loggedInUserRoleName);
-            intentTriviaResults.putExtra("currentScore",currentScore);
-            intentTriviaResults.putExtra("numQuestionRemaining",numQuestionRemaining);
-            startActivity(intentTriviaResults);
+        if(v== buttonCompleteQuizOrNextQuestion){
+            if(numQuestionRemaining==0){
+                Intent intentTriviaResults=new Intent(getApplicationContext(),TriviaResultsActivity.class);
+                intentTriviaResults.putExtra("username", loggedInUsername);
+                intentTriviaResults.putExtra("role_name", loggedInUserRoleName);
+                intentTriviaResults.putExtra("currentScore",currentScore);
+                intentTriviaResults.putExtra("numQuestionRemaining",numQuestionRemaining);
+                startActivity(intentTriviaResults);
+            }
+            else{
+                Intent intentTriviaNextQuestion=new Intent(getApplicationContext(),TriviaQuestionPromptActivity.class);
+                intentTriviaNextQuestion.putExtra("username", loggedInUsername);
+                intentTriviaNextQuestion.putExtra("role_name", loggedInUserRoleName);
+                intentTriviaNextQuestion.putExtra("currentScore",currentScore);
+                intentTriviaNextQuestion.putExtra("numQuestionRemaining",numQuestionRemaining);
+                intentTriviaNextQuestion.putStringArrayListExtra("questionBankIdList",getIntent().getStringArrayListExtra("questionBankIdList"));
+                startActivity(intentTriviaNextQuestion);
+            }
         }
         else if(v==buttonReturnToHome){
             Intent intentReturnHome=new Intent(getApplicationContext(),HomepageActivity.class);

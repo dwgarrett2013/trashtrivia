@@ -41,6 +41,11 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
 
     private String selectedQuestionKey;
 
+    Intent intentTriviaCorrectAnswer;
+    Intent intentTriviaIncorrectAnswer;
+
+    ArrayList<String> questionBankIdList;
+
 
     //Initialize  FirebaseDatabaseObject
     private DatabaseReference database;
@@ -58,12 +63,19 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
         loggedInUsername=getIntent().getStringExtra("username");
         loggedInUserRoleName=getIntent().getStringExtra("role_name");
         currentScore=getIntent().getIntExtra("currentScore",0);
-        numQuestionRemaining=getIntent().getIntExtra("numQuestionRemaining",0);
+        numQuestionRemaining=getIntent().getIntExtra("numQuestionRemaining",5);
 
         currentTextScoreVal=findViewById(R.id.currentScoreVal);
         currentTextScoreVal.setText(String.valueOf(currentScore));
         currentTextNumQuestionReamaining=findViewById(R.id.numRemainingVal);
         currentTextNumQuestionReamaining.setText(String.valueOf(numQuestionRemaining));
+
+        questionBankIdList=new ArrayList<>();
+        if(getIntent().getStringArrayListExtra("questionBankIdList")!=null){
+            questionBankIdList=getIntent().getStringArrayListExtra("questionBankIdList");
+        }
+
+        System.out.println("Questionbank id list: "+questionBankIdList);
 
         final ArrayList<Question> questionList=new ArrayList<Question>();
         final ArrayList<String> possibleAnswers=new ArrayList<String>();
@@ -81,34 +93,78 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
         button4.setOnClickListener(this);
 
         database.child("Question").orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot child: dataSnapshot.getChildren()){
-                    questionList.add(child.getValue(Question.class));
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for(DataSnapshot child: dataSnapshot.getChildren()){
+                        questionList.add(child.getValue(Question.class));
+                    }
+
+                    if(questionBankIdList.size()==0){
+                        for(Question element: questionList){
+                            questionBankIdList.add(element.getId());
+                        }
+                    }
+                    else{
+                        for(int i=0; i<questionList.size(); i++){
+                            String searchId=questionList.get(i).getId();
+                            int found=0;
+                            for(int c=0; c<questionBankIdList.size(); c++){
+                                System.out.println(questionBankIdList.get(c));
+                                if(questionBankIdList.get(c).equals(searchId)){
+                                    found=1;
+                                    break;
+                                }
+                            }
+                            if(found==0){
+                                questionList.remove(i);
+                                i--;
+                            }
+                        }
+
+                    }
+
+                    /*
+                    for(int i=0; i<questionBankIdList.size(); i++){
+                        System.out.println(questionBankIdList.get(i));
+                    }
+                    */
+
+                    System.out.println("QuestionBankList size: "+questionBankIdList.size());
+                    System.out.println("questionlist size: "+questionList.size());
+
+
+                    int elementToUse=new Random().nextInt(questionBankIdList.size());
+                    String idOfQuestionToRemove=questionList.get(elementToUse).getId();
+                    for(int i=0; i<questionBankIdList.size(); i++){
+                        if(idOfQuestionToRemove.equals(questionBankIdList.get(i))){
+                            questionBankIdList.remove(i);
+                            break;
+                        }
+                    }
+
+
+
+                    possibleAnswers.add(questionList.get(elementToUse).getQuestion_correct_answer());
+                    correctAnswer=questionList.get(elementToUse).getQuestion_correct_answer();
+                    selectedQuestionKey=questionList.get(elementToUse).getId();
+                    questionText.setText(questionList.get(elementToUse).getQuestion_instructions());
+                    possibleAnswers.add(questionList.get(elementToUse).getQuestion_wrong_answer1());
+                    possibleAnswers.add(questionList.get(elementToUse).getQuestion_wrong_answer2());
+                    possibleAnswers.add(questionList.get(elementToUse).getQuestion_wrong_answer3());
+                    Collections.shuffle(possibleAnswers);
+
+                    button1.setText(possibleAnswers.get(0));
+                    button2.setText(possibleAnswers.get(1));
+                    button3.setText(possibleAnswers.get(2));
+                    button4.setText(possibleAnswers.get(3));
+
                 }
 
-                int elementToUse=new Random().nextInt(questionList.size());
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                possibleAnswers.add(questionList.get(elementToUse).getQuestion_correct_answer());
-                correctAnswer=questionList.get(elementToUse).getQuestion_correct_answer();
-                selectedQuestionKey=questionList.get(elementToUse).getId();
-                questionText.setText(questionList.get(elementToUse).getQuestion_instructions());
-                possibleAnswers.add(questionList.get(elementToUse).getQuestion_wrong_answer1());
-                possibleAnswers.add(questionList.get(elementToUse).getQuestion_wrong_answer2());
-                possibleAnswers.add(questionList.get(elementToUse).getQuestion_wrong_answer3());
-                Collections.shuffle(possibleAnswers);
-
-                button1.setText(possibleAnswers.get(0));
-                button2.setText(possibleAnswers.get(1));
-                button3.setText(possibleAnswers.get(2));
-                button4.setText(possibleAnswers.get(3));
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+                }
+            });
     }
 
     @Override
@@ -118,7 +174,7 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
             if(button1.getText().toString().equals(correctAnswer)){
                 currentScore++;
                 numQuestionRemaining--;
-                Intent intentTriviaCorrectAnswer=new Intent(getApplicationContext(),TriviaCorrectAnswerActivity.class);
+                intentTriviaCorrectAnswer=new Intent(getApplicationContext(),TriviaCorrectAnswerActivity.class);
                 intentTriviaCorrectAnswer.putExtra("username", loggedInUsername);
                 intentTriviaCorrectAnswer.putExtra("role_name", loggedInUserRoleName);
                 intentTriviaCorrectAnswer.putExtra("currentScore", currentScore);
@@ -150,11 +206,15 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
             }
             else {
                 numQuestionRemaining--;
-                Intent intentTriviaIncorrectAnswer=new Intent(getApplicationContext(),TriviaIncorrectAnswerActivity.class);
+                intentTriviaIncorrectAnswer=new Intent(getApplicationContext(),TriviaIncorrectAnswerActivity.class);
                 intentTriviaIncorrectAnswer.putExtra("username", loggedInUsername);
                 intentTriviaIncorrectAnswer.putExtra("role_name", loggedInUserRoleName);
                 intentTriviaIncorrectAnswer.putExtra("currentScore", currentScore);
                 intentTriviaIncorrectAnswer.putExtra("numQuestionRemaining", numQuestionRemaining);
+                for(int i=0; i<questionBankIdList.size(); i++){
+                    System.out.println(questionBankIdList.get(i));
+                }
+                intentTriviaIncorrectAnswer.putStringArrayListExtra("questionBankIdList",questionBankIdList);
                 database.child("Question").orderByChild("id").equalTo(selectedQuestionKey).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -181,11 +241,12 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
             if(button2.getText().toString().equals(correctAnswer)){
                 currentScore++;
                 numQuestionRemaining--;
-                Intent intentTriviaCorrectAnswer=new Intent(getApplicationContext(),TriviaCorrectAnswerActivity.class);
+                intentTriviaCorrectAnswer=new Intent(getApplicationContext(),TriviaCorrectAnswerActivity.class);
                 intentTriviaCorrectAnswer.putExtra("username", loggedInUsername);
                 intentTriviaCorrectAnswer.putExtra("role_name", loggedInUserRoleName);
-                intentTriviaCorrectAnswer.putExtra("currentScore", currentScore);
+                intentTriviaCorrectAnswer.putExtra("currentSco0re", currentScore);
                 intentTriviaCorrectAnswer.putExtra("numQuestionRemaining", numQuestionRemaining);
+                intentTriviaIncorrectAnswer.putStringArrayListExtra("questionBankIdList",questionBankIdList);
 
                 database.child("Question").orderByChild("id").equalTo(selectedQuestionKey).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -211,11 +272,12 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
             }
             else {
                 numQuestionRemaining--;
-                Intent intentTriviaIncorrectAnswer=new Intent(getApplicationContext(),TriviaIncorrectAnswerActivity.class);
+                intentTriviaIncorrectAnswer=new Intent(getApplicationContext(),TriviaIncorrectAnswerActivity.class);
                 intentTriviaIncorrectAnswer.putExtra("username", loggedInUsername);
                 intentTriviaIncorrectAnswer.putExtra("role_name", loggedInUserRoleName);
                 intentTriviaIncorrectAnswer.putExtra("currentScore", currentScore);
                 intentTriviaIncorrectAnswer.putExtra("numQuestionRemaining", numQuestionRemaining);
+                intentTriviaIncorrectAnswer.putStringArrayListExtra("questionBankIdList",questionBankIdList);
 
                 database.child("Question").orderByChild("id").equalTo(selectedQuestionKey).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -244,11 +306,12 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
             if(button3.getText().toString().equals(correctAnswer)){
                 currentScore++;
                 numQuestionRemaining--;
-                Intent intentTriviaCorrectAnswer=new Intent(getApplicationContext(),TriviaCorrectAnswerActivity.class);
+                intentTriviaCorrectAnswer=new Intent(getApplicationContext(),TriviaCorrectAnswerActivity.class);
                 intentTriviaCorrectAnswer.putExtra("username", loggedInUsername);
                 intentTriviaCorrectAnswer.putExtra("role_name", loggedInUserRoleName);
                 intentTriviaCorrectAnswer.putExtra("currentScore", currentScore);
                 intentTriviaCorrectAnswer.putExtra("numQuestionRemaining", numQuestionRemaining);
+                intentTriviaCorrectAnswer.putStringArrayListExtra("questionBankIdList",questionBankIdList);
                 database.child("Question").orderByChild("id").equalTo(selectedQuestionKey).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -273,11 +336,12 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
             }
             else {
                 numQuestionRemaining--;
-                Intent intentTriviaIncorrectAnswer=new Intent(getApplicationContext(),TriviaIncorrectAnswerActivity.class);
+                intentTriviaIncorrectAnswer=new Intent(getApplicationContext(),TriviaIncorrectAnswerActivity.class);
                 intentTriviaIncorrectAnswer.putExtra("username", loggedInUsername);
                 intentTriviaIncorrectAnswer.putExtra("role_name", loggedInUserRoleName);
                 intentTriviaIncorrectAnswer.putExtra("currentScore", currentScore);
                 intentTriviaIncorrectAnswer.putExtra("numQuestionRemaining", numQuestionRemaining);
+                intentTriviaIncorrectAnswer.putStringArrayListExtra("questionBankIdList",questionBankIdList);
 
                 database.child("Question").orderByChild("id").equalTo(selectedQuestionKey).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -305,11 +369,12 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
             if(button4.getText().toString().equals(correctAnswer)){
                 currentScore++;
                 numQuestionRemaining--;
-                Intent intentTriviaCorrectAnswer=new Intent(getApplicationContext(),TriviaCorrectAnswerActivity.class);
+                intentTriviaCorrectAnswer=new Intent(getApplicationContext(),TriviaCorrectAnswerActivity.class);
                 intentTriviaCorrectAnswer.putExtra("username", loggedInUsername);
                 intentTriviaCorrectAnswer.putExtra("role_name", loggedInUserRoleName);
                 intentTriviaCorrectAnswer.putExtra("currentScore", currentScore);
                 intentTriviaCorrectAnswer.putExtra("numQuestionRemaining", numQuestionRemaining);
+                intentTriviaIncorrectAnswer.putStringArrayListExtra("questionBankIdList",questionBankIdList);
                 database.child("Question").orderByChild("id").equalTo(selectedQuestionKey).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -334,11 +399,12 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
             }
             else {
                 numQuestionRemaining--;
-                Intent intentTriviaIncorrectAnswer=new Intent(getApplicationContext(),TriviaIncorrectAnswerActivity.class);
+                intentTriviaIncorrectAnswer=new Intent(getApplicationContext(),TriviaIncorrectAnswerActivity.class);
                 intentTriviaIncorrectAnswer.putExtra("username", loggedInUsername);
                 intentTriviaIncorrectAnswer.putExtra("role_name", loggedInUserRoleName);
                 intentTriviaIncorrectAnswer.putExtra("currentScore", currentScore);
                 intentTriviaIncorrectAnswer.putExtra("numQuestionRemaining", numQuestionRemaining);
+                intentTriviaIncorrectAnswer.putStringArrayListExtra("questionBankIdList",questionBankIdList);
 
                 database.child("Question").orderByChild("id").equalTo(selectedQuestionKey).addListenerForSingleValueEvent(new ValueEventListener()  {
                     @Override
