@@ -24,7 +24,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="39dp"
                 android:gravity="center_horizontal"
+                android:background="@color/colorAccent"
                 android:text="@string/notifications_home"
+                android:textColor="@color/common_google_signin_btn_text_dark_default"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:typeface="sans"
@@ -34,7 +36,9 @@
 
         <TableRow
             android:id="@+id/table_row_notifications"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
             android:gravity="top|center"
             android:padding="1dp">
 

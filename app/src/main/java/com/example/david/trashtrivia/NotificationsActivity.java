@@ -12,6 +12,7 @@ import android.support.annotation.NonNull;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -40,6 +41,12 @@ public class NotificationsActivity extends Activity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
+
+        final LinearLayout fullLinear=findViewById(R.id.full_linear);
+        float scale = getResources().getDisplayMetrics().density;
+
+        final int notificationTextAsPixels = (int) (150*scale + 0.5f);
+        final int senderAsPixels = (int) (112*scale + 0.5f);
 
         buttonReturnHome=findViewById(R.id.button_return_home);
         buttonReturnToLogin=findViewById(R.id.button_return_to_login);
@@ -70,6 +77,7 @@ public class NotificationsActivity extends Activity implements View.OnClickListe
                         for (final DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 
                             final TextView notificationText=new TextView(getApplicationContext());
+                            notificationText.setWidth(notificationTextAsPixels);
                             notificationText.setText(postSnapshot.child("notificationText").getValue().toString());
                             String senderId=postSnapshot.child("senderId").getValue().toString();
                             final String recipientId=postSnapshot.child("recipientId").getValue().toString();
