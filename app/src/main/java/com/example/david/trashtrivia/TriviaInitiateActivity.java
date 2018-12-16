@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class TriviaInitiateActivity extends Activity implements View.OnClickListener{
 
@@ -14,6 +15,11 @@ public class TriviaInitiateActivity extends Activity implements View.OnClickList
 
     private String loggedInUsername;
     private String loggedInUserRoleName;
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(), "Back button disabled during quiz.", Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

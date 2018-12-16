@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -50,6 +51,11 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
 
     //Initialize  FirebaseDatabaseObject
     private DatabaseReference database;
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(), "Back button disabled during quiz.", Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -35,6 +35,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private DatabaseReference database;
 
     @Override
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(), "Back button disabled on login screeen.", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
