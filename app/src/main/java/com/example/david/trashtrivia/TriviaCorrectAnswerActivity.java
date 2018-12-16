@@ -55,6 +55,8 @@ public class TriviaCorrectAnswerActivity extends Activity implements View.OnClic
         loggedInUserRoleName=getIntent().getStringExtra("role_name");
 
         currentScore=getIntent().getIntExtra("currentScore",0);
+        System.out.println(getIntent().getIntExtra("currentScore",5));
+        System.out.println(currentScore);
         numQuestionRemaining=getIntent().getIntExtra("numQuestionRemaining",0);
 
         textViewCurrentScore.setText(String.valueOf(currentScore));

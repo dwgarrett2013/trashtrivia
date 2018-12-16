@@ -273,7 +273,7 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
                 intentTriviaCorrectAnswer=new Intent(getApplicationContext(),TriviaCorrectAnswerActivity.class);
                 intentTriviaCorrectAnswer.putExtra("username", loggedInUsername);
                 intentTriviaCorrectAnswer.putExtra("role_name", loggedInUserRoleName);
-                intentTriviaCorrectAnswer.putExtra("currentSco0re", currentScore);
+                intentTriviaCorrectAnswer.putExtra("currentScore", currentScore);
                 intentTriviaCorrectAnswer.putExtra("numQuestionRemaining", numQuestionRemaining);
                 intentTriviaCorrectAnswer.putStringArrayListExtra("questionBankIdList",questionBankIdList);
 
@@ -286,7 +286,6 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
                             questionKey=child.getKey();
                             theQuestion=child.getValue(Question.class);
                         }
-                        System.out.println(theQuestion.getId());
                         theQuestion.setNum_times_asked(theQuestion.getNum_times_asked()+1);
                         theQuestion.setNum_times_answered_correctly(theQuestion.getNum_times_answered_correctly()+1);
                         database.child("Question").child(questionKey).setValue(theQuestion);
@@ -317,7 +316,6 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
                             questionKey=child.getKey();
                             theQuestion=child.getValue(Question.class);
                         }
-                        System.out.println(theQuestion.getId());
                         theQuestion.setNum_times_asked(theQuestion.getNum_times_asked()+1);
                         database.child("Question").child(questionKey).setValue(theQuestion);
                     }
@@ -350,7 +348,6 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
                             questionKey=child.getKey();
                             theQuestion=child.getValue(Question.class);
                         }
-                        System.out.println(theQuestion.getId());
                         theQuestion.setNum_times_asked(theQuestion.getNum_times_asked()+1);
                         theQuestion.setNum_times_answered_correctly(theQuestion.getNum_times_answered_correctly()+1);
                         database.child("Question").child(questionKey).setValue(theQuestion);
@@ -381,7 +378,6 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
                             questionKey=child.getKey();
                             theQuestion=child.getValue(Question.class);
                         }
-                        System.out.println(theQuestion.getId());
                         theQuestion.setNum_times_asked(theQuestion.getNum_times_asked()+1);
                         database.child("Question").child(questionKey).setValue(theQuestion);
                     }
@@ -413,7 +409,6 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
                             questionKey=child.getKey();
                             theQuestion=child.getValue(Question.class);
                         }
-                        System.out.println(theQuestion.getId());
                         theQuestion.setNum_times_asked(theQuestion.getNum_times_asked()+1);
                         theQuestion.setNum_times_answered_correctly(theQuestion.getNum_times_answered_correctly()+1);
                         database.child("Question").child(questionKey).setValue(theQuestion);
@@ -444,7 +439,6 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
                             questionKey=child.getKey();
                             theQuestion=child.getValue(Question.class);
                         }
-                        System.out.println(theQuestion.getId());
                         theQuestion.setNum_times_asked(theQuestion.getNum_times_asked()+1);
                         database.child("Question").child(questionKey).setValue(theQuestion);
                     }
