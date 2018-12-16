@@ -82,6 +82,9 @@ public class MetricsActivity extends Activity implements View.OnClickListener {
                 questionNumTimesAskedTmp.setText(String.valueOf(theQuestion.getNum_times_asked()));
                 questionNumTimesAskedTmp.setPadding(100,0,3,0);
                 questionBodyTmp.setText(theQuestion.getQuestion_instructions());
+                float scale = getResources().getDisplayMetrics().density;
+                int questionBodyWidthTextPixels = (int) (200*scale + 0.5f);
+                questionBodyTmp.setWidth(questionBodyWidthTextPixels);
                 questionRowTmp.addView(questionBodyTmp);
                 questionRowTmp.addView(questionNumTimesAskedTmp);
                 questionStatsTable.addView(questionRowTmp);

@@ -1,79 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MetricsActivity">
-
-    <TableLayout
+<ScrollView xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        tools:context=".MetricsActivity">
 
-        <TableRow
-            android:id="@+id/table_row_title"
-            android:layout_height="match_parent"
-            android:gravity="top|center"
-            android:padding="1dp">
-
-            <TextView
-                android:id="@+id/text_metrics_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/metrics_title"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:typeface="sans"
-                tools:text="@string/metrics_title" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/table_row_question_stats"
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
+            android:layout_height="wrap_content">
 
-            <TableLayout
-                android:id="@+id/question_stats_table_layout"
+            <TableRow
+                android:id="@+id/table_row_title"
+                android:layout_height="match_parent"
+                android:gravity="top|center"
+                android:padding="1dp">
+
+                <TextView
+                    android:id="@+id/text_metrics_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/metrics_title"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:typeface="sans"
+                    tools:text="@string/metrics_title" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/table_row_question_stats"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="left">
+                android:gravity="center">
 
-            </TableLayout>
-        </TableRow>
+                <TableLayout
+                    android:id="@+id/question_stats_table_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left">
 
-        <TableRow
-            android:id="@+id/table_row_return_home"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                </TableLayout>
+            </TableRow>
 
-            <Button
-                android:id="@+id/button_return_home"
+            <TableRow
+                android:id="@+id/table_row_return_home"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/return_home_text" />
+                android:layout_height="match_parent">
 
-        </TableRow>
+                <Button
+                    android:id="@+id/button_return_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/return_home_text" />
 
-        <TableRow
-            android:id="@+id/table_row_return_to_login"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            </TableRow>
 
-            <Button
-                android:id="@+id/button_return_to_login"
+            <TableRow
+                android:id="@+id/table_row_return_to_login"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/logout_button_text" />
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
-        </TableRow>
+                <Button
+                    android:id="@+id/button_return_to_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/logout_button_text" />
 
-    </TableLayout>
+            </TableRow>
 
-</LinearLayout>
+        </TableLayout>
+
+    </LinearLayout>
+</ScrollView>
