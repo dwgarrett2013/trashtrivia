@@ -87,7 +87,10 @@ public class NotificationsActivity extends Activity implements View.OnClickListe
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     final TextView senderUsername=new TextView(getApplicationContext());
                                     senderUsername.setGravity(Gravity.START);
-                                    senderUsername.setMaxWidth(10);
+                                    senderUsername.setWidth(senderAsPixels);
+
+
+                                    //senderUsername.setMaxWidth(10);
                                     for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                                         senderUsername.setText(postSnapshot.child("username").getValue().toString());
                                     }

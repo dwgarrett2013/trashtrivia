@@ -64,7 +64,7 @@ public class MetricsActivity extends Activity implements View.OnClickListener {
         numAskedString.setSpan(new StyleSpan(Typeface.BOLD), 0, numAskedString.length(), 0);
         TextView questionNumTimesAsked=new TextView(getApplicationContext());
         questionNumTimesAsked.setText(numAskedString);
-        questionNumTimesAsked.setPadding(100,0,3,0);
+        //questionNumTimesAsked.setPadding(100,0,3,0);
 
         questionNumTimesAsked.setGravity(Gravity.LEFT);
         TableRow questionRowHeaders=new TableRow(getApplicationContext());
@@ -79,10 +79,13 @@ public class MetricsActivity extends Activity implements View.OnClickListener {
                 TextView questionBodyTmp=new TextView(getApplicationContext());
                 TextView questionNumTimesAskedTmp=new TextView(getApplicationContext());
                 TableRow questionRowTmp=new TableRow(getApplicationContext());
-                questionNumTimesAskedTmp.setText(String.valueOf(theQuestion.getNum_times_asked()));
-                questionNumTimesAskedTmp.setPadding(100,0,3,0);
-                questionBodyTmp.setText(theQuestion.getQuestion_instructions());
+
                 float scale = getResources().getDisplayMetrics().density;
+                int questionNumTimesAskedWidthTextPixels = (int) (50*scale + 0.5f);
+                questionNumTimesAskedTmp.setText(String.valueOf(theQuestion.getNum_times_asked()));
+                questionNumTimesAskedTmp.setWidth(questionNumTimesAskedWidthTextPixels);
+                //questionNumTimesAskedTmp.setPadding(100,0,3,0);
+                questionBodyTmp.setText(theQuestion.getQuestion_instructions());
                 int questionBodyWidthTextPixels = (int) (200*scale + 0.5f);
                 questionBodyTmp.setWidth(questionBodyWidthTextPixels);
                 questionRowTmp.addView(questionBodyTmp);
