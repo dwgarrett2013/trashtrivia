@@ -116,4 +116,13 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="0dp" />
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="98dp"
+        android:layout_height="81dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="79dp"
+        android:src="@drawable/red_recycling_image" />
+
 </RelativeLayout>
