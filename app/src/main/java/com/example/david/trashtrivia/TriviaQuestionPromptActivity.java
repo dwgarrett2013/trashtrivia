@@ -89,8 +89,6 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
             questionBankIdList=new ArrayList<>();
         }
 
-        System.out.println("Questionbank id list: "+questionBankIdList);
-
         final ArrayList<Question> questionList=new ArrayList<Question>();
         final ArrayList<String> possibleAnswers=new ArrayList<String>();
 
@@ -126,7 +124,6 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
                             String searchId=questionList.get(i).getId();
                             int found=0;
                             for(int c=0; c<questionBankIdList.size(); c++){
-                                System.out.println(questionBankIdList.get(c));
                                 if(questionBankIdList.get(c).equals(searchId)){
                                     found=1;
                                 }
@@ -145,15 +142,6 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
                         }
 
                     }
-
-                    /*
-                    for(int i=0; i<questionBankIdList.size(); i++){
-                        System.out.println(questionBankIdList.get(i));
-                    }
-                    */
-
-                    System.out.println("QuestionBankList size: "+questionBankIdList.size());
-                    System.out.println("questionlist size: "+questionList.size());
 
 
                     int elementToUse=new Random().nextInt(questionBankIdList.size());
@@ -215,7 +203,6 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
                             questionKey=child.getKey();
                             theQuestion=child.getValue(Question.class);
                         }
-                        System.out.println(questionKey);
                         theQuestion.setNum_times_asked(theQuestion.getNum_times_asked()+1);
                         theQuestion.setNum_times_answered_correctly(theQuestion.getNum_times_answered_correctly()+1);
                         database.child("Question").child(questionKey).setValue(theQuestion);
@@ -237,9 +224,6 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
                 intentTriviaIncorrectAnswer.putExtra("role_name", loggedInUserRoleName);
                 intentTriviaIncorrectAnswer.putExtra("currentScore", currentScore);
                 intentTriviaIncorrectAnswer.putExtra("numQuestionRemaining", numQuestionRemaining);
-                for(int i=0; i<questionBankIdList.size(); i++){
-                    System.out.println(questionBankIdList.get(i));
-                }
                 if(questionBankIdList!=null){
                     intentTriviaIncorrectAnswer.putStringArrayListExtra("questionBankIdList",questionBankIdList);
                 }
@@ -253,7 +237,6 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
                             questionKey=child.getKey();
                             theQuestion=child.getValue(Question.class);
                         }
-                        System.out.println(theQuestion.getId());
                         theQuestion.setNum_times_asked(theQuestion.getNum_times_asked()+1);
                         database.child("Question").child(questionKey).setValue(theQuestion);
                     }

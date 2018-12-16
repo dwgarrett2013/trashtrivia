@@ -87,10 +87,7 @@ public class TriviaIncorrectAnswerActivity extends Activity implements View.OnCl
                 intentTriviaNextQuestion.putExtra("currentScore",currentScore);
                 intentTriviaNextQuestion.putExtra("numQuestionRemaining",numQuestionRemaining);
                 ArrayList<String> questionBankIdList=getIntent().getStringArrayListExtra("questionBankIdList");
-                if(questionBankIdList.size()==0){
-                    System.out.println("blank id list");
-                }
-                else{
+                if(questionBankIdList.size()!=0){
                     intentTriviaNextQuestion.putStringArrayListExtra("questionBankIdList",getIntent().getStringArrayListExtra("questionBankIdList"));
                 }
                 startActivity(intentTriviaNextQuestion);

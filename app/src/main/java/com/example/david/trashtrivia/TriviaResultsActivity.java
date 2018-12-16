@@ -70,31 +70,31 @@ public class TriviaResultsActivity extends Activity implements View.OnClickListe
             buttonLeaderboard.setVisibility(View.VISIBLE);
         }
 
-        database.child("User").orderByChild("username").equalTo(loggedInUsername).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String userKey;
-                User theUser=new User();
-                for(DataSnapshot child: dataSnapshot.getChildren()){
+        if(loggedInUserRoleName.equals("guest")){
+
+        }
+        else{
+            database.child("User").orderByChild("username").equalTo(loggedInUsername).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    String userKey;
+                    User theUser=new User();
+                    for(DataSnapshot child: dataSnapshot.getChildren()){
                         userKey=child.getKey();
                         theUser=child.getValue(User.class);
+                    }
+                    theUser.setNumCorrectAnswer(theUser.getNumCorrectAnswer()+currentScore);
+                    theUser.setNumQuizzesTaken(theUser.getNumQuizzesTaken()+1);
+                    theUser.setNumQuestionCompleted(theUser.getNumQuestionCompleted()+1);
+                    database.child("User").child(theUser.getId()).setValue(theUser);
                 }
-                System.out.println(theUser.getId());
-                theUser.setNumCorrectAnswer(theUser.getNumCorrectAnswer()+currentScore);
-                theUser.setNumQuizzesTaken(theUser.getNumQuizzesTaken()+1);
-                theUser.setNumQuestionCompleted(theUser.getNumQuestionCompleted()+1);
-                database.child("User").child(theUser.getId()).setValue(theUser);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
-
-
-
-
+                }
+            });
+        }
     }
 
     @Override

@@ -55,8 +55,6 @@ public class TriviaCorrectAnswerActivity extends Activity implements View.OnClic
         loggedInUserRoleName=getIntent().getStringExtra("role_name");
 
         currentScore=getIntent().getIntExtra("currentScore",0);
-        System.out.println(getIntent().getIntExtra("currentScore",5));
-        System.out.println(currentScore);
         numQuestionRemaining=getIntent().getIntExtra("numQuestionRemaining",0);
 
         textViewCurrentScore.setText(String.valueOf(currentScore));
@@ -93,13 +91,6 @@ public class TriviaCorrectAnswerActivity extends Activity implements View.OnClic
                 intentTriviaNextQuestion.putExtra("currentScore",currentScore);
                 intentTriviaNextQuestion.putExtra("numQuestionRemaining",numQuestionRemaining);
                 ArrayList<String> questionBankIdList=getIntent().getStringArrayListExtra("questionBankIdList");
-                if(questionBankIdList==null){
-                    System.out.println("issue with idlist");
-                    System.out.println("blank id list");
-                }
-                else{
-                    System.out.println("Question Bank Id List" +questionBankIdList.size());
-                }
                 intentTriviaNextQuestion.putStringArrayListExtra("questionBankIdList",questionBankIdList);
                 startActivity(intentTriviaNextQuestion);
             }
