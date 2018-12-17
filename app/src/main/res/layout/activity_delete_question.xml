@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ModifyQuestion">
+    tools:context=".ModifyQuestionActivity">
 
     <TextView
         android:id="@+id/DeleteQuestion"
         android:layout_width="380dp"
-        android:layout_height="200dp"
-        android:gravity="center"
-        android:text="Please contact the application administrator at (911) 911-9111 to delete a question."
+        android:layout_height="300dp"
+        android:gravity="left"
+        android:text="Please contact the application administrator at (911) 911-9111 to delete a question.  Press the back button to go back to the question home."
         android:textSize="33sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

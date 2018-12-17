@@ -8,11 +8,14 @@ package com.example.david.trashtrivia;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class DeleteQuestion extends Activity {
+//This activity allows a user to modify a question.  Note that this functionality is not currently
+//available.
+
+public class ModifyQuestionActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_delete_question);
+        setContentView(R.layout.activity_modify_question);
     }
 }

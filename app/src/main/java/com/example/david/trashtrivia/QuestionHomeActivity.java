@@ -48,11 +48,11 @@ public class QuestionHomeActivity extends Activity implements View.OnClickListen
             startActivity(intentAddQuestion);
         }
         else if(v==buttonModifyQuestion){
-            Intent intentModifyQuestion = new Intent(this, ModifyQuestion.class);
+            Intent intentModifyQuestion = new Intent(this, ModifyQuestionActivity.class);
             startActivity(intentModifyQuestion);
         }
         else if(v==buttonDeleteQuestion){
-            Intent intentDeleteQuestion = new Intent(this, DeleteQuestion.class);
+            Intent intentDeleteQuestion = new Intent(this, DeleteQuestionActivity.class);
             startActivity(intentDeleteQuestion);
         }
         else if(v==buttonReturnHome){

@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ModifyQuestion">
+    tools:context=".ModifyQuestionActivity">
 
     <TextView
         android:id="@+id/ModifyQuestion"
         android:layout_width="380dp"
         android:layout_height="200dp"
         android:gravity="center"
-        android:text="Please contact the application administrator at (911) 911-9111 to modify a question."
+        android:text="Please contact the application administrator at (911) 911-9111 to modify a question.  Press the back button to go back to the question home."
         android:textSize="33sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

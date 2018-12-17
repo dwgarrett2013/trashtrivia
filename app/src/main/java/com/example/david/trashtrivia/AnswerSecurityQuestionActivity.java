@@ -23,8 +23,9 @@ import com.google.firebase.database.ValueEventListener;
 
 /*
 This activity will request the user to enter a security question answer.  It will confirm or deny
-whether the username exists or if the provided answer is correct.  If answer is correct, it will
-forward the user to the apprpriate page
+whether the username exists and if the provided answer is correct.  If the username does not exist
+the user will be forward back to the login screen.  If they do and their answer is correct, the
+user will be forwarded to the appropriate page
  */
 
 public class AnswerSecurityQuestionActivity extends Activity implements View.OnClickListener {
