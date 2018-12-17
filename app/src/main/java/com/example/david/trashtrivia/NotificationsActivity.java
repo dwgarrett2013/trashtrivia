@@ -25,35 +25,35 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/*
+This Activity allows the user to see the notifications that have been sent to them
+ */
+
 public class NotificationsActivity extends Activity implements View.OnClickListener {
 
+    //Initialize return home and return to login buttons
     private Button buttonReturnHome, buttonReturnToLogin;
 
+    //Initialize values to store the username and role of the currently logged in user
     private String loggedInUsername;
     private String loggedInUserRoleName;
 
+    //Initialize a layouts to add notifications to
+    private LinearLayout fullLinear;
+    private TableLayout notificationsTable;
+
+    //Initialize FireBaseAuth object
+    private FirebaseAuth mAuth;
+
     //Initialize  FirebaseDatabaseObject
     private DatabaseReference database;
-
-    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
 
-        final LinearLayout fullLinear=findViewById(R.id.full_linear);
-        float scale = getResources().getDisplayMetrics().density;
-
-        final int notificationTextAsPixels = (int) (150*scale + 0.5f);
-        final int senderAsPixels = (int) (112*scale + 0.5f);
-
-        buttonReturnHome=findViewById(R.id.button_return_home);
-        buttonReturnToLogin=findViewById(R.id.button_return_to_login);
-
-        buttonReturnHome.setOnClickListener(this);
-        buttonReturnToLogin.setOnClickListener(this);
-
+        //get intents from previous page
         loggedInUsername=getIntent().getStringExtra("username");
         loggedInUserRoleName=getIntent().getStringExtra("role_name");
 
@@ -63,8 +63,22 @@ public class NotificationsActivity extends Activity implements View.OnClickListe
         //create mautho object
         mAuth=FirebaseAuth.getInstance();
 
-        final TableLayout notificationsTable=findViewById(R.id.notification_table_layout);
+        //Link objects to elements in view
+        fullLinear=findViewById(R.id.full_linear);
+        notificationsTable=findViewById(R.id.notification_table_layout);
+        buttonReturnHome=findViewById(R.id.button_return_home);
+        buttonReturnToLogin=findViewById(R.id.button_return_to_login);
 
+        //Set onclicklisteners
+        buttonReturnHome.setOnClickListener(this);
+        buttonReturnToLogin.setOnClickListener(this);
+
+        //get the scale and set pixel conversions
+        float scale = getResources().getDisplayMetrics().density;
+        final int notificationTextAsPixels = (int) (150*scale + 0.5f);
+        final int senderAsPixels = (int) (112*scale + 0.5f);
+
+        //get notifications for the logged in user from the database and display them on the page
         database.child("User").orderByChild("username").equalTo(loggedInUsername).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -124,13 +138,11 @@ public class NotificationsActivity extends Activity implements View.OnClickListe
                                     Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                                 }
                             });
-
                         }
                     }
 
                     @Override
                     public void onCancelled(DatabaseError error) {
-                        // Failed to read value
                         Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -146,16 +158,20 @@ public class NotificationsActivity extends Activity implements View.OnClickListe
 
     }
 
+    //Handle clicks
     @Override
     public void onClick(View v) {
+        //If return home button is pressed, return the homepage
         if(v==buttonReturnHome){
             Intent intentReturnHome=new Intent(getApplicationContext(),HomepageActivity.class);
             intentReturnHome.putExtra("username", loggedInUsername);
             intentReturnHome.putExtra("role_name", loggedInUserRoleName);
             startActivity(intentReturnHome);
         }
+        //If logout button is pressed, log the user out and return to login
         else if(v==buttonReturnToLogin){
             Intent intentReturnToLogin=new Intent(getApplicationContext(),MainActivity.class);
+            mAuth.signOut();
             startActivity(intentReturnToLogin);
         }
 

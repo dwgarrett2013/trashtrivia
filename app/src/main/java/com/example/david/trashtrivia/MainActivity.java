@@ -2,7 +2,9 @@
 Team Members: Rang Jin, Babatunji Olotu, David Garrett, Matt Chatiwat Lerdvongveerachai, and Abhi Dua
 Group 9-Coffee Coffee Coffee
 
-Citation Notes: https://www.recycling.com/wp-content/uploads/2016/06/recycling-symbol-icon-outline-solid-magenta.png
+Citation Notes:
+https://www.recycling.com/wp-content/uploads/2016/06/recycling-symbol-icon-outline-solid-magenta.png
+https://www.kissclipart.com/recycling-sign-clipart-recycling-symbol-clip-art-4ki5g3/
  */
 
 package com.example.david.trashtrivia;

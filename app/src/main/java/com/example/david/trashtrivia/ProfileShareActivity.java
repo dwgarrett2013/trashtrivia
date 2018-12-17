@@ -20,8 +20,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/*
+This activity allows the user to share their profile with another valid user
+ */
+
 public class ProfileShareActivity extends Activity implements View.OnClickListener{
 
+    //initialize buttons
     private Button buttonShareProfile, buttonReturnHome, buttonReturnToLogin;
 
     private TextView text_edit_input_friend;

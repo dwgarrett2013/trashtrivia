@@ -7,12 +7,16 @@ package com.example.david.trashtrivia;
 
 import java.sql.Timestamp;
 
+/*
+This class represents the notifications object
+ */
+
 public class Notification {
-    private String id;
-    private String senderId;
-    private String recipientId;
-    private String notificationText;
-    private Timestamp ts;
+    private String id;  //object id in database
+    private String senderId;    //id of the sender of the notification
+    private String recipientId; //id of the recipient of the notification
+    private String notificationText;    //text of the notification
+    private Timestamp ts;   //timestamp of notification when it was created
 
     public Notification(String id, String senderId, String recipientId, String notificationText) {
         this.id = id;
