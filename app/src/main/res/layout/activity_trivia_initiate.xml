@@ -1,82 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TriviaInitiateActivity">
 
-    <Button
-        android:id="@+id/button_start_trivia"
-        android:layout_width="171dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="99dp"
-        android:layout_marginLeft="99dp"
-        android:layout_marginBottom="257dp"
-        android:text="Begin Quiz" />
-
-    <Button
-        android:id="@+id/button_trivia_initiate_return_home"
-        android:layout_width="wrap_content"
-        android:layout_height="61dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginBottom="156dp"
-        android:text="@string/return_home_text" />
-
-    <Button
-        android:id="@+id/button_trivia_initiate_logout"
-        android:layout_width="340dp"
-        android:layout_height="73dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginBottom="65dp"
-        android:text="@string/logout_button_text" />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="240dp"
-        android:background="?android:attr/listDivider"
-        android:layout_alignParentLeft="true" />
-
-    <TextView
-        android:id="@+id/instructions"
-        android:layout_width="309dp"
-        android:layout_height="123dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="68dp"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:lineSpacingExtra="2sp"
-        android:text="You are about to begin a Trash Trivia quiz. You will be asked a few questions and will earn a point for each correct answer.  You can exit the quiz at any time using the Exit button, but unanswered questions will be counted wrong in your profile.   Best of luck!"
-        android:textSize="13sp" />
-
-    <TextView
-        android:id="@+id/textView9"
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="@color/colorAccent"
-        android:text="Instructions"
-        android:gravity="center"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:typeface="sans" />
+        android:gravity="center">
 
-</RelativeLayout>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:text="Instructions"
+                android:textColor="@color/common_google_signin_btn_text_dark_default"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+        </TableRow>
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="16dp" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/instructions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="textMultiLine"
+                android:text="You are about to begin a Trash Trivia quiz. You will be asked a few questions and will earn a point for each correct answer.  You can exit the quiz at any time using the Exit button, but unanswered questions will be counted wrong in your profile.   Best of luck!"
+                android:textSize="18sp" />
+        </TableRow>
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="16dp" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/button_start_trivia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Begin Quiz" />
+        </TableRow>
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="16dp" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/button_trivia_initiate_return_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/return_home_text" />
+        </TableRow>
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="16dp" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/button_trivia_initiate_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/logout_button_text" />
+
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>

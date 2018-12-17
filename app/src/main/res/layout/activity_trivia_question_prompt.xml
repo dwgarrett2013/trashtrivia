@@ -116,6 +116,10 @@
                 android:textSize="24sp" />
         </TableRow>
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="16dp" />
+
         <TableRow
             android:id="@+id/tableRowQuestionInstructions"
             android:layout_width="match_parent"
@@ -124,8 +128,13 @@
 
             <TextView
                 android:id="@+id/textViewQuestionInstructions"
-                android:text="Choose one from following answers:" />
+                android:text="Choose one from following answers:"
+                android:textSize="18sp" />
         </TableRow>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="16dp" />
 
         <TableRow android:gravity="center_horizontal">
 

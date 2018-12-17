@@ -85,7 +85,7 @@ public class TriviaResultsActivity extends Activity implements View.OnClickListe
                     }
                     theUser.setNumCorrectAnswer(theUser.getNumCorrectAnswer()+currentScore);
                     theUser.setNumQuizzesTaken(theUser.getNumQuizzesTaken()+1);
-                    theUser.setNumQuestionCompleted(theUser.getNumQuestionCompleted()+1);
+                    theUser.setNumQuestionCompleted(theUser.getNumQuestionCompleted()+5);
                     database.child("User").child(theUser.getId()).setValue(theUser);
                 }
 
