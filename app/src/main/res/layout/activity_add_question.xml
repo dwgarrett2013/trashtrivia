@@ -56,12 +56,13 @@
 
                 <EditText
                     android:id="@+id/editTextCreateQuestions"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
                     android:hint="Enter questions"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -80,12 +81,13 @@
 
                 <EditText
                     android:id="@+id/editTextRightAnswer"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
                     android:hint="Enter RIGHT answer"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -103,7 +105,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="#1 WRONG answer"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -119,7 +122,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="#2 WRONG answer"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -135,7 +139,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="#3 WRONG answer"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -151,7 +156,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Additional Information"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/buttonAddQuestion"
