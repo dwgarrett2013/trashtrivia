@@ -25,6 +25,8 @@
                 android:layout_marginTop="39dp"
                 android:gravity="center_horizontal"
                 android:text="@string/share_profile_title"
+                android:background="@color/colorAccent"
+                android:textColor="@color/common_google_signin_btn_text_dark_default"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:typeface="sans"

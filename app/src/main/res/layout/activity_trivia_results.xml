@@ -41,6 +41,11 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="34dp"
+        android:background="@color/colorAccent"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="sans"
         android:text="You Final score is" />
 
     <TextView
@@ -49,8 +54,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="116dp"
-        android:text="Congratulations! Your points have been added to your profile. Feel free to try again or compare your points in the Leaderboard." />
+        android:layout_marginTop="138dp"
+        android:text="Congratulations! Your points have been added to your profile. Feel free to try again or compare your points in the Leaderboard."
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textFinalscore"
@@ -58,8 +64,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="71dp"
-        android:text="000" />
+        android:layout_marginTop="89dp"
+        android:text="000"
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/button_trivia_results_replay"
@@ -67,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="217dp"
+        android:layout_marginTop="273dp"
         android:text="Replay" />
 
 </RelativeLayout>

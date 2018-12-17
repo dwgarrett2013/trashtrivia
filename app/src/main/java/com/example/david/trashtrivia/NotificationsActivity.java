@@ -114,14 +114,14 @@ public class NotificationsActivity extends Activity implements View.OnClickListe
 
                                         @Override
                                         public void onCancelled(@NonNull DatabaseError databaseError) {
-                                            //
+                                            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                                         }
                                     });
                                 }
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                                    //
+                                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                                 }
                             });
 
@@ -131,7 +131,7 @@ public class NotificationsActivity extends Activity implements View.OnClickListe
                     @Override
                     public void onCancelled(DatabaseError error) {
                         // Failed to read value
-                        Toast.makeText(getApplicationContext(), "Failed to read", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -139,7 +139,7 @@ public class NotificationsActivity extends Activity implements View.OnClickListe
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
             }
         });
 

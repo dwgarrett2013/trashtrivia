@@ -13,8 +13,11 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:text="Trash Trivia Quiz"
+        android:background="@color/colorAccent"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:typeface="sans"
         android:textAlignment="center"/>
 
     <TableLayout

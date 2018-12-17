@@ -83,7 +83,7 @@ public class ProfileShareActivity extends Activity implements View.OnClickListen
 
                             @Override
                             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                             }
 
                         });
@@ -96,7 +96,7 @@ public class ProfileShareActivity extends Activity implements View.OnClickListen
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                 }
             });
         }

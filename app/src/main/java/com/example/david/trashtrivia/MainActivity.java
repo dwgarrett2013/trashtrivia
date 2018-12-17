@@ -27,6 +27,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/*
+This activity loads the first the user will arrive at in the application.  It allows the user to login,
+create an account, retrive a forgotten password, or login as a guest user (note that there is limited functionality for
+guest users.
+
+If invalid credentials are provided, the user will not be allowed to login.
+
+Please note that the back button is disabled to preventu issues
+ */
+
 public class MainActivity extends Activity implements View.OnClickListener{
 
     //Initialize Button Objects
@@ -41,6 +51,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     //Initialize  FirebaseDatabaseObject
     private DatabaseReference database;
 
+    //Disable the back button to avoid issues with unintentional access
     @Override
     public void onBackPressed() {
         Toast.makeText(getApplicationContext(), "Back button disabled on login screeen.", Toast.LENGTH_SHORT).show();
@@ -51,13 +62,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Link Button Objects to elements in the view
+        //Link objects to elements in the view
         buttonLogin = findViewById(R.id.buttonLogin);
         buttonForgotPassword=findViewById(R.id.buttonForgotPassword);
         buttonCreateAccount = findViewById(R.id.button_submit_security_question_answer);
         buttonProceedAsGuest=findViewById(R.id.button_return_to_login);
-
-        //Link EditText Objects to elements in the view
         editTextEmail = findViewById(R.id.edit_text_forgot_username_answer);
         editTextPassword = findViewById(R.id.editTextPassword);
 
@@ -84,11 +93,13 @@ public class MainActivity extends Activity implements View.OnClickListener{
             startActivity(intentCreateAccount);
         }
 
+        //if Forgot password button is clicked
         else if(v == buttonForgotPassword){
             Intent intentForgotPassword = new Intent(getApplicationContext(),ForgotPasswordAskPasswordActivity.class);
             startActivity(intentForgotPassword);
         }
 
+        //if Proceed as guest button is clicked
         else if(v ==buttonProceedAsGuest) {
             Intent intentHomepage=new Intent(getApplicationContext(),HomepageActivity.class);
             intentHomepage.putExtra("role_name", "guest");
@@ -141,7 +152,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
                                                 @Override
                                                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                                                    Toast.makeText(getApplicationContext(), "Failed to read something", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                                                 }
                                             });
                                         }
@@ -149,7 +160,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                                         @Override
                                         public void onCancelled(DatabaseError error) {
                                             // Failed to read value
-                                            Toast.makeText(getApplicationContext(), "Failed to read something", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                                         }
                                     });
                                 }

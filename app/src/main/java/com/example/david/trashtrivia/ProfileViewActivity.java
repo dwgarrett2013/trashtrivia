@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -167,13 +168,13 @@ public class ProfileViewActivity extends Activity implements View.OnClickListene
                      }
                      @Override
                      public void onCancelled(@NonNull DatabaseError databaseError) {
-                         //
+                         Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                      }
                  });
              }
              @Override
              public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                 Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
              }
         });
     }
