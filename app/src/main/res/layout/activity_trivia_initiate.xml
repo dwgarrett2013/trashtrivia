@@ -66,17 +66,18 @@
         android:textSize="13sp" />
 
     <TextView
-        android:id="@+id/header"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="21dp"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:layout_marginTop="18dp"
+        android:background="@color/colorAccent"
         android:text="Instructions"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:gravity="center"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="sans" />
 
 </RelativeLayout>
