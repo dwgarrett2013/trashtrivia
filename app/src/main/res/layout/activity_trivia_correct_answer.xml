@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,86 +7,96 @@
 
     <TableLayout
         android:id="@+id/profile_content_table"
-        android:layout_width="368dp"
-        android:layout_height="503dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/textViewHeading"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="24dp"
+                android:gravity="center"
                 android:text="Trash Trivia Quiz"
+                android:background="@color/colorAccent"
+                android:textColor="@color/common_google_signin_btn_text_dark_default"
                 android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:typeface="sans"/>
         </TableRow>
 
         <TableRow
             android:id="@+id/tableRowCurrentScore"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/textViewCurrentScore"
-                android:layout_width="50dp"
-                android:text="Current Score:" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Current Score:"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
         </TableRow>
 
         <TableRow
             android:id="@+id/tableRowCurrentScoreValue"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/editTextCurrentScore"
                 android:ems="10"
                 android:inputType="none"
                 android:text="0"
+                android:textSize="18sp"
                 tools:text="0" />
         </TableRow>
 
         <TableRow
             android:id="@+id/tableRowQuestionRemaining"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/textViewQuestionRemaining"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Question Remaining:" />
+                android:text="Question Remaining:"
+                android:textStyle="bold"
+                android:textSize="18sp" />
         </TableRow>
 
         <TableRow
             android:id="@+id/tableRowQuestionRemainingVal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/editTextQuestionRemaining"
                 android:ems="10"
                 android:inputType="number"
                 android:text="0"
+                android:textSize="18sp"
                 tools:text="0" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="267dp"
-                android:layout_height="34dp"
-                android:text="You answered correctly!" />
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:textStyle="bold"
+                android:text="You answered correctly!"
+                android:textSize="18sp" />
         </TableRow>
 
         <TableRow
@@ -128,4 +138,4 @@
 
     </TableLayout>
 
-</RelativeLayout>
+</LinearLayout>
