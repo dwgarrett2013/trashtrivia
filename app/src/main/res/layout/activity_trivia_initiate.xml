@@ -71,7 +71,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
         android:background="@color/colorAccent"
         android:text="Instructions"
         android:gravity="center"
