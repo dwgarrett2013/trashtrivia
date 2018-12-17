@@ -24,45 +24,61 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/*
+This activity allows the user to view their profile and place on the leaderboard against other users
+ */
+
 public class ProfileViewActivity extends Activity implements View.OnClickListener{
 
+    //initialize buttons
     private Button buttonReturnHome, buttonReturnToLogin, buttonShareProfile;
 
+    //Initialize values to store the username and role of the currently logged in user
     private String loggedInUsername;
     private String loggedInUserRoleName;
 
     //Initialize  FirebaseDatabaseObject
     private DatabaseReference database;
 
+    //Initialize FireBaseAuth object
     private FirebaseAuth mAuth;
+
+    //create View-related objects to hold data
+    private LinearLayout fullLinear;
+    private TableLayout profileContentTable;
+    private TextView numCorrect;
+    private TextView numAsked;
+    private TextView numTaken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_view);
 
-        final LinearLayout fullLinear=findViewById(R.id.full_linear);
+        //get intents from previous page
+        loggedInUsername=getIntent().getStringExtra("username");
+        loggedInUserRoleName=getIntent().getStringExtra("role_name");
 
+        //create mautho object
+        mAuth=FirebaseAuth.getInstance();
+
+        //create Firebase Database
+        database = FirebaseDatabase.getInstance().getReference();
+
+        //set scale-related resources
         float scale = getResources().getDisplayMetrics().density;
-
         final int usernameDpAsPixels = (int) (150*scale + 0.5f);
         final int scoreDpAsPixels = (int) (112*scale + 0.5f);
         final int quizzesTakenDpAsPixels = (int) (60*scale + 0.5f);
 
-        final TextView numCorrect=findViewById(R.id.textView_Correct);
-        final TextView numAsked=findViewById(R.id.textView_Completed);
-        final TextView numTaken=findViewById(R.id.textView_taken);
+        //Link objects to elements on view
+        fullLinear=findViewById(R.id.full_linear);
+        profileContentTable=findViewById(R.id.profile_content_table);
+        numCorrect=findViewById(R.id.textView_Correct);
+        numAsked=findViewById(R.id.textView_Completed);
+        numTaken=findViewById(R.id.textView_taken);
 
-        loggedInUsername=getIntent().getStringExtra("username");
-        loggedInUserRoleName=getIntent().getStringExtra("role_name");
-
-        //create Firebase Database
-        database = FirebaseDatabase.getInstance().getReference();
-        //create mautho object
-        mAuth=FirebaseAuth.getInstance();
-
-        final TableLayout profileContentTable=findViewById(R.id.profile_content_table);
-
+        //
         database.child("User").orderByChild("username").equalTo(loggedInUsername).addListenerForSingleValueEvent(new ValueEventListener() {
              @Override
              public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -86,13 +102,11 @@ public class ProfileViewActivity extends Activity implements View.OnClickListene
                  final TableLayout userScoreTable=new TableLayout(getApplicationContext());
                  userScoreTable.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
 
+                 //obtain and display profile information from database
                  database.child("User").addValueEventListener(new ValueEventListener() {
                      @Override
                      public void onDataChange(DataSnapshot dataSnapshot) {
                          for (final DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-
-
-
                              TextView textViewUsername = new TextView(getApplicationContext());
                              textViewUsername.setWidth(usernameDpAsPixels);
                              textViewUsername.setText(postSnapshot.child("username").getValue().toString());
