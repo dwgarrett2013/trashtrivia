@@ -7,6 +7,7 @@ package com.example.david.trashtrivia;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -96,8 +97,11 @@ public class ProfileViewActivity extends Activity implements View.OnClickListene
                  tableRowNumCorrectAnswer.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
 
                  numCorrect.setText((String.valueOf(numCorrectAnswer)));
+                 numCorrect.setTextColor(Color.BLACK);
                  numAsked.setText(String.valueOf(numQuestionsCompleted));
+                 numAsked.setTextColor(Color.BLACK);
                  numTaken.setText(String.valueOf(numQuizzesTaken));
+                 numTaken.setTextColor(Color.BLACK);
 
                  final TableLayout userScoreTable=new TableLayout(getApplicationContext());
                  userScoreTable.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
@@ -110,15 +114,18 @@ public class ProfileViewActivity extends Activity implements View.OnClickListene
                              TextView textViewUsername = new TextView(getApplicationContext());
                              textViewUsername.setWidth(usernameDpAsPixels);
                              textViewUsername.setText(postSnapshot.child("username").getValue().toString());
+                             textViewUsername.setTextColor(Color.BLACK);
 
 
                              TextView textViewNumCorrectAnswer = new TextView(getApplicationContext());
                              textViewNumCorrectAnswer.setWidth(scoreDpAsPixels);
                              textViewNumCorrectAnswer.setText(postSnapshot.child("numCorrectAnswer").getValue().toString());
+                             textViewNumCorrectAnswer.setTextColor(Color.BLACK);
 
                              TextView textViewNumQuizzesTaken = new TextView(getApplicationContext());
                              textViewNumQuizzesTaken.setWidth(quizzesTakenDpAsPixels);
                              textViewNumQuizzesTaken.setText(postSnapshot.child("numQuizzesTaken").getValue().toString());
+                             textViewNumQuizzesTaken.setTextColor(Color.BLACK);
 
                              TableRow tableRowUserScoreTable = new TableRow(getApplicationContext());
                              tableRowUserScoreTable.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));

@@ -7,6 +7,7 @@ package com.example.david.trashtrivia;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -77,12 +78,14 @@ public class MetricsActivity extends Activity implements View.OnClickListener {
         SpannableString questionString = new SpannableString("Question");
         questionString.setSpan(new StyleSpan(Typeface.BOLD), 0, questionString.length(), 0);
         TextView questionBodyHeader=new TextView(getApplicationContext());
+        questionBodyHeader.setTextColor(Color.BLACK);
         questionBodyHeader.setText(questionString);
         questionBodyHeader.setGravity(Gravity.LEFT);
         SpannableString numAskedString = new SpannableString("# Times Asked");
         numAskedString.setSpan(new StyleSpan(Typeface.BOLD), 0, numAskedString.length(), 0);
         TextView questionNumTimesAsked=new TextView(getApplicationContext());
         questionNumTimesAsked.setText(numAskedString);
+        questionNumTimesAsked.setTextColor(Color.BLACK);
         questionNumTimesAsked.setGravity(Gravity.LEFT);
         TableRow questionRowHeaders=new TableRow(getApplicationContext());
         questionRowHeaders.addView(questionBodyHeader);
@@ -104,10 +107,12 @@ public class MetricsActivity extends Activity implements View.OnClickListener {
                 Question theQuestion=dataSnapshot.getValue(Question.class);
                 questionBodyTmp.setText(theQuestion.getQuestion_instructions());
                 questionBodyTmp.setWidth(questionBodyWidthTextPixels);
+                questionBodyTmp.setTextColor(Color.BLACK);
 
                 TextView questionNumTimesAskedTmp=new TextView(getApplicationContext());
                 questionNumTimesAskedTmp.setText(String.valueOf(theQuestion.getNum_times_asked()));
                 questionNumTimesAskedTmp.setWidth(questionNumTimesAskedWidthTextPixels);
+                questionNumTimesAskedTmp.setTextColor(Color.BLACK);
 
                 questionRowTmp.addView(questionBodyTmp);
                 questionRowTmp.addView(questionNumTimesAskedTmp);

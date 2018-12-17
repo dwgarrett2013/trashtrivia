@@ -7,6 +7,7 @@ package com.example.david.trashtrivia;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.Gravity;
@@ -93,6 +94,7 @@ public class NotificationsActivity extends Activity implements View.OnClickListe
 
                             final TextView notificationText=new TextView(getApplicationContext());
                             notificationText.setWidth(notificationTextAsPixels);
+                            notificationText.setTextColor(Color.BLACK);
                             notificationText.setText(postSnapshot.child("notificationText").getValue().toString());
                             String senderId=postSnapshot.child("senderId").getValue().toString();
                             final String recipientId=postSnapshot.child("recipientId").getValue().toString();
@@ -103,7 +105,7 @@ public class NotificationsActivity extends Activity implements View.OnClickListe
                                     final TextView senderUsername=new TextView(getApplicationContext());
                                     senderUsername.setGravity(Gravity.START);
                                     senderUsername.setWidth(senderAsPixels);
-
+                                    senderUsername.setTextColor(Color.BLACK);
 
                                     //senderUsername.setMaxWidth(10);
                                     for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
