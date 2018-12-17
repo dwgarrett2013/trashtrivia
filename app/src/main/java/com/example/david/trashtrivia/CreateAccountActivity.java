@@ -26,38 +26,42 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/*
+This Activity allows a user to create an account.
+ */
+
 public class CreateAccountActivity extends Activity implements View.OnClickListener{
 
     //Initialize Button Objects
     private Button buttonCreateAccount, buttonReturnToLogin;
 
-    //Link EditText Objects to elements in the view
+    //Initialize EditText Objects
     private EditText editTextEmail;
     private EditText editTextPassword;
     private EditText editTextSecurityQuestionAnswer;
 
+    //Initialize Radio group and button objects for security questions
     private RadioGroup radioGroupAccountType, radioGroupSecurityQuestion;
-
     private RadioButton radioButtonAccountType, radioButtonSecurityQuestion;
 
     //Initialize  FirebaseDatabaseObject
     private DatabaseReference database;
 
+    //Initialize FirebaseAuth
     private FirebaseAuth mAuth;
 
+    //On Create
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
-        //Link Button Objects to elements in the view
+        //Link objects to elements in the view
         buttonCreateAccount = findViewById(R.id.button_submit_security_question_answer);
         buttonReturnToLogin = findViewById(R.id.button_return_to_login);
-
         editTextEmail=findViewById(R.id.edit_text_forgot_username_answer);
         editTextPassword=findViewById(R.id.editTextAccountCreatePassword);
         editTextSecurityQuestionAnswer=findViewById(R.id.editTextSecurityQuestionAnswer);
-
         radioGroupAccountType = findViewById(R.id.radio_group_select_account_type);
         radioGroupSecurityQuestion = findViewById(R.id.radio_group_select_security_question);
 
@@ -67,36 +71,37 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
 
         //create Firebase Database
         database = FirebaseDatabase.getInstance().getReference();
-        //create mautho object
-        mAuth=FirebaseAuth.getInstance();
 
+        //create mAuth object
+        mAuth=FirebaseAuth.getInstance();
     }
 
     @Override
     public void onClick(View v) {
-        //if Create Account button is clicked
+        //if the return to loging button is pressed
         if(v == buttonReturnToLogin) {
             Intent intentReturnToLogin = new Intent(getApplicationContext(),MainActivity.class);
             startActivity(intentReturnToLogin);
         }
+        //if Create Account button is clicked, make sure all fields are provided and create the
+        //account with the appropriate role and othe rsettings
         else if(v == buttonCreateAccount) {
-
             if(editTextEmail.getText().toString().isEmpty() || editTextPassword.getText().toString().isEmpty() ||
                     editTextSecurityQuestionAnswer.getText().toString().isEmpty()) {
                 Toast.makeText(getApplicationContext(), "Please ensure that an email, password, and " +
                         "security question are provided", Toast.LENGTH_SHORT).show();
             }
             else{
+                //get the selected values
                 int selectedAccountTypeRadioButtonId=radioGroupAccountType.getCheckedRadioButtonId();
                 int selectedSecurityQuestionRadioButtonId=radioGroupSecurityQuestion.getCheckedRadioButtonId();
-
                 radioButtonAccountType=findViewById(selectedAccountTypeRadioButtonId);
                 radioButtonSecurityQuestion=findViewById(selectedSecurityQuestionRadioButtonId);
                 String radioButtonAccountTypeText=radioButtonAccountType.getText().toString();
                 final String radioButtonSecurityQuestionText=radioButtonSecurityQuestion.getText().toString();
                 String radioButtonAccountTypeTextClean="";
 
-
+                //select role
                 if(radioButtonAccountTypeText.equals("Admin User")){
                     radioButtonAccountTypeTextClean="admin";
                 }
@@ -116,8 +121,6 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                            //Toast.makeText(getApplicationContext(), "crud", Toast.LENGTH_SHORT).show();
-                            //Toast.makeText(getApplicationContext(), postSnapshot.child("roleName").getValue().toString(), Toast.LENGTH_SHORT).show();
                             userDbObject.setRoleId(postSnapshot.child("id").getValue().toString());
                         }
                         //after updating userDbObject with role, id do same with securityQuesitonid
@@ -126,8 +129,10 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                                     userDbObject.setSecurityQuestionId(postSnapshot.child("id").getValue().toString());
-                                    //Toast.makeText(getApplicationContext(), postSnapshot.child("username").getValue().toString()+postSnapshot.child("password").getValue().toString(), Toast.LENGTH_SHORT).show();
                                 }
+
+                                //Create a user in Firebase auth, and then create one in the database if initial call was successful and return user to
+                                //login
                                 mAuth.createUserWithEmailAndPassword(editTextEmail.getText().toString(), editTextPassword.getText().toString())
                                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                             @Override
@@ -136,7 +141,9 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
                                                         addOnSuccessListener(new OnSuccessListener<Void>() {
                                                             @Override
                                                             public void onSuccess(Void aVoid) {
-                                                                Toast.makeText(getApplicationContext(), "Successes for all", Toast.LENGTH_SHORT).show();
+                                                                Toast.makeText(getApplicationContext(), "Account successfully created", Toast.LENGTH_SHORT).show();
+                                                                Intent intentReturnToLogin = new Intent(getApplicationContext(),MainActivity.class);
+                                                                startActivity(intentReturnToLogin);
                                                             }
                                                         })
                                                         .addOnFailureListener(new OnFailureListener() {
@@ -157,7 +164,6 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
 
                             @Override
                             public void onCancelled(DatabaseError error) {
-                                // Failed to read value
                                 Toast.makeText(getApplicationContext(), "Failed to read Security id", Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -168,31 +174,7 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
                         Toast.makeText(getApplicationContext(), "failed to read role id", Toast.LENGTH_SHORT).show();
                     }
                 });
-
-                //Toast.makeText(this, "Say Something", Toast.LENGTH_SHORT).show();
-
-                //note that you can attach onece and it will work
-
-                // Read from the database
-                database.child("User").orderByChild("username").equalTo("Sasha").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                            Toast.makeText(getApplicationContext(), postSnapshot.child("username").getValue().toString()+postSnapshot.child("password").getValue().toString(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError error) {
-                        // Failed to read value
-                        Toast.makeText(getApplicationContext(), "Failed to read", Toast.LENGTH_SHORT).show();
-                    }
-                });
             }
-
-
-
         }
-
     }
 }
