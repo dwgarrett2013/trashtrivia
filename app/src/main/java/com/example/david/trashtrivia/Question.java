@@ -5,16 +5,20 @@ Group 9-Coffee Coffee Coffee
 
 package com.example.david.trashtrivia;
 
+/*
+This class represents a Question object in the database
+ */
+
 public class Question {
-    private String id;
-    private String question_instructions;
-    private String question_correct_answer;
-    private String question_wrong_answer1;
-    private String question_wrong_answer2;
-    private String question_wrong_answer3;
-    private String question_additional_information;
-    private int num_times_asked;
-    private int num_times_answered_correctly;
+    private String id;  //id in the database
+    private String question_instructions;   //Question instructions text
+    private String question_correct_answer; //text of the correct answer
+    private String question_wrong_answer1;  //text of incorrect answer1
+    private String question_wrong_answer2;  //text of incorrect answer2
+    private String question_wrong_answer3;  //text of incorrect answer3
+    private String question_additional_information; ////text additional information
+    private int num_times_asked;    //number of times the question has been asked
+    private int num_times_answered_correctly;   //number of times the question has been answered correctly
 
     public Question(String id, String question_instructions, String question_correct_answer,
                     String question_wrong_answer1, String question_wrong_answer2,

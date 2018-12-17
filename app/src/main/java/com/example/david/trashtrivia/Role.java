@@ -5,9 +5,13 @@ Group 9-Coffee Coffee Coffee
 
 package com.example.david.trashtrivia;
 
+/*
+This class represents user role objects in the database used to specific what permission as user has.
+ */
+
 public class Role {
-    private String id;
-    private String roleName;
+    private String id;  //role id
+    private String roleName;    //role name
 
     public Role(String id, String roleName){
         this.id=id;

@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:inputType="textMultiLine"
-                android:text="You are about to begin a Trash Trivia quiz. You will be asked a few questions and will earn a point for each correct answer.  You can exit the quiz at any time using the Exit button, but unanswered questions will be counted wrong in your profile.   Best of luck!"
+                android:text="You are about to begin a Trash Trivia quiz. You will be asked a few questions and will earn a point for each correct answer.  You can exit the quiz at any time using the Exit button, but doing so before completing the quiz means no points will be added to your profile.  You must complete the quiz to earn points.  Best of luck!"
                 android:textSize="18sp" />
         </TableRow>
         <Space

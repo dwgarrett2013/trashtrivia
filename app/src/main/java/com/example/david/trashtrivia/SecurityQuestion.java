@@ -5,9 +5,13 @@ Group 9-Coffee Coffee Coffee
 
 package com.example.david.trashtrivia;
 
+/*
+This class represents a security question type in the database
+ */
+
 public class SecurityQuestion {
-    private String id;
-    private String security_question_text;
+    private String id;  //security question id
+    private String security_question_text;  //security question text
 
     public SecurityQuestion(String id, String security_question_text) {
         this.id = id;
