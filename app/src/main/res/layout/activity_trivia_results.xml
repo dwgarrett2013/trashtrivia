@@ -115,7 +115,7 @@
                 android:id="@+id/button__trivia_results_return_to_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sign Out" />
+                android:text="@string/logout_button_text" />
         </TableRow>
 
     </TableLayout>

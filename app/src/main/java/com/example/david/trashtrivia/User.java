@@ -5,16 +5,20 @@ Group 9-Coffee Coffee Coffee
 
 package com.example.david.trashtrivia;
 
+/*
+This class represent user objects in the database
+ */
+
 public class User {
-    private String id;
-    private String username;
-    private String password;
-    private String roleId;
-    private String securityQuestionId;
-    private String securityQuestionAnswer;
-    private int numCorrectAnswer;
-    private int numQuestionCompleted;
-    private int numQuizzesTaken;
+    private String id;  //user id
+    private String username;    //username of user
+    private String password;    //password of user
+    private String roleId;      //role id of the user
+    private String securityQuestionId;  //security question type id
+    private String securityQuestionAnswer;  //text answer of the sequrity question
+    private int numCorrectAnswer;   //number of quesitons answered correctlly
+    private int numQuestionCompleted;   //number of questions completed
+    private int numQuizzesTaken;       //number of quizzes taken/completed
 
     public User(){
 
