@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,12 +30,18 @@ public class ProfileShareActivity extends Activity implements View.OnClickListen
     //initialize buttons
     private Button buttonShareProfile, buttonReturnHome, buttonReturnToLogin;
 
+    //initialize text input field to indicate username of user to share profile
     private TextView text_edit_input_friend;
 
+    //Initialize values to store the username and role of the currently logged in user
     private String loggedInUsername;
     private String loggedInUserRoleName;
 
+    //String to store the key of the friend to share with
     private String friendKey;
+
+    //Initialize FireBaseAuth object
+    private FirebaseAuth mAuth;
 
     //Initialize  FirebaseDatabaseObject
     private DatabaseReference database;
@@ -44,26 +51,36 @@ public class ProfileShareActivity extends Activity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_share);
 
-        buttonShareProfile=findViewById(R.id.button_share_profile_with_friend);
-        buttonReturnHome=findViewById(R.id.button_return_home);
-        buttonReturnToLogin=findViewById(R.id.button_return_to_login);
-
-        text_edit_input_friend=findViewById(R.id.text_edit_input_friend);
-
-        buttonShareProfile.setOnClickListener(this);
-        buttonReturnHome.setOnClickListener(this);
-        buttonReturnToLogin.setOnClickListener(this);
-
+        //get intents from previous page
         loggedInUsername=getIntent().getStringExtra("username");
         loggedInUserRoleName=getIntent().getStringExtra("role_name");
 
+        //create mautho object
+        mAuth=FirebaseAuth.getInstance();
+
+        //create Firebase Database
         database = FirebaseDatabase.getInstance().getReference();
+
+        //Link objects to elements in view
+        buttonShareProfile=findViewById(R.id.button_share_profile_with_friend);
+        buttonReturnHome=findViewById(R.id.button_return_home);
+        buttonReturnToLogin=findViewById(R.id.button_return_to_login);
+        text_edit_input_friend=findViewById(R.id.text_edit_input_friend);
+
+        //Set onclicklisteners
+        buttonShareProfile.setOnClickListener(this);
+        buttonReturnHome.setOnClickListener(this);
+        buttonReturnToLogin.setOnClickListener(this);
     }
 
+    //handle clicks
     @Override
     public void onClick(View v) {
-        if(v==buttonShareProfile){
 
+        //if share profile pressed, make sure the provided user name is the name of the user to send
+        //then share the profile by creating a notification in teh database with the targeted user's id
+        //as the recipient
+        if(v==buttonShareProfile){
             String friendUsername=text_edit_input_friend.getText().toString();
             database.child("User").orderByChild("username").equalTo(friendUsername).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -83,6 +100,7 @@ public class ProfileShareActivity extends Activity implements View.OnClickListen
                                     String notificationPushKey = database.child("Notification").push().getKey();
                                     Notification newNotification = new Notification(notificationPushKey, currentUserKey, friendKey, "Quiz Challenge Received");
                                     database.child("Notification").child(notificationPushKey).setValue(newNotification);
+                                    Toast.makeText(getApplicationContext(), "Notification Sent.", Toast.LENGTH_SHORT).show();
                                 }
                             }
 
@@ -95,7 +113,7 @@ public class ProfileShareActivity extends Activity implements View.OnClickListen
                     } else if (dataSnapshot.getChildrenCount() == 0) {
                         Toast.makeText(getApplicationContext(), "The provided username does not yet exist in the application", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), "The application encountered an error.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -105,14 +123,19 @@ public class ProfileShareActivity extends Activity implements View.OnClickListen
                 }
             });
         }
+
+        //if return home pressed, return to homepage
         else if(v==buttonReturnHome){
             Intent intentReturnHome=new Intent(getApplicationContext(),HomepageActivity.class);
             intentReturnHome.putExtra("username", loggedInUsername);
             intentReturnHome.putExtra("role_name", loggedInUserRoleName);
             startActivity(intentReturnHome);
         }
+
+        //if return to login pressed, return to login
         else if(v==buttonReturnToLogin){
             Intent intentReturnToLogin=new Intent(getApplicationContext(),MainActivity.class);
+            mAuth.signOut();
             startActivity(intentReturnToLogin);
         }
 

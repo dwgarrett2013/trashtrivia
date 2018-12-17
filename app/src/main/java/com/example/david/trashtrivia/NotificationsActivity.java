@@ -57,11 +57,11 @@ public class NotificationsActivity extends Activity implements View.OnClickListe
         loggedInUsername=getIntent().getStringExtra("username");
         loggedInUserRoleName=getIntent().getStringExtra("role_name");
 
-        //create Firebase Database
-        database = FirebaseDatabase.getInstance().getReference();
-
         //create mautho object
         mAuth=FirebaseAuth.getInstance();
+
+        //create Firebase Database
+        database = FirebaseDatabase.getInstance().getReference();
 
         //Link objects to elements in view
         fullLinear=findViewById(R.id.full_linear);

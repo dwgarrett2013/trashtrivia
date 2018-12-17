@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileShareActivity">
 
     <TableLayout
-        android:layout_width="368dp"
-        android:layout_height="503dp"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TableRow
             android:id="@+id/table_row_invite_friends_title"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="top|center">
 
@@ -22,7 +20,6 @@
                 android:id="@+id/textView_share_Profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="39dp"
                 android:gravity="center_horizontal"
                 android:text="@string/share_profile_title"
                 android:background="@color/colorAccent"
@@ -43,9 +40,9 @@
 
             <TextView
                 android:id="@+id/text_share_profile"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="39dp"
+                android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="@string/share_profile_instructions"
                 android:textSize="24sp"
@@ -64,12 +61,12 @@
         <TableRow
             android:id="@+id/table_row_notifications"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1">
 
             <Button
                 android:id="@+id/button_share_profile_with_friend"
-                android:layout_width="147dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/share_profile_with_friend" />
@@ -83,7 +80,7 @@
 
             <Button
                 android:id="@+id/button_return_home"
-                android:layout_width="116dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/return_home_text" />
@@ -98,7 +95,7 @@
 
             <Button
                 android:id="@+id/button_return_to_login"
-                android:layout_width="116dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/logout_button_text" />
@@ -106,4 +103,4 @@
         </TableRow>
     </TableLayout>
 
-</RelativeLayout>
+</LinearLayout>
