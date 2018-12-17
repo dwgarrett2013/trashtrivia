@@ -17,6 +17,7 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -63,17 +64,17 @@ of the current score, questionBankIdList, and other variables passed between que
 
 public class TriviaQuestionPromptActivity extends Activity implements View.OnClickListener{
 
-    //Create Button objects to represent the buttons storing the 4 answers
+    //Initialize Button objects to represent the buttons storing the 4 answers
     private Button button1,button2,button3,button4;
 
-    //Create a layout to represent the button choices that are avaialble
+    //Initialize a layout to represent the button choices that are avaialble
     private TableLayout choicesTable;
 
-    //Create variables to hold the value of the currently logged in user and tehir role
+    //Initialize variables to hold the value of the currently logged in user and tehir role
     private String loggedInUsername;
     private String loggedInUserRoleName;
 
-    //Create variables to hold the user's current score on the quiz and the number of questions
+    //Initialize variables to hold the user's current score on the quiz and the number of questions
     //remaining on the quiz
     private int numQuestionRemaining;
     private int currentScore;
@@ -83,18 +84,18 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
     private ArrayList<Question> questionList;
     private ArrayList<String> possibleAnswers;
 
-    //Create a TextView object to show the user their current score on the quiz and number of
+    //Initialize a TextView object to show the user their current score on the quiz and number of
     //questions they have remaining
     private TextView currentTextScoreVal;
     private TextView currentTextNumQuestionReamaining;
 
-    //Create a TextView object to hold the question instructions
+    //Initialize a TextView object to hold the question instructions
     private TextView questionText;
 
-    //Create a string to hold the database id of the question being asked
+    //Initialize a string to hold the database id of the question being asked
     private String selectedQuestionKey;
 
-    //Create a variable to hold the String text of the correct answer
+    //Initialize a variable to hold the String text of the correct answer
     private String correctAnswer;
 
     //Initialize intents to direct the user to the the appropriate view depending on whether the
@@ -104,6 +105,9 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
 
     //Initialize  FirebaseDatabaseObject
     private DatabaseReference database;
+
+    //Create mAuthObject
+    private FirebaseAuth mAuth;
 
     //"Disable" the back button to keep the Extras passed between views from getting out of sync.
     //Display a Toast indicating that the back button is disabled.

@@ -59,6 +59,7 @@ public class NotificationsActivity extends Activity implements View.OnClickListe
 
         //create Firebase Database
         database = FirebaseDatabase.getInstance().getReference();
+
         //create mautho object
         mAuth=FirebaseAuth.getInstance();
 
