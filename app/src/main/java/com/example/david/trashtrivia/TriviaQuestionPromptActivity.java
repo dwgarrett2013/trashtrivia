@@ -257,7 +257,7 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                 }
             });
     }
@@ -307,7 +307,7 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -342,7 +342,7 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                     }
                 });
                 startActivity(intentTriviaIncorrectAnswer);
@@ -389,7 +389,7 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -421,7 +421,7 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                     }
                 });
                 //initiate appropriate activity
@@ -469,7 +469,7 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -503,7 +503,7 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -552,7 +552,7 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -586,7 +586,7 @@ public class TriviaQuestionPromptActivity extends Activity implements View.OnCli
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                     }
                 });
 

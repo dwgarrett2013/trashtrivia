@@ -21,30 +21,42 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/*
+This activity will request the user to enter a security question answer.  It will confirm or deny
+whether the username exists or if the provided answer is correct.  If answer is correct, it will
+forward the user to the apprpriate page
+ */
+
 public class AnswerSecurityQuestionActivity extends Activity implements View.OnClickListener {
 
+    //Initialize buttons to submit an answer or return to login
     private Button buttonSubmitAnswer, buttonReturnToLogin;
 
+    //Initialize TextView to hold the security question
     private TextView textViewSecurityQuestion;
 
+    //Initialize a text box to hold the security question answer
     private EditText editTextEnterSecurityAnswer;
 
+    //Initialize a string to hold the requested username
     private String requestedUsername;
 
     //Initialize  FirebaseDatabaseObject
     private DatabaseReference database;
 
+    //When view is created
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer_security_question);
 
+        //Assign objects to buttons in the view
         buttonSubmitAnswer = findViewById(R.id.button_submit_security_question_answer);
         buttonReturnToLogin = findViewById(R.id.button_return_to_login);
-
         textViewSecurityQuestion = findViewById(R.id.security_question_text);
         editTextEnterSecurityAnswer = findViewById(R.id.edit_text_forgot_username_answer);
 
+        //set OnClick Listners
         buttonSubmitAnswer.setOnClickListener(this);
         buttonReturnToLogin.setOnClickListener(this);
 
@@ -53,9 +65,8 @@ public class AnswerSecurityQuestionActivity extends Activity implements View.OnC
         //create Firebase Database
         database = FirebaseDatabase.getInstance().getReference();
 
-        //Find the security question for the user
+        //Find the security question for the user and se the appropriate view elements
         database.child("User").orderByChild("username").equalTo(requestedUsername).addListenerForSingleValueEvent(new ValueEventListener() {
-
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String userSecurityQuestionId = "";
@@ -90,14 +101,20 @@ public class AnswerSecurityQuestionActivity extends Activity implements View.OnC
         });
     }
 
+    //Handle clicks
     @Override
     public void onClick(View v) {
+
+        //If Logout button pressed, signout and return to login
         if(v==buttonReturnToLogin){
             Intent intentReturnToLogin=new Intent(getApplicationContext(),MainActivity.class);
             startActivity(intentReturnToLogin);
         }
-        else if(v == buttonSubmitAnswer){
 
+        //If Submit anseer button pressed, check to see if the answer is correct
+        //Forward the user to their password if correct, or display an appropriate access denied
+        //message if wrong
+        else if(v == buttonSubmitAnswer){
             database.child("User").orderByChild("username").equalTo(requestedUsername).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
