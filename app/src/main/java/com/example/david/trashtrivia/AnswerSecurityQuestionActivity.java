@@ -127,6 +127,8 @@ public class AnswerSecurityQuestionActivity extends Activity implements View.OnC
                     }
                     if (retrievedSecurityQuestionAnswer.equals(editTextEnterSecurityAnswer.getText().toString())) {
                         Intent intentViewAnswer = new Intent(getApplicationContext(), ForgotPasswordResultActivity.class);
+
+                        //add in the user id to display on next page (rather than having to retrieve it on next page)
                         intentViewAnswer.putExtra("userid",retrievedSecurityAnswerUserId);
                         startActivity(intentViewAnswer);
                     } else {

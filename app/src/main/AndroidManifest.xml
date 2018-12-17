@@ -23,7 +23,6 @@
         <activity android:name=".ForgotPasswordResultActivity" />
         <activity android:name=".MetricsActivity" />
         <activity android:name=".NotificationsActivity" />
-        <activity android:name=".InviteFriendsActivity" />
         <activity android:name=".ProfileViewActivity" />
         <activity android:name=".QuestionHomeActivity" />
         <activity android:name=".ProfileShareActivity" />
