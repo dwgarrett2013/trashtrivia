@@ -1,6 +1,8 @@
 /*
 Team Members: Rang Jin, Babatunji Olotu, David Garrett, Matt Chatiwat Lerdvongveerachai, and Abhi Dua
 Group 9-Coffee Coffee Coffee
+
+Question Source: https://www.nps.gov/anch/upload/RecyclingQuizFinal.pdf
  */
 
 package com.example.david.trashtrivia;
